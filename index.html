@@ -459,10 +459,10 @@ footer { background: #061F0C; padding: 46px clamp(20px,5vw,64px) 38px; text-alig
 /* Lang toggle button */
 .lang-toggle {
   background: transparent; border: 1.5px solid rgba(255,255,255,0.35);
-  color: rgba(255,255,255,0.85); padding: 6px 14px; border-radius: 100px;
+  color: rgba(255,255,255,0.85); padding: 7px 16px; border-radius: 100px;
   font-family: 'Cairo', 'Inter', sans-serif; font-size: 13px; font-weight: 600;
   cursor: pointer; transition: border-color 0.25s, color 0.25s, background 0.25s;
-  letter-spacing: 0.03em; white-space: nowrap;
+  letter-spacing: 0.03em; white-space: nowrap; list-style: none;
 }
 .lang-toggle:hover { border-color: var(--gold); color: var(--gold-light); background: rgba(201,162,39,0.08); }
 
@@ -522,8 +522,8 @@ body { transition: font-family 0.2s; }
     <li><a href="#why" data-i18n="nav_why">Why Us</a></li>
     <li><a href="#markets" data-i18n="nav_markets">Markets</a></li>
     <li><a href="#enquiry" class="nav-cta" data-i18n="nav_cta">Get a Quote</a></li>
+    <li><button class="lang-toggle" id="langBtn" onclick="toggleLang()">عربي</button></li>
   </ul>
-  <button class="lang-toggle" id="langBtn" onclick="toggleLang()" title="Switch to Arabic">عربي</button>
   <div class="hamburger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
@@ -578,7 +578,7 @@ body { transition: font-family 0.2s; }
   <div class="grid">
 
     <!-- ALFALFA — image keyword: alfalfa hay field -->
-    <a class="card reveal" href="products/alfalfa.html">
+    <a class="card reveal" href="alfalfa.html">
       <div class="card-img">
         <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=640&q=78&auto=format&fit=crop" alt="Alfalfa hay field at sunrise" loading="lazy">
         <span class="badge now" data-i18n="badge_now">Available Now</span>
@@ -596,7 +596,7 @@ body { transition: font-family 0.2s; }
     </a>
 
     <!-- WHEAT HAY — wheat field landscape (dried plant / hay look) -->
-    <a class="card reveal" data-delay="1" href="products/wheat.html">
+    <a class="card reveal" data-delay="1" href="wheat.html">
       <div class="card-img">
         <img src="https://images.unsplash.com/photo-1619277418608-a8e7a0d4fa35?w=640&q=78&auto=format&fit=crop" alt="Wheat hay straw bales in a field" loading="lazy"
              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1606154358545-f9919f595a3a?w=640&q=78&auto=format&fit=crop';">
@@ -615,7 +615,7 @@ body { transition: font-family 0.2s; }
     </a>
 
     <!-- BARLEY — grain close-up (barley grain / malt) -->
-    <a class="card reveal" data-delay="2" href="products/barley.html">
+    <a class="card reveal" data-delay="2" href="barley.html">
       <div class="card-img">
         <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=640&q=78&auto=format&fit=crop" alt="Barley grain" loading="lazy"
              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1536657464919-892534f60d6e?w=640&q=78&auto=format&fit=crop';">
@@ -634,7 +634,7 @@ body { transition: font-family 0.2s; }
     </a>
 
     <!-- COTTON SEED — cotton field / bolls -->
-    <a class="card reveal" data-delay="3" href="products/cottonseed.html">
+    <a class="card reveal" data-delay="3" href="cottonseed.html">
       <div class="card-img">
         <img src="https://images.unsplash.com/photo-1502395809857-fd80069897d0?w=640&q=78&auto=format&fit=crop" alt="Cotton field" loading="lazy"
              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=640&q=78&auto=format&fit=crop';">
@@ -653,7 +653,7 @@ body { transition: font-family 0.2s; }
     </a>
 
     <!-- HORSE FEED — image keyword: horse -->
-    <a class="card reveal" data-delay="4" href="products/horsefeed.html">
+    <a class="card reveal" data-delay="4" href="horsefeed.html">
       <div class="card-img">
         <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=640&q=78&auto=format&fit=crop" alt="Horse in a green pasture" loading="lazy">
         <span class="badge soon">Coming Soon</span>
@@ -679,34 +679,34 @@ body { transition: font-family 0.2s; }
     <div class="reveal">
       <p class="eyebrow" data-i18n="why_eyebrow">Why Work With Us</p>
       <h2 class="s-title"><span data-i18n="why_title_1">A Trusted</span> <span class="em" data-i18n="why_title_2">Egyptian</span> <span data-i18n="why_title_3">Source</span></h2>
-      <p class="why-desc">We operate on the ground in Egypt, working directly with producers and cutting out unnecessary intermediaries. Every shipment ships with full documentation and independently verified lab results.</p>
+      <p class="why-desc" data-i18n="why_desc">We operate on the ground in Egypt, working directly with producers and cutting out unnecessary intermediaries. Every shipment ships with full documentation and independently verified lab results.</p>
       <ul class="why-list">
         <li class="why-item">
           <div class="why-ic">🔬</div>
-          <div><p class="why-h">Lab-Tested Every Shipment</p><p class="why-p">Full COA from EGAC-accredited ACERTA Middle East covering aflatoxin, protein, moisture, pesticide residues and microbiology.</p></div>
+          <div><p class="why-h" data-i18n="why_h1">Lab-Tested Every Shipment</p><p class="why-p" data-i18n="why_p1">Full COA from EGAC-accredited ACERTA Middle East covering aflatoxin, protein, moisture, pesticide residues and microbiology.</p></div>
         </li>
         <li class="why-item">
           <div class="why-ic">⚡</div>
-          <div><p class="why-h">Direct from Egypt</p><p class="why-p">Sourced straight from producers for faster turnaround, competitive pricing and full supply-chain transparency.</p></div>
+          <div><p class="why-h" data-i18n="why_h2">Direct from Egypt</p><p class="why-p" data-i18n="why_p2">Sourced straight from producers for faster turnaround, competitive pricing and full supply-chain transparency.</p></div>
         </li>
         <li class="why-item">
           <div class="why-ic">📋</div>
-          <div><p class="why-h">Complete Export Documentation</p><p class="why-p">COA, phytosanitary certificates, certificate of origin and all customs paperwork coordinated from our end.</p></div>
+          <div><p class="why-h" data-i18n="why_h3">Complete Export Documentation</p><p class="why-p" data-i18n="why_p3">COA, phytosanitary certificates, certificate of origin and all customs paperwork coordinated from our end.</p></div>
         </li>
         <li class="why-item">
           <div class="why-ic">🤝</div>
-          <div><p class="why-h">Long-Term Partnership Focus</p><p class="why-p">We build ongoing relationships, not one-off deals. Consistent quality and honest communication is how we work.</p></div>
+          <div><p class="why-h" data-i18n="why_h4">Long-Term Partnership Focus</p><p class="why-p" data-i18n="why_p4">We build ongoing relationships, not one-off deals. Consistent quality and honest communication is how we work.</p></div>
         </li>
       </ul>
     </div>
     <div class="why-panel reveal" data-delay="2">
-      <div class="why-box"><span class="n">EGAC</span><span class="l">Accredited Lab</span></div>
-      <div class="why-box"><span class="n">GCC</span><span class="l">Primary Market</span></div>
-      <div class="why-box"><span class="n">100%</span><span class="l">Natural</span></div>
-      <div class="why-box"><span class="n">ISO</span><span class="l">Test Methods</span></div>
+      <div class="why-box"><span class="n">EGAC</span><span class="l" data-i18n="why_box1">Accredited Lab</span></div>
+      <div class="why-box"><span class="n">GCC</span><span class="l" data-i18n="why_box2">Primary Market</span></div>
+      <div class="why-box"><span class="n">100%</span><span class="l" data-i18n="why_box3">Natural</span></div>
+      <div class="why-box"><span class="n">ISO</span><span class="l" data-i18n="why_box4">Test Methods</span></div>
       <div class="why-cert">
-        <strong>Registered Egyptian Export Company</strong>
-        <p>AMS Prime Egypt For Trading and Export is a registered Egyptian company (Trade Name Reg. No. 8272768, Cairo Investment Office), with full legal accountability for every shipment.</p>
+        <strong data-i18n="why_cert_title">Registered Egyptian Export Company</strong>
+        <p data-i18n="why_cert_body">AMS Prime Egypt For Trading and Export is a registered Egyptian company (Trade Name Reg. No. 8272768, Cairo Investment Office), with full legal accountability for every shipment.</p>
       </div>
     </div>
   </div>
@@ -718,16 +718,16 @@ body { transition: font-family 0.2s; }
     <div class="markets-head">
       <p class="eyebrow reveal" data-i18n="markets_eyebrow">Where We Serve</p>
       <h2 class="s-title reveal" data-delay="1">GCC &amp; <span class="em" data-i18n="markets_title">Global</span> <span data-i18n="markets_title2">Reach</span></h2>
-      <p class="s-sub reveal" data-delay="2">Our focus is the Gulf Cooperation Council, with export capability to markets worldwide.</p>
+      <p class="s-sub reveal" data-delay="2" data-i18n="markets_sub">Our focus is the Gulf Cooperation Council, with export capability to markets worldwide.</p>
     </div>
     <div class="markets-grid">
-      <div class="m-card reveal"><div class="m-flag">🇰🇼</div><p class="m-name">Kuwait</p></div>
-      <div class="m-card reveal" data-delay="1"><div class="m-flag">🇸🇦</div><p class="m-name">Saudi Arabia</p></div>
-      <div class="m-card reveal" data-delay="2"><div class="m-flag">🇦🇪</div><p class="m-name">UAE</p></div>
-      <div class="m-card reveal" data-delay="3"><div class="m-flag">🇶🇦</div><p class="m-name">Qatar</p></div>
-      <div class="m-card reveal"><div class="m-flag">🇧🇭</div><p class="m-name">Bahrain</p></div>
-      <div class="m-card reveal" data-delay="1"><div class="m-flag">🇴🇲</div><p class="m-name">Oman</p></div>
-      <div class="m-card ww reveal" data-delay="2"><div class="m-flag">🌍</div><p class="m-name">Worldwide</p></div>
+      <div class="m-card reveal"><div class="m-flag">🇰🇼</div><p class="m-name" data-i18n="m_kuwait">Kuwait</p></div>
+      <div class="m-card reveal" data-delay="1"><div class="m-flag">🇸🇦</div><p class="m-name" data-i18n="m_saudi">Saudi Arabia</p></div>
+      <div class="m-card reveal" data-delay="2"><div class="m-flag">🇦🇪</div><p class="m-name" data-i18n="m_uae">UAE</p></div>
+      <div class="m-card reveal" data-delay="3"><div class="m-flag">🇶🇦</div><p class="m-name" data-i18n="m_qatar">Qatar</p></div>
+      <div class="m-card reveal"><div class="m-flag">🇧🇭</div><p class="m-name" data-i18n="m_bahrain">Bahrain</p></div>
+      <div class="m-card reveal" data-delay="1"><div class="m-flag">🇴🇲</div><p class="m-name" data-i18n="m_oman">Oman</p></div>
+      <div class="m-card ww reveal" data-delay="2"><div class="m-flag">🌍</div><p class="m-name" data-i18n="m_world">Worldwide</p></div>
     </div>
   </div>
 </section>
@@ -778,8 +778,14 @@ body { transition: font-family 0.2s; }
         <div class="fg full"><label data-i18n="form_notes">Additional Notes</label><textarea id="fnotes" placeholder="Specific requirements, certifications needed, or questions…"></textarea></div>
       </div>
       <div class="form-foot">
+        <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;text-align:left">
+          <input type="checkbox" id="fConsent" style="width:16px;height:16px;margin-top:3px;accent-color:var(--gold);flex-shrink:0;cursor:pointer">
+          <label for="fConsent" style="font-size:12.5px;color:rgba(255,255,255,0.65);line-height:1.55;cursor:pointer">
+            I consent to AMS Prime Egypt collecting and storing the information above to respond to my enquiry, in accordance with the <a href="privacy.html" target="_blank" style="color:var(--gold-light);text-decoration:underline">Privacy Policy</a>. I understand my data will not be sold or used for marketing.
+          </label>
+        </div>
         <button class="btn-submit" id="submitBtn" onclick="submitForm()"><span data-i18n="form_submit">Send Enquiry</span></button>
-        <p class="form-note">We aim to respond within 24 hours &nbsp;·&nbsp; info@amsprimeegypt.com</p>
+        <p class="form-note">We respond within 24 hours &nbsp;·&nbsp; info@amsprimeegypt.com &nbsp;·&nbsp; <a href="privacy.html" target="_blank" style="color:rgba(255,255,255,0.45)">Privacy Policy</a></p>
       </div>
       <div class="success" id="success">Thank you — your enquiry has been noted. We'll be in touch within 24 hours.</div>
     </div>
@@ -804,6 +810,7 @@ body { transition: font-family 0.2s; }
     <li><a href="#why" data-i18n="nav_why">Why Us</a></li>
     <li><a href="#markets" data-i18n="nav_markets">Markets</a></li>
     <li><a href="#enquiry">Contact</a></li>
+    <li><a href="privacy.html">Privacy Policy</a></li>
   </ul>
   <p class="f-copy">© 2026 AMS Prime Egypt For Trading and Export &nbsp;·&nbsp; Trade Name Reg. No. 8272768 — Cairo Investment Office</p>
 </footer>
@@ -862,8 +869,13 @@ function submitForm() {
   const name = document.getElementById('fname').value.trim();
   const email = document.getElementById('femail').value.trim();
   const product = document.getElementById('fproduct').value;
+  const consent = document.getElementById('fConsent')?.checked;
   if (!name || !email || !product) {
     alert('Please add your name, email, and the product you need so we can respond properly.');
+    return;
+  }
+  if (!consent) {
+    alert('Please tick the consent checkbox before submitting.');
     return;
   }
   document.getElementById('success').classList.add('show');
@@ -930,6 +942,21 @@ const TRANSLATIONS = {
     form_dest: 'Destination Country',
     form_qty: 'Estimated Quantity',
     form_notes: 'Additional Notes',
+    why_desc: 'We operate on the ground in Egypt, working directly with producers and cutting out unnecessary intermediaries. Every shipment ships with full documentation and independently verified lab results.',
+    why_h1: 'Lab-Tested Every Shipment',
+    why_p1: 'Full COA from EGAC-accredited ACERTA Middle East covering aflatoxin, protein, moisture, pesticide residues and microbiology.',
+    why_h2: 'Direct from Egypt',
+    why_p2: 'Sourced straight from producers for faster turnaround, competitive pricing and full supply-chain transparency.',
+    why_h3: 'Complete Export Documentation',
+    why_p3: 'COA, phytosanitary certificates, certificate of origin and all customs paperwork coordinated from our end.',
+    why_h4: 'Long-Term Partnership Focus',
+    why_p4: 'We build ongoing relationships, not one-off deals. Consistent quality and honest communication is how we work.',
+    why_box1: 'Accredited Lab', why_box2: 'Primary Market', why_box3: 'Natural', why_box4: 'Test Methods',
+    why_cert_title: 'Registered Egyptian Export Company',
+    why_cert_body: 'AMS Prime Egypt For Trading and Export is a registered Egyptian company (Trade Name Reg. No. 8272768, Cairo Investment Office), with full legal accountability for every shipment.',
+    markets_sub: 'Our focus is the Gulf Cooperation Council, with export capability to markets worldwide.',
+    m_kuwait: 'Kuwait', m_saudi: 'Saudi Arabia', m_uae: 'UAE', m_qatar: 'Qatar',
+    m_bahrain: 'Bahrain', m_oman: 'Oman', m_world: 'Worldwide',
     form_submit: 'Send Enquiry',
     p1_name: 'Alfalfa Hay',
     p1_desc: 'Premium Egyptian alfalfa in single and double press. Lab-certified protein, zero impurities, pesticide-free. Bale sizes from 18 kg to 750 kg.',
@@ -997,6 +1024,21 @@ const TRANSLATIONS = {
     form_dest: 'دولة الوجهة',
     form_qty: 'الكمية التقريبية',
     form_notes: 'ملاحظات إضافية',
+    why_desc: 'نعمل على أرض مصر، ونتعامل مباشرة مع المنتجين بعيداً عن الوسطاء غير الضروريين. كل شحنة تأتي مع توثيق كامل ونتائج مختبرية مستقلة.',
+    why_h1: 'اختبار معتمد لكل شحنة',
+    why_p1: 'شهادة تحليل كاملة من ACERTA Middle East المعتمدة EGAC تشمل الأفلاتوكسين والبروتين والرطوبة وبقايا المبيدات.',
+    why_h2: 'مباشرة من مصر',
+    why_p2: 'مصدرها مباشرة من المنتجين لتسريع الأمور وتقديم أسعار تنافسية مع شفافية كاملة في سلسلة التوريد.',
+    why_h3: 'توثيق تصدير كامل',
+    why_p3: 'شهادة التحليل، الشهادة الصحية النباتية، شهادة المنشأ، وجميع أوراق الجمارك تُنسَّق من طرفنا.',
+    why_h4: 'تركيز على الشراكة طويلة المدى',
+    why_p4: 'نبني علاقات مستمرة، لا صفقات معزولة. الجودة الثابتة والتواصل الصادق هو أسلوبنا في العمل.',
+    why_box1: 'معتمد EGAC', why_box2: 'السوق الرئيسي', why_box3: 'طبيعي 100%', why_box4: 'طرق ISO',
+    why_cert_title: 'شركة تصدير مصرية مسجلة',
+    why_cert_body: 'AMS Prime Egypt For Trading and Export شركة مصرية مسجلة (رقم تسجيل الاسم التجاري 8272768، مكتب القاهرة للاستثمار)، مع مسؤولية قانونية كاملة عن كل شحنة.',
+    markets_sub: 'تركيزنا على دول مجلس التعاون الخليجي مع قدرة تصديرية للأسواق العالمية.',
+    m_kuwait: 'الكويت', m_saudi: 'المملكة العربية السعودية', m_uae: 'الإمارات', m_qatar: 'قطر',
+    m_bahrain: 'البحرين', m_oman: 'عُمان', m_world: 'دول أخرى',
     form_submit: 'إرسال الاستفسار',
     p1_name: 'برسيم (علف البرسيم)',
     p1_desc: 'برسيم مصري فاخر بضغط فردي ومزدوج. بروتين 22.3% معتمد بالمختبر، خالٍ من الشوائب والمبيدات. أحجام من 18 كجم حتى 750 كجم.',
