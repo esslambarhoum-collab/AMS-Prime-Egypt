@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alfalfa Hay — AMS Prime Egypt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #0D3B1E; --green-mid: #1A5C32; --green-light: #2E7D4F;
+  --gold: #C9A227; --gold-light: #E8C76A; --cream: #FAF7F0;
+  --white: #FFFFFF; --dark: #0A0F0B; --green-deep: #07260F; --text: #1A1A1A; --muted: #5A6B5E; --border: #E2E8E4;
+}
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--cream); }
+
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(7,38,15,0.82); backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgba(201,162,39,0.2);
+  padding: 0 5vw; height: 68px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-mark { width: 36px; height: 36px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-weight: 700; font-size: 12px; color: var(--green); }
+.nav-logo-text { font-family: 'Fraunces', serif; font-size: 16px; font-weight: 700; color: var(--white); }
+.nav-logo-text span { color: var(--gold); }
+.nav-back { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 13px; font-weight: 500; display: flex; align-items: center; gap: 6px; transition: color 0.2s; }
+.nav-back:hover { color: var(--gold-light); }
+.nav-cta { background: var(--gold); color: var(--green); padding: 9px 20px; border-radius: 100px; text-decoration: none; font-size: 13px; font-weight: 600; transition: background 0.25s, transform 0.25s; } .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+/* HERO */
+.product-hero {
+  min-height: 55vh; position: relative;
+  display: flex; align-items: flex-end; padding: 0 5vw 60px;
+  overflow: hidden;
+}
+.product-hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=80');
+  background-size: cover; background-position: center 40%;
+}
+.product-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(10,15,11,0.95) 0%, rgba(10,15,11,0.5) 60%, rgba(10,15,11,0.3) 100%);
+}
+.product-hero-content { position: relative; z-index: 1; max-width: 700px; padding-top: 100px; }
+.breadcrumb { font-size: 12px; color: rgba(255,255,255,0.4); margin-bottom: 16px; letter-spacing: 0.05em; }
+.breadcrumb a { color: var(--gold); text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+.product-hero h1 { font-family: 'Fraunces', serif; font-size: clamp(36px,6vw,66px); font-weight: 800; color: var(--white); line-height: 1.1; margin-bottom: 14px; }
+.product-hero h1 span { color: var(--gold); }
+.product-hero p { font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 520px; margin-bottom: 28px; }
+.hero-badges { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-badge-item { background: rgba(201,162,39,0.15); border: 1px solid rgba(201,162,39,0.4); color: var(--gold-light); font-size: 11px; font-weight: 600; padding: 5px 12px; border-radius: 100px; letter-spacing: 0.05em; }
+
+/* CONTENT */
+.content { max-width: 1100px; margin: 0 auto; padding: 60px 5vw; }
+
+.lab-banner {
+  background: var(--green); border-radius: 12px; padding: 24px 28px; margin-bottom: 48px;
+  display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.lab-banner-icon { font-size: 32px; flex-shrink: 0; }
+.lab-banner-text h3 { font-family: 'Fraunces', serif; font-size: 18px; color: var(--white); margin-bottom: 4px; }
+.lab-banner-text p { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+.lab-banner-badge { margin-left: auto; background: var(--gold); color: var(--green); font-size: 11px; font-weight: 700; padding: 6px 14px; border-radius: 100px; white-space: nowrap; }
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+
+.card { background: var(--white); border-radius: 12px; padding: 28px; border: 1px solid var(--border); }
+.card-title { font-family: 'Fraunces', serif; font-size: 20px; color: var(--green); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--gold); }
+
+.spec-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+.spec-row:last-child { border-bottom: none; }
+.spec-row .label { color: var(--muted); font-weight: 500; }
+.spec-row .value { font-weight: 700; color: var(--green); }
+.spec-row .value.highlight { color: var(--gold); font-size: 16px; }
+
+.section-heading { font-family: 'Fraunces', serif; font-size: 26px; color: var(--green); margin-bottom: 24px; }
+
+/* BALE TABLE */
+.bale-section { margin-bottom: 48px; }
+.bale-group-title {
+  background: var(--green); color: var(--white); font-size: 13px; font-weight: 700;
+  padding: 10px 16px; border-radius: 6px 6px 0 0; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.bale-table { width: 100%; border-collapse: collapse; background: var(--white); border-radius: 0 0 8px 8px; overflow: hidden; border: 1px solid var(--border); border-top: none; }
+.bale-table th { background: rgba(13,59,30,0.05); font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+.bale-table td { padding: 12px 14px; font-size: 13px; border-bottom: 1px solid var(--border); }
+.bale-table tr:last-child td { border-bottom: none; }
+.bale-table tr:nth-child(even) td { background: var(--cream); }
+.bale-table .w { font-weight: 700; color: var(--green); }
+.bale-table .star { background: rgba(201,162,39,0.1); }
+.bale-table .star .w { color: var(--gold); }
+.star-note { font-size: 12px; color: var(--muted); margin-top: 8px; font-style: italic; }
+
+/* PRICING */
+.pricing-card { background: var(--green); border-radius: 12px; padding: 32px; color: var(--white); margin-bottom: 48px; }
+.pricing-card h3 { font-family: 'Fraunces', serif; font-size: 22px; color: var(--white); margin-bottom: 20px; }
+.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+.pricing-item { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,162,39,0.2); border-radius: 8px; padding: 20px; }
+.pricing-item .term { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px; }
+.pricing-item .price { font-family: 'Fraunces', serif; font-size: 28px; color: var(--gold); font-weight: 700; }
+.pricing-item .price-sub { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 4px; }
+.pricing-notes { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.7; }
+.pricing-notes li { margin-bottom: 4px; }
+
+/* DOCS */
+.docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 14px; margin-bottom: 48px; }
+.doc-item { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 18px; display: flex; align-items: center; gap: 12px; }
+.doc-icon { font-size: 22px; }
+.doc-text { font-size: 13px; font-weight: 600; color: var(--green); }
+.doc-sub { font-size: 11px; color: var(--muted); }
+
+/* CTA */
+.cta-bar { background: var(--gold); border-radius: 12px; padding: 28px 32px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; }
+.cta-bar h3 { font-family: 'Fraunces', serif; font-size: 20px; color: var(--green); }
+.cta-bar p { font-size: 14px; color: rgba(13,59,30,0.7); margin-top: 4px; }
+.cta-bar a { background: var(--green); color: var(--white); text-decoration: none; padding: 12px 28px; border-radius: 6px; font-weight: 600; font-size: 14px; transition: background 0.2s; white-space: nowrap; }
+.cta-bar a:hover { background: var(--green-mid); }
+
+footer { background: var(--dark); padding: 28px 5vw; text-align: center; border-top: 1px solid rgba(201,162,39,0.15); }
+.footer-logo { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700; color: var(--white); }
+.footer-logo span { color: var(--gold); }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.2); margin-top: 6px; }
+
+@media (max-width: 768px) {
+  .two-col { grid-template-columns: 1fr; gap: 24px; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .nav-back span { display: none; }
+  .bale-table { font-size: 12px; }
+  .bale-table th, .bale-table td { padding: 8px 10px; }
+}
+
+[dir="rtl"] body { font-family: 'Cairo', 'Inter', sans-serif; }
+[dir="rtl"] h1, [dir="rtl"] h2, [dir="rtl"] .f-logo, [dir="rtl"] .card-title { font-family: 'Cairo', serif; }
+[dir="rtl"] nav { flex-direction: row-reverse; }
+[dir="rtl"] .nav-logo { flex-direction: row-reverse; }
+[dir="rtl"] .product-hero-content { text-align: right; }
+[dir="rtl"] .breadcrumb { text-align: right; }
+[dir="rtl"] .hero-badges { justify-content: flex-start; }
+[dir="rtl"] .two-col { direction: rtl; }
+[dir="rtl"] .spec-row { flex-direction: row-reverse; }
+[dir="rtl"] .bale-table th, [dir="rtl"] .bale-table td { text-align: right; }
+[dir="rtl"] .docs-grid { direction: rtl; }
+[dir="rtl"] .cta-bar { flex-direction: row-reverse; text-align: right; }
+[dir="rtl"] .lab-banner { flex-direction: row-reverse; text-align: right; }
+[dir="rtl"] .lab-banner-badge { margin-left: 0; margin-right: auto; }
+.lang-toggle {
+  background: transparent; border: 1.5px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.85); padding: 6px 14px; border-radius: 100px;
+  font-family: 'Cairo','Inter',sans-serif; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: border-color 0.25s, color 0.25s;
+}
+.lang-toggle:hover { border-color: #C9A227; color: #E8C76A; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <div class="nav-logo-mark">AMS</div>
+    <span class="nav-logo-text">AMS <span>PRIME EGYPT</span></span>
+  </a>
+  <a href="../index.html" class="nav-back">← <span>Back to Home</span></a>
+  <div style="display:flex;align-items:center;gap:10px">
+    <button class="lang-toggle" id="langBtn" onclick="toggleLang()">عربي</button>
+    <a href="../index.html#enquiry" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+
+<div class="product-hero">
+  <div class="product-hero-bg"></div>
+  <div class="product-hero-overlay"></div>
+  <div class="product-hero-content">
+    <p class="breadcrumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; Products &nbsp;/&nbsp; Alfalfa Hay</p>
+    <h1>Alfalfa Hay<br><span>Single &amp; Double Press</span></h1>
+    <p>Premium Egyptian alfalfa with lab-certified protein exceeding 22%, zero impurities, and pesticide-free results. Available in 13 bale sizes from 18 kg to 750 kg.</p>
+    <div class="hero-badges">
+      <span class="hero-badge-item">✓ Available Now</span>
+      <span class="hero-badge-item">✓ EGAC Lab Certified</span>
+      <span class="hero-badge-item">✓ Pesticide Free</span>
+      <span class="hero-badge-item">✓ GCC Export Ready</span>
+    </div>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="lab-banner">
+    <div class="lab-banner-icon">🔬</div>
+    <div class="lab-banner-text">
+      <h3>EGAC-Accredited Certificate of Analysis — June 2026</h3>
+      <p>Tested by ACERTA Middle East (Lab Codes ATS46555 / ATS46556) — EGAC Accredited, CAB#2138005. Booking Ref: EBKG06475389.</p>
+    </div>
+    <div class="lab-banner-badge">Lab Verified ✓</div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <h3 class="card-title">Chemical Analysis</h3>
+      <div class="spec-row"><span class="label">Protein (Kjeldahl)</span><span class="value highlight">22.3%</span></div>
+      <div class="spec-row"><span class="label">Moisture</span><span class="value">6%</span></div>
+      <div class="spec-row"><span class="label">ADF (Acid Detergent Fibre)</span><span class="value">31.8%</span></div>
+      <div class="spec-row"><span class="label">NDF (Neutral Detergent Fibre)</span><span class="value">41.2%</span></div>
+      <div class="spec-row"><span class="label">Aflatoxin</span><span class="value">3.7 ppb</span></div>
+      <div class="spec-row"><span class="label">Pesticide Residues</span><span class="value">Not Detected</span></div>
+      <div class="spec-row"><span class="label">Impurities</span><span class="value">0%</span></div>
+    </div>
+    <div class="card">
+      <h3 class="card-title">Microbiological &amp; Quality</h3>
+      <div class="spec-row"><span class="label">Mould Count</span><span class="value">19,000 cfu/g</span></div>
+      <div class="spec-row"><span class="label">Colour</span><span class="value">Green</span></div>
+      <div class="spec-row"><span class="label">Origin</span><span class="value">Egypt</span></div>
+      <div class="spec-row"><span class="label">Press Type</span><span class="value">Single &amp; Double</span></div>
+      <div class="spec-row"><span class="label">Double Press Premium</span><span class="value">+USD 30 / ton</span></div>
+      <div class="spec-row"><span class="label">Test Standard (Protein)</span><span class="value">ISO 1871:2009</span></div>
+      <div class="spec-row"><span class="label">Test Standard (Moisture)</span><span class="value">ISO 6496:1999</span></div>
+    </div>
+  </div>
+
+  <div class="bale-section">
+    <h2 class="section-heading">Available Bale Sizes</h2>
+
+    <div style="margin-bottom:20px;">
+      <div class="bale-group-title">Small Bales — 18 to 30 kg</div>
+      <table class="bale-table">
+        <thead><tr><th>Weight</th><th>Dimensions (L × W × H)</th><th>Approx. Bales / Truck</th><th>Approx. Load / Truck</th></tr></thead>
+        <tbody>
+          <tr><td class="w">18 kg</td><td>75 × 48 × 37 cm</td><td>~1,388</td><td>~25 MT</td></tr>
+          <tr><td class="w">20 kg</td><td>75 × 48 × 37 cm</td><td>~1,250</td><td>~25 MT</td></tr>
+          <tr><td class="w">22 kg</td><td>75 × 48 × 37 cm</td><td>~1,136</td><td>~25 MT</td></tr>
+          <tr><td class="w">24 kg</td><td>75 × 48 × 37 cm</td><td>~1,042</td><td>~25 MT</td></tr>
+          <tr><td class="w">30 kg</td><td>75 × 48 × 37 cm</td><td>~833</td><td>~25 MT</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-bottom:20px;">
+      <div class="bale-group-title">Medium Bales — 45 kg</div>
+      <table class="bale-table">
+        <thead><tr><th>Weight</th><th>Dimensions (L × W × H)</th><th>Approx. Bales / Truck</th><th>Approx. Load / Truck</th></tr></thead>
+        <tbody>
+          <tr><td class="w">45 kg</td><td>105 × 48 × 38 cm</td><td>~555</td><td>~25 MT</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="margin-bottom:8px;">
+      <div class="bale-group-title">Large Bales — 200 to 750 kg</div>
+      <table class="bale-table">
+        <thead><tr><th>Weight</th><th>Dimensions (L × W × H)</th><th>Approx. Bales / Truck</th><th>Approx. Load / Truck</th></tr></thead>
+        <tbody>
+          <tr><td class="w">200 kg</td><td>195 × 120 × 70 cm</td><td>~125</td><td>~25 MT</td></tr>
+          <tr><td class="w">250 kg</td><td>210 × 120 × 70 cm</td><td>~100</td><td>~25 MT</td></tr>
+          <tr><td class="w">300 kg</td><td>210 × 120 × 70 cm</td><td>~83</td><td>~25 MT</td></tr>
+          <tr><td class="w">350 kg</td><td>210 × 120 × 70 cm</td><td>~71</td><td>~25 MT</td></tr>
+          <tr><td class="w">400 kg</td><td>210 × 120 × 70 cm</td><td>~62</td><td>~25 MT</td></tr>
+          <tr><td class="w">400 kg</td><td>210 × 120 × 90 cm</td><td>~62</td><td>~25 MT</td></tr>
+          <tr><td class="w">450 kg</td><td>210 × 120 × 70 cm</td><td>~55</td><td>~25 MT</td></tr>
+          <tr><td class="w">450 kg</td><td>210 × 120 × 90 cm</td><td>~55</td><td>~25 MT</td></tr>
+          <tr><td class="w">500 kg</td><td>210 × 120 × 90 cm</td><td>~50</td><td>~25 MT</td></tr>
+          <tr><td class="w">550 kg</td><td>210 × 120 × 90 cm</td><td>~45</td><td>~25 MT</td></tr>
+          <tr><td class="w">600 kg</td><td>210 × 120 × 90 cm</td><td>~41</td><td>~25 MT</td></tr>
+          <tr><td class="w">650 kg</td><td>210 × 120 × 90 cm</td><td>~38</td><td>~25 MT</td></tr>
+          <tr class="star"><td class="w">730 – 750 kg ★</td><td>210 × 120 × 90 cm</td><td>48 bales</td><td>35.04 MT</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="star-note">★ 730–750 kg is our confirmed standard export bale — supplier-confirmed with EGAC lab certification. Truck: 17-metre road truck, ~25 MT payload. ★ row shows confirmed figures.</p>
+  </div>
+
+  <div style="background:var(--green);border-radius:12px;padding:28px 32px;margin-bottom:48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
+    <div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:20px;color:var(--white);margin-bottom:6px;">Request Pricing</h3>
+      <p style="font-size:14px;color:rgba(255,255,255,0.6);line-height:1.6;">Pricing is available on request based on your order volume, destination, and preferred Incoterm. Contact us for a tailored quote within 24 hours.</p>
+    </div>
+    <a href="../index.html#enquiry" style="background:var(--gold);color:var(--green);text-decoration:none;padding:12px 28px;border-radius:6px;font-weight:600;font-size:14px;white-space:nowrap;">Get a Quote →</a>
+  </div>
+
+  <div class="docs-grid">
+    <div class="doc-item"><div class="doc-icon">📄</div><div><div class="doc-text">Certificate of Analysis</div><div class="doc-sub">Chemical — ACERTA Middle East</div></div></div>
+    <div class="doc-item"><div class="doc-icon">🦠</div><div><div class="doc-text">Microbiological COA</div><div class="doc-sub">EGAC Accredited Lab</div></div></div>
+    <div class="doc-item"><div class="doc-icon">🌱</div><div><div class="doc-text">Phytosanitary Certificate</div><div class="doc-sub">Available per shipment</div></div></div>
+    <div class="doc-item"><div class="doc-icon">🏷️</div><div><div class="doc-text">Certificate of Origin</div><div class="doc-sub">Available on request</div></div></div>
+    <div class="doc-item"><div class="doc-icon">🏛️</div><div><div class="doc-text">Export Tax Receipt</div><div class="doc-sub">Government stamp per truck</div></div></div>
+    <div class="doc-item"><div class="doc-icon">📦</div><div><div class="doc-text">Packing List &amp; BL</div><div class="doc-sub">Per shipment</div></div></div>
+  </div>
+
+  <div class="cta-bar">
+    <div>
+      <h3>Ready to place an order?</h3>
+      <p>Contact us for a proforma invoice or to discuss your specific requirements.</p>
+    </div>
+    <a href="../index.html#enquiry">Request a Quote →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p class="footer-logo">AMS <span>PRIME EGYPT</span></p>
+  <p class="footer-copy">© 2026 AMS Prime Egypt For Trading and Export &nbsp;·&nbsp; Trade Name Reg. No. 8272768</p>
+</footer>
+
+
+<script>
+const ALF_T = {
+  en: {
+    page_title: 'Alfalfa Hay',
+    page_sub: 'Single & Double Press',
+    hero_desc: 'Premium Egyptian alfalfa with lab-certified protein exceeding 22%, zero impurities, and pesticide-free results. Available in 13 bale sizes from 18 kg to 750 kg.',
+    badge1: '✓ Available Now', badge2: '✓ EGAC Lab Certified',
+    badge3: '✓ Pesticide Free', badge4: '✓ GCC Export Ready',
+    lab_title: 'EGAC-Accredited Certificate of Analysis — June 2026',
+    lab_sub: 'Tested by ACERTA Middle East (Lab Codes ATS46555 / ATS46556) — EGAC Accredited, CAB#2138005. Booking Ref: EBKG06475389.',
+    lab_badge: 'Lab Verified ✓',
+    chem_title: 'Chemical Analysis',
+    micro_title: 'Microbiological & Quality',
+    bale_title: 'Available Bale Sizes',
+    price_title: 'Request Pricing',
+    price_body: 'Pricing is available on request based on your order volume, destination, and preferred Incoterm. Contact us for a tailored quote within 24 hours.',
+    cta_title: 'Ready to place an order?',
+    cta_sub: 'Contact us for a proforma invoice or to discuss your specific requirements.',
+    cta_btn: 'Request a Quote →',
+    back: '← Back to Home', quote_btn: 'Get a Quote', lang_btn: 'عربي'
+  },
+  ar: {
+    page_title: 'برسيم (علف البرسيم)',
+    page_sub: 'ضغط فردي وضغط مزدوج',
+    hero_desc: 'برسيم مصري فاخر بنسبة بروتين معتمدة تتجاوز 22%، خالٍ من الشوائب ومن بقايا المبيدات. متوفر بـ 13 حجماً من البالات من 18 كجم حتى 750 كجم.',
+    badge1: '✓ متوفر الآن', badge2: '✓ معتمد EGAC',
+    badge3: '✓ خالٍ من المبيدات', badge4: '✓ جاهز للتصدير للخليج',
+    lab_title: 'شهادة تحليل معتمدة EGAC — يونيو 2026',
+    lab_sub: 'اختبار ACERTA Middle East (رموز المختبر ATS46555 / ATS46556) — معتمد EGAC، CAB#2138005. مرجع الحجز: EBKG06475389.',
+    lab_badge: 'معتمد بالمختبر ✓',
+    chem_title: 'التحليل الكيميائي',
+    micro_title: 'التحليل الميكروبيولوجي والجودة',
+    bale_title: 'أحجام البالات المتاحة',
+    price_title: 'طلب الأسعار',
+    price_body: 'الأسعار متاحة عند الطلب بناءً على الحجم والوجهة وشروط التسليم المفضلة. تواصل معنا للحصول على عرض مخصص خلال 24 ساعة.',
+    cta_title: 'هل أنت مستعد لتقديم طلب؟',
+    cta_sub: 'تواصل معنا للحصول على فاتورة مبدئية أو لمناقشة متطلباتك المحددة.',
+    cta_btn: 'طلب عرض سعر ←',
+    back: 'الرئيسية ←', quote_btn: 'طلب عرض سعر', lang_btn: 'English'
+  }
+};
+
+let alfLang = localStorage.getItem('ams_lang') || 'en';
+
+function applyAlfLang(l) {
+  const t = ALF_T[l];
+  document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.lang = l;
+  document.getElementById('langBtn').textContent = t.lang_btn;
+  alfLang = l;
+  localStorage.setItem('ams_lang', l);
+  // Apply translations to elements with data-alf attribute
+  document.querySelectorAll('[data-alf]').forEach(el => {
+    const k = el.getAttribute('data-alf');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+}
+function toggleLang() { applyAlfLang(alfLang === 'en' ? 'ar' : 'en'); }
+document.addEventListener('DOMContentLoaded', () => { if (alfLang === 'ar') applyAlfLang('ar'); });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMS Prime Egypt — For Trading and Export</title>
+<meta name="description" content="Premium Egyptian agricultural exports — alfalfa, wheat hay, barley, cotton seed and feed — lab-certified and shipped across the GCC and worldwide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   AMS PRIME EGYPT — IMAGE CONFIG
+   To change any product image, edit the keyword(s) after the "?"
+   in the URL on that product's line below. Images are pulled live
+   by keyword so the subject always matches.
+   ============================================================ */
+:root {
+  /* Palette */
+  --green:        #0D3B1E;
+  --green-mid:    #1A5C32;
+  --green-light:  #2E7D4F;
+  --green-deep:   #07260F;
+  --gold:         #C9A227;
+  --gold-light:   #E8C76A;
+  --gold-soft:    #F0DFA8;
+  --cream:        #FAF7EF;
+  --cream-deep:   #F2EDE0;
+  --white:        #FFFFFF;
+  --ink:          #14180F;
+  --muted:        #5C6B59;
+  --line:         #E4E0D2;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--cream); overflow-x: hidden; }
+
+::selection { background: var(--gold); color: var(--green-deep); }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 0 clamp(20px, 4vw, 56px); height: 76px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background 0.4s ease, height 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+nav.scrolled {
+  height: 64px;
+  background: rgba(7, 38, 15, 0.82);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgba(201, 162, 39, 0.28);
+  box-shadow: 0 8px 30px rgba(7, 38, 15, 0.18);
+}
+.nav-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
+.nav-logo-mark {
+  width: 40px; height: 40px; background: var(--gold);
+  border-radius: 50%; display: grid; place-items: center;
+  font-family: 'Fraunces', serif; font-weight: 700; font-size: 13px;
+  color: var(--green-deep); flex-shrink: 0;
+  transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+}
+.nav-logo:hover .nav-logo-mark { transform: rotate(-8deg) scale(1.05); }
+.nav-logo-text { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: var(--white); letter-spacing: 0.01em; }
+.nav-logo-text span { color: var(--gold); }
+
+.nav-links { display: flex; gap: 34px; list-style: none; align-items: center; }
+.nav-links a {
+  color: rgba(255,255,255,0.82); text-decoration: none; font-size: 14px; font-weight: 500;
+  position: relative; padding: 4px 0; transition: color 0.25s;
+}
+.nav-links a:not(.nav-cta)::after {
+  content: ''; position: absolute; left: 0; bottom: -2px; height: 1.5px; width: 0;
+  background: var(--gold); transition: width 0.3s cubic-bezier(.2,.8,.2,1);
+}
+.nav-links a:not(.nav-cta):hover { color: var(--white); }
+.nav-links a:not(.nav-cta):hover::after { width: 100%; }
+.nav-cta {
+  background: var(--gold); color: var(--green-deep) !important;
+  padding: 9px 22px; border-radius: 100px; font-weight: 600 !important;
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(201,162,39,0.35); }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
+.hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-menu {
+  display: flex; flex-direction: column; gap: 4px;
+  position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
+  background: rgba(7, 38, 15, 0.97); backdrop-filter: blur(14px);
+  padding: 16px clamp(20px, 5vw, 64px) 28px;
+  border-top: 1px solid rgba(201,162,39,0.2);
+  transform: translateY(-130%); transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
+}
+.mobile-menu.open { transform: translateY(0); }
+.mobile-menu a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.mobile-menu a:last-child { border-bottom: none; color: var(--gold-light); font-weight: 600; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  min-height: 100svh; position: relative;
+  display: flex; align-items: center; justify-content: center; text-align: center;
+  overflow: hidden; padding: 120px clamp(20px,5vw,64px) 80px;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1900&q=80&auto=format&fit=crop');
+  background-size: cover; background-position: center 55%;
+  transform: scale(1.08); animation: heroZoom 14s ease-out forwards;
+}
+@keyframes heroZoom { to { transform: scale(1); } }
+.hero-veil {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    radial-gradient(120% 90% at 50% 35%, rgba(7,38,15,0.35) 0%, rgba(7,38,15,0.78) 70%, rgba(7,38,15,0.92) 100%),
+    linear-gradient(180deg, rgba(7,38,15,0.55) 0%, rgba(7,38,15,0.25) 40%, rgba(7,38,15,0.85) 100%);
+}
+/* faint grain texture overlay */
+.hero-grain {
+  position: absolute; inset: 0; z-index: 2; opacity: 0.05; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.hero-content { position: relative; z-index: 3; max-width: 880px; }
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: rgba(201,162,39,0.12); border: 1px solid rgba(201,162,39,0.45);
+  border-radius: 100px; padding: 7px 18px; margin-bottom: 30px;
+  font-size: 12px; color: var(--gold-soft); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
+  opacity: 0; animation: fadeUp 0.9s 0.2s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.hero h1 {
+  font-family: 'Fraunces', serif; font-weight: 600;
+  font-size: clamp(42px, 7vw, 86px); line-height: 1.04; color: var(--white);
+  letter-spacing: -0.02em; margin-bottom: 22px;
+}
+.hero h1 .line { display: block; opacity: 0; animation: fadeUp 1s cubic-bezier(.2,.8,.2,1) forwards; }
+.hero h1 .line:nth-child(1) { animation-delay: 0.35s; }
+.hero h1 .line:nth-child(2) { animation-delay: 0.5s; }
+.hero h1 .accent { color: var(--gold); font-style: italic; }
+.hero-sub {
+  font-size: clamp(12px, 1.5vw, 14px); color: rgba(255,255,255,0.5);
+  letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 22px;
+  opacity: 0; animation: fadeUp 1s 0.65s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.hero-desc {
+  font-size: clamp(16px, 2vw, 19px); color: rgba(255,255,255,0.78);
+  max-width: 580px; margin: 0 auto 42px; line-height: 1.7; font-weight: 300;
+  opacity: 0; animation: fadeUp 1s 0.8s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.hero-actions {
+  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 1s 0.95s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.btn-gold {
+  background: var(--gold); color: var(--green-deep); padding: 15px 34px;
+  border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 15px;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s, background 0.3s;
+}
+.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(201,162,39,0.35); }
+.btn-gold .arr { transition: transform 0.3s; }
+.btn-gold:hover .arr { transform: translateX(4px); }
+.btn-ghost {
+  border: 1.5px solid rgba(255,255,255,0.35); color: var(--white);
+  padding: 15px 34px; border-radius: 100px; text-decoration: none; font-weight: 500; font-size: 15px;
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+}
+.btn-ghost:hover { border-color: var(--gold); background: rgba(201,162,39,0.1); transform: translateY(-2px); }
+
+.hero-scroll {
+  position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
+  color: rgba(255,255,255,0.45); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  opacity: 0; animation: fadeIn 1s 1.4s forwards;
+}
+.hero-scroll .mouse {
+  width: 22px; height: 34px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 12px;
+  position: relative;
+}
+.hero-scroll .mouse::after {
+  content: ''; position: absolute; left: 50%; top: 7px; width: 3px; height: 6px;
+  background: var(--gold); border-radius: 2px; transform: translateX(-50%);
+  animation: scrollDot 1.8s ease-in-out infinite;
+}
+@keyframes scrollDot { 0%{opacity:0;transform:translate(-50%,0)} 40%{opacity:1} 80%{opacity:0;transform:translate(-50%,10px)} 100%{opacity:0} }
+
+@keyframes fadeUp { from { opacity:0; transform: translateY(22px); } to { opacity:1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+/* ============================================================
+   STATS MARQUEE BAR
+   ============================================================ */
+.stats {
+  background: var(--green-deep); color: var(--white);
+  border-top: 1px solid rgba(201,162,39,0.25); border-bottom: 1px solid rgba(201,162,39,0.25);
+  padding: 30px clamp(20px,5vw,64px);
+}
+.stats-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 22px; }
+.stat { text-align: center; flex: 1 1 130px; }
+.stat-num { font-family: 'Fraunces', serif; font-size: clamp(26px, 3.4vw, 36px); font-weight: 600; color: var(--gold); display: block; line-height: 1; }
+.stat-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 8px; }
+
+/* ============================================================
+   SECTION SHELL
+   ============================================================ */
+section { padding: clamp(64px, 9vw, 110px) clamp(20px,5vw,64px); }
+.eyebrow {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold);
+  font-weight: 700; margin-bottom: 14px; display: inline-flex; align-items: center; gap: 10px;
+}
+.eyebrow::before { content: ''; width: 26px; height: 1.5px; background: var(--gold); display: inline-block; }
+.s-title {
+  font-family: 'Fraunces', serif; font-size: clamp(28px, 4.2vw, 48px); font-weight: 600;
+  color: var(--green); line-height: 1.12; letter-spacing: -0.015em; margin-bottom: 18px;
+}
+.s-title .em { font-style: italic; color: var(--green-light); }
+.s-sub { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 560px; }
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(.2,.8,.2,1), transform 0.8s cubic-bezier(.2,.8,.2,1); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+.reveal[data-delay="1"] { transition-delay: 0.08s; }
+.reveal[data-delay="2"] { transition-delay: 0.16s; }
+.reveal[data-delay="3"] { transition-delay: 0.24s; }
+.reveal[data-delay="4"] { transition-delay: 0.32s; }
+
+/* ============================================================
+   PRODUCTS
+   ============================================================ */
+.products { background: var(--cream); position: relative; }
+.products-head { text-align: center; margin-bottom: 60px; }
+.products-head .eyebrow { justify-content: center; }
+.products-head .s-sub { margin: 0 auto; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 26px; max-width: 1180px; margin: 0 auto; }
+
+.card {
+  background: var(--white); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit;
+  display: flex; flex-direction: column;
+  box-shadow: 0 1px 2px rgba(20,24,15,0.04), 0 8px 24px rgba(20,24,15,0.05);
+  border: 1px solid var(--line);
+  transition: transform 0.45s cubic-bezier(.2,.8,.2,1), box-shadow 0.45s;
+}
+.card:hover { transform: translateY(-8px); box-shadow: 0 18px 50px rgba(13,59,30,0.16); }
+.card-img { aspect-ratio: 16 / 10; overflow: hidden; position: relative; background: var(--green-mid); }
+.card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(.2,.8,.2,1); }
+.card:hover .card-img img { transform: scale(1.07); }
+.card-img::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 55%, rgba(7,38,15,0.35) 100%);
+}
+.badge {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  font-size: 10.5px; font-weight: 700; padding: 5px 12px; border-radius: 100px;
+  text-transform: uppercase; letter-spacing: 0.07em;
+  backdrop-filter: blur(6px);
+}
+.badge.now { background: var(--gold); color: var(--green-deep); }
+.badge.soon { background: rgba(7,38,15,0.55); color: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.18); }
+.card-body { padding: 24px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+.card-name { font-family: 'Fraunces', serif; font-size: 23px; font-weight: 600; color: var(--green); margin-bottom: 9px; }
+.card-desc { font-size: 14px; color: var(--muted); line-height: 1.62; margin-bottom: 18px; flex: 1; }
+.pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+.pill {
+  background: var(--cream-deep); border: 1px solid var(--line); color: var(--green);
+  font-size: 11px; font-weight: 600; padding: 5px 11px; border-radius: 100px;
+}
+.card-link { display: inline-flex; align-items: center; gap: 7px; color: var(--green-light); font-size: 13px; font-weight: 600; }
+.card-link .arr { transition: transform 0.3s; }
+.card:hover .card-link .arr { transform: translateX(5px); }
+
+/* ============================================================
+   WHY US
+   ============================================================ */
+.why { background: var(--green); color: var(--white); position: relative; overflow: hidden; }
+.why::before {
+  content: ''; position: absolute; top: -30%; right: -10%; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(201,162,39,0.10) 0%, transparent 65%); pointer-events: none;
+}
+.why-inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: center; position: relative; }
+.why .s-title { color: var(--white); }
+.why .s-title .em { color: var(--gold-light); }
+.why-desc { font-size: 16px; color: rgba(255,255,255,0.62); line-height: 1.78; margin-bottom: 38px; }
+.why-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
+.why-item { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-top: 1px solid rgba(255,255,255,0.09); }
+.why-item:first-child { border-top: none; }
+.why-ic {
+  width: 44px; height: 44px; flex-shrink: 0; border-radius: 11px;
+  background: rgba(201,162,39,0.14); border: 1px solid rgba(201,162,39,0.3);
+  display: grid; place-items: center; font-size: 19px;
+  transition: background 0.3s, transform 0.3s;
+}
+.why-item:hover .why-ic { background: rgba(201,162,39,0.24); transform: scale(1.06); }
+.why-h { font-weight: 600; font-size: 15.5px; color: var(--white); margin-bottom: 4px; }
+.why-p { font-size: 13.5px; color: rgba(255,255,255,0.58); line-height: 1.6; }
+
+.why-panel {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+}
+.why-box {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(201,162,39,0.16);
+  border-radius: 14px; padding: 26px 20px; text-align: center;
+  transition: background 0.35s, border-color 0.35s, transform 0.35s;
+}
+.why-box:hover { background: rgba(201,162,39,0.08); border-color: rgba(201,162,39,0.4); transform: translateY(-3px); }
+.why-box .n { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 600; color: var(--gold); display: block; }
+.why-box .l { font-size: 11.5px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.09em; margin-top: 5px; }
+.why-cert { grid-column: span 2; background: rgba(201,162,39,0.08); border: 1px solid rgba(201,162,39,0.3); border-radius: 14px; padding: 22px; }
+.why-cert strong { display: block; font-family: 'Fraunces', serif; font-size: 16px; color: var(--gold); margin-bottom: 7px; }
+.why-cert p { font-size: 13px; color: var(--gold-soft); line-height: 1.6; }
+
+/* ============================================================
+   MARKETS
+   ============================================================ */
+.markets { background: var(--cream); }
+.markets-inner { max-width: 1140px; margin: 0 auto; }
+.markets-head { margin-bottom: 50px; max-width: 560px; }
+.markets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 14px; }
+.m-card {
+  background: var(--white); border: 1px solid var(--line); border-radius: 14px;
+  padding: 26px 14px; text-align: center;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.m-card:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 10px 26px rgba(13,59,30,0.08); }
+.m-flag { font-size: 32px; margin-bottom: 10px; filter: saturate(1.1); }
+.m-name { font-weight: 600; font-size: 13.5px; color: var(--green); }
+.m-card.ww { border-style: dashed; border-color: rgba(201,162,39,0.4); }
+.m-card.ww .m-name { color: var(--muted); }
+
+/* ============================================================
+   ENQUIRY
+   ============================================================ */
+.enquiry { background: var(--green-deep); color: var(--white); position: relative; overflow: hidden; }
+.enquiry::before {
+  content: ''; position: absolute; bottom: -25%; left: -8%; width: 560px; height: 560px;
+  background: radial-gradient(circle, rgba(201,162,39,0.09) 0%, transparent 65%); pointer-events: none;
+}
+.enquiry-inner { max-width: 760px; margin: 0 auto; text-align: center; position: relative; }
+.enquiry .eyebrow { justify-content: center; }
+.enquiry .s-title { color: var(--white); }
+.enquiry .s-title .em { color: var(--gold-light); }
+.enquiry-sub { font-size: 17px; color: rgba(255,255,255,0.6); margin: 0 auto 46px; max-width: 500px; line-height: 1.7; }
+.form {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(201,162,39,0.2);
+  border-radius: 18px; padding: clamp(24px, 4vw, 42px); text-align: left;
+}
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+.fg { display: flex; flex-direction: column; gap: 8px; }
+.fg.full { grid-column: span 2; }
+.fg label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.05em; }
+.fg input, .fg select, .fg textarea {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 9px; padding: 13px 15px; color: var(--white);
+  font-family: 'Inter', sans-serif; font-size: 14px; outline: none; width: 100%;
+  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
+}
+.fg input::placeholder, .fg textarea::placeholder { color: rgba(255,255,255,0.28); }
+.fg input:focus, .fg select:focus, .fg textarea:focus {
+  border-color: var(--gold); background: rgba(255,255,255,0.09);
+  box-shadow: 0 0 0 3px rgba(201,162,39,0.12);
+}
+.fg select option { background: var(--green); color: var(--white); }
+.fg textarea { resize: vertical; min-height: 104px; }
+.form-foot { margin-top: 28px; text-align: center; }
+.btn-submit {
+  background: var(--gold); color: var(--green-deep); border: none;
+  padding: 15px 50px; border-radius: 100px; font-family: 'Inter', sans-serif;
+  font-size: 16px; font-weight: 700; cursor: pointer; letter-spacing: 0.02em;
+  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(201,162,39,0.3); }
+.btn-submit:disabled { opacity: 0.7; cursor: default; transform: none; box-shadow: none; }
+.form-note { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 12px; }
+.success {
+  display: none; background: rgba(46,125,79,0.18); border: 1px solid var(--gold);
+  border-radius: 10px; padding: 18px; color: var(--gold-soft); text-align: center;
+  font-size: 14px; margin-top: 18px;
+}
+.success.show { display: block; animation: fadeUp 0.5s ease forwards; }
+
+/* ============================================================
+   CONTACT + FOOTER
+   ============================================================ */
+.contact-bar {
+  background: #061F0C; border-top: 1px solid rgba(201,162,39,0.15); border-bottom: 1px solid rgba(201,162,39,0.15);
+  padding: 20px clamp(20px,5vw,64px);
+}
+.contact-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: center; gap: clamp(18px,4vw,52px); flex-wrap: wrap; }
+.contact-inner a, .contact-inner span { color: rgba(255,255,255,0.66); text-decoration: none; font-size: 13.5px; display: flex; align-items: center; gap: 8px; transition: color 0.25s; }
+.contact-inner a:hover { color: var(--gold-light); }
+.contact-inner .ci { color: var(--gold); }
+
+footer { background: #061F0C; padding: 46px clamp(20px,5vw,64px) 38px; text-align: center; }
+.f-logo { font-family: 'Fraunces', serif; font-size: 21px; font-weight: 600; color: var(--white); }
+.f-logo span { color: var(--gold); }
+.f-tag { font-size: 12px; color: rgba(255,255,255,0.32); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 7px; margin-bottom: 22px; }
+.f-links { display: flex; justify-content: center; gap: 26px; flex-wrap: wrap; margin-bottom: 22px; list-style: none; }
+.f-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 13px; transition: color 0.25s; }
+.f-links a:hover { color: var(--gold-light); }
+.f-copy { font-size: 11.5px; color: rgba(255,255,255,0.24); line-height: 1.6; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 860px) {
+  .why-inner { grid-template-columns: 1fr; gap: 48px; }
+  .why-panel { max-width: 440px; }
+}
+@media (max-width: 760px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .row { grid-template-columns: 1fr; }
+  .fg.full { grid-column: span 1; }
+}
+@media (max-width: 480px) {
+  .grid { grid-template-columns: 1fr; }
+  .markets-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-inner { gap: 18px; }
+  .stat { flex-basis: 40%; }
+}
+
+/* ============================================================
+   ARABIC / RTL SUPPORT
+   ============================================================ */
+[dir="rtl"] body { font-family: 'Cairo', 'Inter', sans-serif; }
+[dir="rtl"] .s-title,
+[dir="rtl"] .hero h1,
+[dir="rtl"] .f-logo,
+[dir="rtl"] .card-name,
+[dir="rtl"] .stat-num,
+[dir="rtl"] .why-box .n { font-family: 'Cairo', serif; }
+
+/* Flip eyebrow line */
+[dir="rtl"] .eyebrow { flex-direction: row-reverse; }
+[dir="rtl"] .eyebrow::before { display: none; }
+[dir="rtl"] .eyebrow::after { content: ''; width: 26px; height: 1.5px; background: var(--gold); display: inline-block; }
+
+/* Nav RTL */
+[dir="rtl"] nav { flex-direction: row-reverse; }
+[dir="rtl"] .nav-links { flex-direction: row-reverse; }
+[dir="rtl"] .nav-logo { flex-direction: row-reverse; }
+
+/* Lang toggle button */
+.lang-toggle {
+  background: transparent; border: 1.5px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.85); padding: 6px 14px; border-radius: 100px;
+  font-family: 'Cairo', 'Inter', sans-serif; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: border-color 0.25s, color 0.25s, background 0.25s;
+  letter-spacing: 0.03em; white-space: nowrap;
+}
+.lang-toggle:hover { border-color: var(--gold); color: var(--gold-light); background: rgba(201,162,39,0.08); }
+
+/* Why list RTL */
+[dir="rtl"] .why-item { flex-direction: row-reverse; text-align: right; }
+[dir="rtl"] .why-list { text-align: right; }
+
+/* Cards RTL */
+[dir="rtl"] .card-body { text-align: right; }
+[dir="rtl"] .pills { justify-content: flex-end; }
+[dir="rtl"] .card-link { flex-direction: row-reverse; }
+[dir="rtl"] .card-link .arr { transform: scaleX(-1); }
+[dir="rtl"] .card:hover .card-link .arr { transform: scaleX(-1) translateX(-5px); }
+
+/* Form RTL */
+[dir="rtl"] .fg label { text-align: right; }
+[dir="rtl"] .fg input,
+[dir="rtl"] .fg select,
+[dir="rtl"] .fg textarea { text-align: right; direction: rtl; }
+
+/* Footer / contact RTL */
+[dir="rtl"] .contact-inner { flex-direction: row-reverse; }
+[dir="rtl"] .f-links { flex-direction: row-reverse; }
+
+/* Mobile menu RTL */
+[dir="rtl"] .mobile-menu { text-align: right; }
+[dir="rtl"] .mobile-menu a { text-align: right; }
+
+/* Markets RTL */
+[dir="rtl"] .markets-head { text-align: right; }
+[dir="rtl"] .s-sub { text-align: right; }
+
+/* Hero RTL */
+[dir="rtl"] .hero-content { text-align: center; }
+[dir="rtl"] .hero-actions { flex-direction: row-reverse; }
+[dir="rtl"] .btn-gold .arr { transform: scaleX(-1); }
+[dir="rtl"] .btn-gold:hover .arr { transform: scaleX(-1) translateX(-4px); }
+
+/* Stats RTL */
+[dir="rtl"] .stats-inner { flex-direction: row-reverse; }
+
+/* Smooth transition on language switch */
+body { transition: font-family 0.2s; }
+
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-mark">AMS</span>
+    <span class="nav-logo-text">AMS <span>PRIME EGYPT</span></span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#products" data-i18n="nav_products">Products</a></li>
+    <li><a href="#why" data-i18n="nav_why">Why Us</a></li>
+    <li><a href="#markets" data-i18n="nav_markets">Markets</a></li>
+    <li><a href="#enquiry" class="nav-cta" data-i18n="nav_cta">Get a Quote</a></li>
+  </ul>
+  <button class="lang-toggle" id="langBtn" onclick="toggleLang()" title="Switch to Arabic">عربي</button>
+  <div class="hamburger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#products" onclick="toggleMenu()">Products</a>
+  <a href="#why" onclick="toggleMenu()">Why Us</a>
+  <a href="#markets" onclick="toggleMenu()">Markets</a>
+  <a href="#enquiry" onclick="toggleMenu()">Get a Quote</a>
+</div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <span class="hero-badge" data-i18n="hero_badge">🇪🇬 &nbsp;From the Land of Egypt&nbsp; 🌍</span>
+    <h1>
+      <span class="line" data-i18n="hero_line1">Premium Egyptian</span>
+      <span class="line"><span class="accent" data-i18n="hero_agro">Agro</span> <span data-i18n="hero_exports">Exports</span></span>
+    </h1>
+    <p class="hero-sub" data-i18n="hero_sub">AMS Prime Egypt &nbsp;·&nbsp; For Trading and Export</p>
+    <p class="hero-desc"><span data-i18n="hero_desc">We source certified, lab-tested agricultural products from Egyptian farms and deliver them to buyers across the Gulf and beyond. Quality you can verify. Supply you can rely on.</span></p>
+    <div class="hero-actions">
+      <a href="#products" class="btn-gold"><span data-i18n="btn_products">View Products</span> <span class="arr">→</span></a>
+      <a href="#enquiry" class="btn-ghost" data-i18n="btn_quote">Request a Quote</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="mouse"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><span class="stat-num" data-count="100" data-suffix="%">100%</span><span class="stat-label" data-i18n="stat_lab">Lab-Certified Quality</span></div>
+    <div class="stat"><span class="stat-num">EGAC</span><span class="stat-label" data-i18n="stat_testing">Accredited Testing</span></div>
+    <div class="stat"><span class="stat-num">GCC</span><span class="stat-label" data-i18n="stat_market">Primary Market</span></div>
+    <div class="stat"><span class="stat-num" data-count="0" data-suffix="%">0%</span><span class="stat-label" data-i18n="stat_impurities">Impurities</span></div>
+    <div class="stat"><span class="stat-num">ISO</span><span class="stat-label" data-i18n="stat_methods">Certified Methods</span></div>
+  </div>
+</div>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="products" id="products">
+  <div class="products-head">
+    <p class="eyebrow reveal" data-i18n="products_eyebrow">What We Supply</p>
+    <h2 class="s-title reveal" data-delay="1"><span data-i18n="products_title_1">Our</span> <span class="em" data-i18n="products_title_2">Product</span> <span data-i18n="products_title_3">Range</span></h2>
+    <p class="s-sub reveal" data-delay="2"><span data-i18n="products_sub">Sourced directly from Egyptian producers, tested to international standards, and exported with full documentation.</span></p>
+  </div>
+  <div class="grid">
+
+    <!-- ALFALFA — image keyword: alfalfa hay field -->
+    <a class="card reveal" href="products/alfalfa.html">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=640&q=78&auto=format&fit=crop" alt="Alfalfa hay field at sunrise" loading="lazy">
+        <span class="badge now" data-i18n="badge_now">Available Now</span>
+      </div>
+      <div class="card-body">
+        <h3 class="card-name" data-i18n="p1_name">Alfalfa Hay</h3>
+        <p class="card-desc" data-i18n="p1_desc">Premium Egyptian alfalfa in single and double press. Lab-certified protein, zero impurities, pesticide-free. Bale sizes from 18 kg to 750 kg.</p>
+        <div class="pills">
+          <span class="pill">Protein 22.3%</span>
+          <span class="pill">Moisture 6%</span>
+          <span class="pill">0% Impurities</span>
+        </div>
+        <span class="card-link"><span data-i18n="link_specs">View Specifications</span> <span class="arr">→</span></span>
+      </div>
+    </a>
+
+    <!-- WHEAT HAY — wheat field landscape (dried plant / hay look) -->
+    <a class="card reveal" data-delay="1" href="products/wheat.html">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1619277418608-a8e7a0d4fa35?w=640&q=78&auto=format&fit=crop" alt="Wheat hay straw bales in a field" loading="lazy"
+             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1606154358545-f9919f595a3a?w=640&q=78&auto=format&fit=crop';">
+        <span class="badge soon" data-i18n="badge_soon">Coming Soon</span>
+      </div>
+      <div class="card-body">
+        <h3 class="card-name" data-i18n="wheat_title">Wheat Hay</h3>
+        <p class="card-desc" data-i18n="p2_desc">Egyptian wheat hay for livestock feed across the GCC. Whole dried plant, baled and ready for export. Grades, volumes and pricing confirmed on request.</p>
+        <div class="pills">
+          <span class="pill">Feed Grade</span>
+          <span class="pill">Egypt Origin</span>
+          <span class="pill">Bulk Supply</span>
+        </div>
+        <span class="card-link"><span data-i18n="link_register">Register Interest</span> <span class="arr">→</span></span>
+      </div>
+    </a>
+
+    <!-- BARLEY — grain close-up (barley grain / malt) -->
+    <a class="card reveal" data-delay="2" href="products/barley.html">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=640&q=78&auto=format&fit=crop" alt="Barley grain" loading="lazy"
+             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1536657464919-892534f60d6e?w=640&q=78&auto=format&fit=crop';">
+        <span class="badge soon">Coming Soon</span>
+      </div>
+      <div class="card-body">
+        <h3 class="card-name" data-i18n="p3_name">Barley / Malt</h3>
+        <p class="card-desc" data-i18n="p3_desc">Feed-grade Egyptian barley grain for livestock and poultry. Consistent quality and reliable volumes. Test container available for new buyers.</p>
+        <div class="pills">
+          <span class="pill">Feed Grade</span>
+          <span class="pill">Bulk Supply</span>
+          <span class="pill">GCC Ready</span>
+        </div>
+        <span class="card-link"><span data-i18n="link_register">Register Interest</span> <span class="arr">→</span></span>
+      </div>
+    </a>
+
+    <!-- COTTON SEED — cotton field / bolls -->
+    <a class="card reveal" data-delay="3" href="products/cottonseed.html">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1502395809857-fd80069897d0?w=640&q=78&auto=format&fit=crop" alt="Cotton field" loading="lazy"
+             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=640&q=78&auto=format&fit=crop';">
+        <span class="badge soon">Coming Soon</span>
+      </div>
+      <div class="card-body">
+        <h3 class="card-name" data-i18n="p4_name">Cotton Seed</h3>
+        <p class="card-desc" data-i18n="p4_desc">Egyptian cotton seed for export, with initial volumes from 100 metric tons. Specifications and pricing being finalised with our supply partners.</p>
+        <div class="pills">
+          <span class="pill">100 MT Available</span>
+          <span class="pill">Egypt Origin</span>
+          <span class="pill">GCC Ready</span>
+        </div>
+        <span class="card-link"><span data-i18n="link_register">Register Interest</span> <span class="arr">→</span></span>
+      </div>
+    </a>
+
+    <!-- HORSE FEED — image keyword: horse -->
+    <a class="card reveal" data-delay="4" href="products/horsefeed.html">
+      <div class="card-img">
+        <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=640&q=78&auto=format&fit=crop" alt="Horse in a green pasture" loading="lazy">
+        <span class="badge soon">Coming Soon</span>
+      </div>
+      <div class="card-body">
+        <h3 class="card-name" data-i18n="p5_name">Horse Feed</h3>
+        <p class="card-desc" data-i18n="p5_desc">Premium hay and feed blends suited for equestrian operations across the GCC. Specifications being confirmed with our Egyptian supply partners.</p>
+        <div class="pills">
+          <span class="pill">Equestrian Grade</span>
+          <span class="pill">GCC Stables</span>
+          <span class="pill">Egypt Origin</span>
+        </div>
+        <span class="card-link"><span data-i18n="link_register">Register Interest</span> <span class="arr">→</span></span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ============ WHY US ============ -->
+<section class="why" id="why">
+  <div class="why-inner">
+    <div class="reveal">
+      <p class="eyebrow" data-i18n="why_eyebrow">Why Work With Us</p>
+      <h2 class="s-title"><span data-i18n="why_title_1">A Trusted</span> <span class="em" data-i18n="why_title_2">Egyptian</span> <span data-i18n="why_title_3">Source</span></h2>
+      <p class="why-desc">We operate on the ground in Egypt, working directly with producers and cutting out unnecessary intermediaries. Every shipment ships with full documentation and independently verified lab results.</p>
+      <ul class="why-list">
+        <li class="why-item">
+          <div class="why-ic">🔬</div>
+          <div><p class="why-h">Lab-Tested Every Shipment</p><p class="why-p">Full COA from EGAC-accredited ACERTA Middle East covering aflatoxin, protein, moisture, pesticide residues and microbiology.</p></div>
+        </li>
+        <li class="why-item">
+          <div class="why-ic">⚡</div>
+          <div><p class="why-h">Direct from Egypt</p><p class="why-p">Sourced straight from producers for faster turnaround, competitive pricing and full supply-chain transparency.</p></div>
+        </li>
+        <li class="why-item">
+          <div class="why-ic">📋</div>
+          <div><p class="why-h">Complete Export Documentation</p><p class="why-p">COA, phytosanitary certificates, certificate of origin and all customs paperwork coordinated from our end.</p></div>
+        </li>
+        <li class="why-item">
+          <div class="why-ic">🤝</div>
+          <div><p class="why-h">Long-Term Partnership Focus</p><p class="why-p">We build ongoing relationships, not one-off deals. Consistent quality and honest communication is how we work.</p></div>
+        </li>
+      </ul>
+    </div>
+    <div class="why-panel reveal" data-delay="2">
+      <div class="why-box"><span class="n">EGAC</span><span class="l">Accredited Lab</span></div>
+      <div class="why-box"><span class="n">GCC</span><span class="l">Primary Market</span></div>
+      <div class="why-box"><span class="n">100%</span><span class="l">Natural</span></div>
+      <div class="why-box"><span class="n">ISO</span><span class="l">Test Methods</span></div>
+      <div class="why-cert">
+        <strong>Registered Egyptian Export Company</strong>
+        <p>AMS Prime Egypt For Trading and Export is a registered Egyptian company (Trade Name Reg. No. 8272768, Cairo Investment Office), with full legal accountability for every shipment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARKETS ============ -->
+<section class="markets" id="markets">
+  <div class="markets-inner">
+    <div class="markets-head">
+      <p class="eyebrow reveal" data-i18n="markets_eyebrow">Where We Serve</p>
+      <h2 class="s-title reveal" data-delay="1">GCC &amp; <span class="em" data-i18n="markets_title">Global</span> <span data-i18n="markets_title2">Reach</span></h2>
+      <p class="s-sub reveal" data-delay="2">Our focus is the Gulf Cooperation Council, with export capability to markets worldwide.</p>
+    </div>
+    <div class="markets-grid">
+      <div class="m-card reveal"><div class="m-flag">🇰🇼</div><p class="m-name">Kuwait</p></div>
+      <div class="m-card reveal" data-delay="1"><div class="m-flag">🇸🇦</div><p class="m-name">Saudi Arabia</p></div>
+      <div class="m-card reveal" data-delay="2"><div class="m-flag">🇦🇪</div><p class="m-name">UAE</p></div>
+      <div class="m-card reveal" data-delay="3"><div class="m-flag">🇶🇦</div><p class="m-name">Qatar</p></div>
+      <div class="m-card reveal"><div class="m-flag">🇧🇭</div><p class="m-name">Bahrain</p></div>
+      <div class="m-card reveal" data-delay="1"><div class="m-flag">🇴🇲</div><p class="m-name">Oman</p></div>
+      <div class="m-card ww reveal" data-delay="2"><div class="m-flag">🌍</div><p class="m-name">Worldwide</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENQUIRY ============ -->
+<section class="enquiry" id="enquiry">
+  <div class="enquiry-inner">
+    <p class="eyebrow reveal" data-i18n="enquiry_eyebrow">Get in Touch</p>
+    <h2 class="s-title reveal" data-delay="1"><span data-i18n="enquiry_title1">Request a</span> <span class="em" data-i18n="enquiry_title2">Quote</span></h2>
+    <p class="enquiry-sub reveal" data-delay="2"><span data-i18n="enquiry_sub">Tell us what you need and where you're shipping to. We respond within 24 hours.</span></p>
+    <div class="form reveal" data-delay="2">
+      <div class="row">
+        <div class="fg"><label data-i18n="form_name">Full Name</label><input type="text" id="fname" placeholder="Your name"></div>
+        <div class="fg"><label data-i18n="form_company">Company Name</label><input type="text" id="fcompany" placeholder="Your company"></div>
+      </div>
+      <div class="row">
+        <div class="fg"><label data-i18n="form_email">Email Address</label><input type="email" id="femail" placeholder="you@company.com"></div>
+        <div class="fg"><label data-i18n="form_phone">WhatsApp / Phone</label><input type="tel" id="fphone" placeholder="+965 …"></div>
+      </div>
+      <div class="row">
+        <div class="fg">
+          <label data-i18n="form_product">Product Required</label>
+          <select id="fproduct">
+            <option value="" disabled selected>Select a product</option>
+            <option>Alfalfa — Single Press</option>
+            <option>Alfalfa — Double Press</option>
+            <option>Wheat Hay</option>
+            <option>Barley / Malt</option>
+            <option>Cotton Seed</option>
+            <option>Horse Feed</option>
+            <option>Multiple Products</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label data-i18n="form_dest">Destination Country</label>
+          <select id="fdest">
+            <option value="" disabled selected>Select destination</option>
+            <option>Kuwait</option><option>Saudi Arabia</option><option>UAE</option>
+            <option>Qatar</option><option>Bahrain</option><option>Oman</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="fg full"><label data-i18n="form_qty">Estimated Quantity</label><input type="text" id="fqty" placeholder="e.g. 1 × 40ft container, 25 tons per month…"></div>
+      </div>
+      <div class="row">
+        <div class="fg full"><label data-i18n="form_notes">Additional Notes</label><textarea id="fnotes" placeholder="Specific requirements, certifications needed, or questions…"></textarea></div>
+      </div>
+      <div class="form-foot">
+        <button class="btn-submit" id="submitBtn" onclick="submitForm()"><span data-i18n="form_submit">Send Enquiry</span></button>
+        <p class="form-note">We aim to respond within 24 hours &nbsp;·&nbsp; info@amsprimeegypt.com</p>
+      </div>
+      <div class="success" id="success">Thank you — your enquiry has been noted. We'll be in touch within 24 hours.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT BAR ============ -->
+<div class="contact-bar">
+  <div class="contact-inner">
+    <a href="mailto:info@amsprimeegypt.com"><span class="ci">✉</span> info@amsprimeegypt.com</a>
+    <a href="https://www.amsprimeegypt.com" target="_blank" rel="noopener"><span class="ci">🌐</span> amsprimeegypt.com</a>
+    <span><span class="ci">📍</span> Cairo, Egypt</span>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <p class="f-logo">AMS <span>PRIME EGYPT</span></p>
+  <p class="f-tag">For Trading and Export &nbsp;·&nbsp; From Egypt to the World</p>
+  <ul class="f-links">
+    <li><a href="#products" data-i18n="nav_products">Products</a></li>
+    <li><a href="#why" data-i18n="nav_why">Why Us</a></li>
+    <li><a href="#markets" data-i18n="nav_markets">Markets</a></li>
+    <li><a href="#enquiry">Contact</a></li>
+  </ul>
+  <p class="f-copy">© 2026 AMS Prime Egypt For Trading and Export &nbsp;·&nbsp; Trade Name Reg. No. 8272768 — Cairo Investment Office</p>
+</footer>
+
+<script>
+/* ---- Nav scroll state ---- */
+const nav = document.getElementById('nav');
+const onScroll = () => {
+  if (window.scrollY > 30) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+};
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ---- Mobile menu ---- */
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+  document.getElementById('burger').classList.toggle('active');
+}
+window.addEventListener('scroll', () => {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('burger').classList.remove('active');
+}, { passive: true });
+
+/* ---- Scroll reveal ---- */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---- Count-up stats ---- */
+const countEls = document.querySelectorAll('[data-count]');
+const cio = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target;
+    const target = parseInt(el.dataset.count, 10);
+    const suffix = el.dataset.suffix || '';
+    let cur = 0;
+    const step = Math.max(1, Math.round(target / 30));
+    const tick = () => {
+      cur += step;
+      if (cur >= target) { el.textContent = target + suffix; }
+      else { el.textContent = cur + suffix; requestAnimationFrame(tick); }
+    };
+    if (target > 0) tick(); else el.textContent = '0' + suffix;
+    cio.unobserve(el);
+  });
+}, { threshold: 0.6 });
+countEls.forEach(el => cio.observe(el));
+
+/* ---- Enquiry form ---- */
+function submitForm() {
+  const name = document.getElementById('fname').value.trim();
+  const email = document.getElementById('femail').value.trim();
+  const product = document.getElementById('fproduct').value;
+  if (!name || !email || !product) {
+    alert('Please add your name, email, and the product you need so we can respond properly.');
+    return;
+  }
+  document.getElementById('success').classList.add('show');
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true; btn.textContent = 'Enquiry Sent ✓';
+}
+</script>
+
+<script>
+/* ============================================================
+   LANGUAGE TOGGLE — English / Arabic
+   ============================================================ */
+const TRANSLATIONS = {
+  en: {
+    // Nav
+    nav_products: 'Products',
+    nav_why: 'Why Us',
+    nav_markets: 'Markets',
+    nav_cta: 'Get a Quote',
+    lang_btn: 'عربي',
+    // Hero
+    hero_badge: '🇪🇬  From the Land of Egypt  🌍',
+    hero_line1: 'Premium Egyptian',
+    hero_agro: 'Agro',
+    hero_exports: 'Exports',
+    hero_sub: 'AMS Prime Egypt  ·  For Trading and Export',
+    hero_desc: "We source certified, lab-tested agricultural products from Egyptian farms and deliver them to buyers across the Gulf and beyond. Quality you can verify. Supply you can rely on.",
+    btn_products: 'View Products',
+    btn_quote: 'Request a Quote',
+    // Stats
+    stat_lab: 'Lab-Certified Quality',
+    stat_testing: 'Accredited Testing',
+    stat_market: 'Primary Market',
+    stat_impurities: 'Impurities',
+    stat_methods: 'Certified Methods',
+    // Products
+    products_eyebrow: 'What We Supply',
+    products_title_1: 'Our',
+    products_title_2: 'Product',
+    products_title_3: 'Range',
+    products_sub: 'Sourced directly from Egyptian producers, tested to international standards, and exported with full documentation.',
+    badge_soon: 'Coming Soon',
+    wheat_title: 'Wheat Hay',
+    // Why
+    why_eyebrow: 'Why Work With Us',
+    why_title_1: 'A Trusted',
+    why_title_2: 'Egyptian',
+    why_title_3: 'Source',
+    // Markets
+    markets_eyebrow: 'Where We Serve',
+    markets_title: 'Global',
+    markets_title2: 'Reach',
+    // Enquiry
+    enquiry_eyebrow: 'Get in Touch',
+    enquiry_title1: 'Request a',
+    enquiry_title2: 'Quote',
+    enquiry_sub: "Tell us what you need and where you're shipping to. We respond within 24 hours.",
+    // Form
+    form_name: 'Full Name',
+    form_company: 'Company Name',
+    form_email: 'Email Address',
+    form_phone: 'WhatsApp / Phone',
+    form_product: 'Product Required',
+    form_dest: 'Destination Country',
+    form_qty: 'Estimated Quantity',
+    form_notes: 'Additional Notes',
+    form_submit: 'Send Enquiry',
+    p1_name: 'Alfalfa Hay',
+    p1_desc: 'Premium Egyptian alfalfa in single and double press. Lab-certified protein, zero impurities, pesticide-free. Bale sizes from 18 kg to 750 kg.',
+    badge_now: 'Available Now',
+    p2_desc: 'Egyptian wheat hay for livestock feed across the GCC. Whole dried plant, baled and ready for export. Grades, volumes and pricing confirmed on request.',
+    p3_name: 'Barley / Malt',
+    p3_desc: 'Feed-grade Egyptian barley grain for livestock and poultry. Consistent quality and reliable volumes. Test container available for new buyers.',
+    p4_name: 'Cotton Seed',
+    p4_desc: 'Egyptian cotton seed for export, with initial volumes from 100 metric tons. Specifications and pricing being finalised with our supply partners.',
+    p5_name: 'Horse Feed',
+    p5_desc: 'Premium hay and feed blends suited for equestrian operations across the GCC. Specifications being confirmed with our Egyptian supply partners.',
+    link_specs: 'View Specifications',
+    link_register: 'Register Interest',
+  },
+  ar: {
+    // Nav
+    nav_products: 'المنتجات',
+    nav_why: 'لماذا نحن',
+    nav_markets: 'الأسواق',
+    nav_cta: 'طلب عرض سعر',
+    lang_btn: 'English',
+    // Hero
+    hero_badge: '🇪🇬  من أرض مصر  🌍',
+    hero_line1: 'منتجات مصرية فاخرة',
+    hero_agro: 'زراعية',
+    hero_exports: 'للتصدير',
+    hero_sub: 'AMS برايم إيجيبت  ·  للتجارة والتصدير',
+    hero_desc: 'نوفر منتجات زراعية معتمدة ومختبرة من المزارع المصرية ونوصلها إلى المشترين في الخليج وما وراءه. جودة يمكنك التحقق منها. إمداد يمكنك الاعتماد عليه.',
+    btn_products: 'عرض المنتجات',
+    btn_quote: 'طلب عرض سعر',
+    // Stats
+    stat_lab: 'جودة معتمدة بالمختبر',
+    stat_testing: 'اختبار معتمد',
+    stat_market: 'السوق الرئيسي',
+    stat_impurities: 'شوائب',
+    stat_methods: 'طرق معتمدة',
+    // Products
+    products_eyebrow: 'ما نوفره',
+    products_title_1: 'مجموعة',
+    products_title_2: 'منتجاتنا',
+    products_title_3: '',
+    products_sub: 'مصدرها مباشرة من المنتجين المصريين، مختبرة وفق المعايير الدولية، ومُصدَّرة بتوثيق كامل.',
+    badge_soon: 'قريباً',
+    wheat_title: 'قش القمح',
+    // Why
+    why_eyebrow: 'لماذا تعمل معنا',
+    why_title_1: 'مصدر مصري',
+    why_title_2: 'موثوق',
+    why_title_3: '',
+    // Markets
+    markets_eyebrow: 'أين نخدم',
+    markets_title: 'انتشار',
+    markets_title2: 'عالمي',
+    // Enquiry
+    enquiry_eyebrow: 'تواصل معنا',
+    enquiry_title1: 'طلب',
+    enquiry_title2: 'عرض سعر',
+    enquiry_sub: 'أخبرنا بما تحتاجه ووجهة الشحن. نرد خلال 24 ساعة.',
+    // Form
+    form_name: 'الاسم الكامل',
+    form_company: 'اسم الشركة',
+    form_email: 'البريد الإلكتروني',
+    form_phone: 'واتساب / الهاتف',
+    form_product: 'المنتج المطلوب',
+    form_dest: 'دولة الوجهة',
+    form_qty: 'الكمية التقريبية',
+    form_notes: 'ملاحظات إضافية',
+    form_submit: 'إرسال الاستفسار',
+    p1_name: 'برسيم (علف البرسيم)',
+    p1_desc: 'برسيم مصري فاخر بضغط فردي ومزدوج. بروتين 22.3% معتمد بالمختبر، خالٍ من الشوائب والمبيدات. أحجام من 18 كجم حتى 750 كجم.',
+    badge_now: 'متوفر الآن',
+    p2_desc: 'قش قمح مصري لتغذية الماشية في الخليج. النبتة الكاملة المجففة مكبوسة وجاهزة للتصدير. الدرجات والأحجام والأسعار تُؤكَّد عند الطلب.',
+    p3_name: 'شعير / مالت',
+    p3_desc: 'حبوب شعير مصرية لتغذية الماشية والدواجن. جودة ثابتة وإمداد موثوق. حاوية اختبار متاحة للمشترين الجدد.',
+    p4_name: 'بذرة القطن',
+    p4_desc: 'بذور قطن مصرية للتصدير بكميات أولية 100 طن متري. المواصفات والأسعار قيد التأكيد مع الموردين.',
+    p5_name: 'علف الخيل',
+    p5_desc: 'مزيج قش وأعلاف فاخر لعمليات الخيول في الخليج. المواصفات قيد التأكيد مع الموردين المصريين.',
+    link_specs: 'عرض المواصفات',
+    link_register: 'سجّل اهتمامك',
+  }
+};
+
+let currentLang = localStorage.getItem('ams_lang') || 'en';
+
+function applyLang(lang) {
+  const t = TRANSLATIONS[lang];
+  const html = document.documentElement;
+  // Set direction and lang attribute
+  html.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  html.lang = lang;
+  // Update lang button
+  const btn = document.getElementById('langBtn');
+  if (btn) btn.textContent = t.lang_btn;
+  // Apply all translations
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  // Update form placeholders
+  if (lang === 'ar') {
+    const ph = {
+      fname: 'اسمك',
+      fcompany: 'اسم شركتك',
+      femail: 'بريدك@شركتك.com',
+      fphone: '+965 …',
+      fqty: 'مثال: حاوية واحدة 40 قدم، 25 طن شهرياً…',
+      fnotes: 'متطلبات خاصة، شهادات مطلوبة، أو أسئلة…'
+    };
+    Object.entries(ph).forEach(([id, p]) => {
+      const el = document.getElementById(id);
+      if (el) el.placeholder = p;
+    });
+    // Update selects
+    const prodSel = document.getElementById('fproduct');
+    if (prodSel) {
+      prodSel.options[0].text = 'اختر منتجاً';
+      const prods = ['برسيم (ضغط فردي)','برسيم (ضغط مزدوج)','قش القمح','شعير / مالت','بذرة القطن','علف الخيل','منتجات متعددة','أخرى'];
+      for (let i=1; i<prodSel.options.length; i++) prodSel.options[i].text = prods[i-1] || prodSel.options[i].text;
+    }
+    const destSel = document.getElementById('fdest');
+    if (destSel) {
+      destSel.options[0].text = 'اختر الوجهة';
+      const dests = ['الكويت','المملكة العربية السعودية','الإمارات','قطر','البحرين','عُمان','أخرى'];
+      for (let i=1; i<destSel.options.length; i++) destSel.options[i].text = dests[i-1] || destSel.options[i].text;
+    }
+  } else {
+    const ph = {
+      fname: 'Your name',
+      fcompany: 'Your company',
+      femail: 'you@company.com',
+      fphone: '+965 …',
+      fqty: 'e.g. 1 × 40ft container, 25 tons per month…',
+      fnotes: 'Specific requirements, certifications needed, or questions…'
+    };
+    Object.entries(ph).forEach(([id, p]) => {
+      const el = document.getElementById(id);
+      if (el) el.placeholder = p;
+    });
+    const prodSel = document.getElementById('fproduct');
+    if (prodSel) {
+      prodSel.options[0].text = 'Select a product';
+      const prods = ['Alfalfa — Single Press','Alfalfa — Double Press','Wheat Hay','Barley / Malt','Cotton Seed','Horse Feed','Multiple Products','Other'];
+      for (let i=1; i<prodSel.options.length; i++) prodSel.options[i].text = prods[i-1] || prodSel.options[i].text;
+    }
+    const destSel = document.getElementById('fdest');
+    if (destSel) {
+      destSel.options[0].text = 'Select destination';
+      const dests = ['Kuwait','Saudi Arabia','UAE','Qatar','Bahrain','Oman','Other'];
+      for (let i=1; i<destSel.options.length; i++) destSel.options[i].text = dests[i-1] || destSel.options[i].text;
+    }
+  }
+  currentLang = lang;
+  localStorage.setItem('ams_lang', lang);
+}
+
+function toggleLang() {
+  applyLang(currentLang === 'en' ? 'ar' : 'en');
+}
+
+// Apply saved language on page load
+document.addEventListener('DOMContentLoaded', () => {
+  if (currentLang === 'ar') applyLang('ar');
+});
+</script>
+
+</body>
+</html>
