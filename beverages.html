@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beverages & Coffee — AMS Prime Egypt</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--green:#0D3B1E;--green-deep:#07260F;--green-light:#2E7D4F;--gold:#C9A227;--gold-light:#E8C76A;--cream:#FAF7EF;--white:#fff;--ink:#14180F;--muted:#5C6B59;--line:#E4E0D2}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;background:rgba(7,38,15,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,162,39,.25);padding:0 clamp(20px,5vw,64px);height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-img{height:40px;width:auto;object-fit:contain;filter:drop-shadow(0 1px 3px rgba(0,0,0,.3));transition:transform .3s}
+.nav-logo:hover .nav-logo-img{transform:scale(1.04)}
+.nav-logo-mark{width:36px;height:36px;background:var(--gold);border-radius:50%;display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:700;font-size:12px;color:var(--green-deep)}
+.nav-logo-text{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:#fff}
+.nav-logo-text span{color:var(--gold)}
+.nav-back{color:rgba(255,255,255,.75);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s}
+.nav-back:hover{color:var(--gold-light)}
+.nav-cta{background:var(--gold);color:var(--green-deep);padding:9px 20px;border-radius:100px;text-decoration:none;font-size:13px;font-weight:600;transition:background .25s}
+.nav-cta:hover{background:var(--gold-light)}
+.wa-btn{position:fixed;bottom:28px;right:28px;z-index:999;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:26px;box-shadow:0 6px 24px rgba(37,211,102,.4);transition:transform .3s}
+.wa-btn:hover{transform:scale(1.12)}
+footer{background:#061F0C;padding:38px clamp(20px,5vw,64px);text-align:center;border-top:1px solid rgba(201,162,39,.15)}
+.f-logo{font-family:'Fraunces',serif;font-size:19px;font-weight:600;color:#fff}
+.f-logo span{color:var(--gold)}
+.f-copy{font-size:11px;color:rgba(255,255,255,.24);margin-top:7px;line-height:1.6}
+.f-links{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin:14px 0;list-style:none}
+.f-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:13px;transition:color .2s}
+.f-links a:hover{color:var(--gold-light)}
+.lang-toggle{background:transparent;border:1.5px solid rgba(255,255,255,.35);color:rgba(255,255,255,.85);padding:6px 14px;border-radius:100px;font-family:'Cairo','Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .25s,color .25s,background .25s}
+.lang-toggle:hover{border-color:var(--gold);color:var(--gold-light);background:rgba(201,162,39,.08)}
+[dir="rtl"] body{font-family:'Cairo','Inter',sans-serif}
+[dir="rtl"] nav{flex-direction:row-reverse}
+[dir="rtl"] .hero-content{text-align:right}
+
+.hero{min-height:56vh;position:relative;display:flex;align-items:flex-end;padding:0 clamp(20px,5vw,64px) 60px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=1600&q=80&auto=format&fit=crop');background-size:cover;background-position:center;transform:scale(1.08);animation:zoom 14s ease-out forwards}
+@keyframes zoom{to{transform:scale(1)}}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,38,15,.95) 0%,rgba(7,38,15,.6) 55%,rgba(7,38,15,.45) 100%)}
+.hero-content{position:relative;z-index:1;max-width:700px;padding-top:100px;opacity:0;animation:fadeUp .9s .15s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:14px}
+.breadcrumb a{color:var(--gold);text-decoration:none}
+.soon-tag{display:inline-flex;align-items:center;gap:7px;background:rgba(201,162,39,.15);border:1px solid rgba(201,162,39,.45);color:var(--gold-light);font-size:11px;font-weight:700;padding:5px 14px;border-radius:100px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:16px}
+h1{font-family:'Fraunces',serif;font-size:clamp(36px,6vw,64px);font-weight:600;color:#fff;line-height:1.08;margin-bottom:8px}
+.hero-sub{font-size:16px;color:rgba(255,255,255,.6);line-height:1.6}
+.content{max-width:900px;margin:0 auto;padding:clamp(48px,7vw,72px) clamp(20px,5vw,64px)}
+.main-card{background:#fff;border-radius:16px;border:1px solid var(--line);padding:clamp(28px,5vw,48px);margin-bottom:28px;box-shadow:0 4px 24px rgba(20,24,15,.06)}
+.card-icon{font-size:52px;margin-bottom:18px}
+.main-card h2{font-family:'Fraunces',serif;font-size:clamp(22px,3vw,28px);color:var(--green);margin-bottom:14px}
+.main-card p{font-size:15px;color:var(--ink);line-height:1.75;margin-bottom:18px}
+.features{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}
+.feature{background:rgba(13,59,30,.07);border:1px solid rgba(13,59,30,.12);color:var(--green);font-size:12px;font-weight:700;padding:6px 14px;border-radius:100px}
+.note-box{background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-radius:10px;padding:18px;margin-bottom:24px;font-size:14px;color:var(--ink);line-height:1.65}
+.btn-gold{background:var(--gold);color:var(--green-deep);padding:14px 34px;border-radius:100px;text-decoration:none;font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:8px;transition:background .25s,transform .3s}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.info-box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;text-align:center;transition:border-color .3s,transform .3s}
+.info-box:hover{border-color:var(--gold);transform:translateY(-2px)}
+.info-box .ic{font-size:22px;margin-bottom:8px}
+.info-box h4{font-size:13px;font-weight:700;color:var(--green);margin-bottom:3px}
+.info-box p{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/ams-logo.png" alt="AMS Prime Egypt" class="nav-logo-img">
+  </a>
+  <div style="display:flex;align-items:center;gap:12px">
+    <a href="index.html" class="nav-back">← Back to Home</a>
+    <button class="lang-toggle" id="langBtn" onclick="toggleLang()">عربي</button>
+    <a href="index.html#enquiry" class="nav-cta">Get a Quote</a>
+  </div>
+</nav>
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-content">
+    <p class="breadcrumb"><a href="index.html">Home</a> / Sectors / Beverages & Coffee</p>
+    <span class="soon-tag">● Launching</span>
+    <h1>☕ Egyptian Coffee & Energy Drinks</h1>
+    <p class="hero-sub">Premium Egyptian beverages for GCC distribution</p>
+  </div>
+</div>
+<div class="content">
+  <div class="main-card">
+    <h2>Beverages & Coffee</h2>
+    <p>Egyptian café-grade coffee and energy beverages including Red Bull manufactured under licence in Egypt. Premium quality products sourced from Egyptian manufacturers for distribution to retail, hospitality and foodservice channels across the GCC.</p>
+    <div class="features">
+      <span class="feature">Egyptian Coffee</span><span class="feature">Red Bull (Egypt)</span><span class="feature">GCC Distribution</span><span class="feature">Retail & Hospitality</span>
+    </div>
+    <div class="note-box">💡 Full product range, pricing and minimum order quantities are being finalised. Register your interest and we will be in touch with complete details.</div>
+    <a href="index.html#enquiry" class="btn-gold">Register Interest</a>
+  </div>
+  <div class="info-grid">
+    <div class="info-box"><div class="ic">📍</div><h4>Origin</h4><p>Egypt</p></div>
+    <div class="info-box"><div class="ic">🌍</div><h4>Target Markets</h4><p>GCC &amp; International</p></div>
+    <div class="info-box"><div class="ic">✅</div><h4>Certification</h4><p>Halal &amp; Quality Certified</p></div>
+    <div class="info-box"><div class="ic">📋</div><h4>Documentation</h4><p>Full export docs available</p></div>
+  </div>
+</div>
+<footer>
+  <p class="f-logo">AMS <span>PRIME EGYPT</span></p>
+  <ul class="f-links">
+    <li><a href="index.html#sectors">Sectors</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="index.html#enquiry">Contact</a></li>
+    <li><a href="privacy.html">Privacy Policy</a></li>
+  </ul>
+  <p class="f-copy">© 2026 AMS Prime Egypt For Trading and Export · Trade Name Reg. No. 8272768</p>
+</footer>
+<a class="wa-btn" href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+let lang = localStorage.getItem('ams_lang') || 'en';
+function applyLang(l) {
+  document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.lang = l;
+  document.getElementById('langBtn').textContent = l === 'ar' ? 'English' : 'عربي';
+  lang = l;
+  localStorage.setItem('ams_lang', l);
+}
+function toggleLang() { applyLang(lang === 'en' ? 'ar' : 'en'); }
+document.addEventListener('DOMContentLoaded', () => { if (lang === 'ar') applyLang('ar'); });
+</script>
+</body>
+</html>

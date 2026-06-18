@@ -4,522 +4,313 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AMS Prime Egypt — For Trading and Export</title>
-<meta name="description" content="Premium Egyptian agricultural exports — alfalfa, wheat hay, barley, cotton seed and feed — lab-certified and shipped across the GCC and worldwide.">
+<meta name="description" content="AMS Prime Egypt exports premium Egyptian products to the GCC and global markets — animal feed, confectionery, beverages, and more.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   AMS PRIME EGYPT — IMAGE CONFIG
-   To change any product image, edit the keyword(s) after the "?"
-   in the URL on that product's line below. Images are pulled live
-   by keyword so the subject always matches.
-   ============================================================ */
-:root {
-  /* Palette */
-  --green:        #0D3B1E;
-  --green-mid:    #1A5C32;
-  --green-light:  #2E7D4F;
-  --green-deep:   #07260F;
-  --gold:         #C9A227;
-  --gold-light:   #E8C76A;
-  --gold-soft:    #F0DFA8;
-  --cream:        #FAF7EF;
-  --cream-deep:   #F2EDE0;
-  --white:        #FFFFFF;
-  --ink:          #14180F;
-  --muted:        #5C6B59;
-  --line:         #E4E0D2;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#0D3B1E;--green-mid:#1A5C32;--green-light:#2E7D4F;--green-deep:#07260F;
+  --gold:#C9A227;--gold-light:#E8C76A;--gold-soft:#F0DFA8;
+  --cream:#FAF7EF;--cream-deep:#F2EDE0;--white:#FFFFFF;
+  --ink:#14180F;--muted:#5C6B59;--line:#E4E0D2;
 }
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden}
+::selection{background:var(--gold);color:var(--green-deep)}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 clamp(28px,4vw,72px);height:76px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .4s,height .4s,box-shadow .4s,border-color .4s;
+  border-bottom:1px solid transparent;
+}
+nav.scrolled{
+  height:64px;background:rgba(7,38,15,0.90);backdrop-filter:blur(14px) saturate(140%);
+  border-bottom:1px solid rgba(201,162,39,0.28);box-shadow:0 8px 30px rgba(7,38,15,.2);
+}
+.nav-logo{display:flex;align-items:center;gap:11px;text-decoration:none}
+.nav-logo-img{height:42px;width:auto;object-fit:contain;filter:drop-shadow(0 1px 3px rgba(0,0,0,.3));transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+.nav-logo:hover .nav-logo-img{transform:scale(1.04)}
+.nav-links{display:flex;gap:26px;list-style:none;align-items:center}
+.nav-links a{color:rgba(255,255,255,.82);text-decoration:none;font-size:14px;font-weight:500;position:relative;padding:4px 0;transition:color .25s}
+.nav-links a:not(.nav-cta)::after{content:'';position:absolute;left:0;bottom:-2px;height:1.5px;width:0;background:var(--gold);transition:width .3s cubic-bezier(.2,.8,.2,1)}
+.nav-links a:not(.nav-cta):hover{color:#fff}
+.nav-links a:not(.nav-cta):hover::after{width:100%}
+.nav-cta{background:var(--gold);color:var(--green-deep)!important;padding:9px 22px;border-radius:100px;font-weight:600!important;transition:background .25s,transform .25s,box-shadow .25s}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px);box-shadow:0 6px 18px rgba(201,162,39,.35)}
+.lang-toggle{background:transparent;border:1.5px solid rgba(255,255,255,.35);color:rgba(255,255,255,.85);padding:7px 16px;border-radius:100px;font-family:'Cairo','Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .25s,color .25s,background .25s;white-space:nowrap}
+.lang-toggle:hover{border-color:var(--gold);color:var(--gold-light);background:rgba(201,162,39,.08)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.hamburger.active span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:flex;flex-direction:column;gap:4px;position:fixed;top:64px;left:0;right:0;z-index:99;background:rgba(7,38,15,.97);backdrop-filter:blur(14px);padding:16px clamp(20px,5vw,56px) 28px;border-top:1px solid rgba(201,162,39,.2);transform:translateY(-130%);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.mobile-menu.open{transform:translateY(0)}
+.mobile-menu a{color:rgba(255,255,255,.85);text-decoration:none;font-size:16px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.mobile-menu a:last-child{border-bottom:none;color:var(--gold-light);font-weight:600}
 
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-body { font-family: 'Inter', sans-serif; color: var(--ink); background: var(--cream); overflow-x: hidden; }
+/* ── HERO ── */
+.hero{min-height:100svh;position:relative;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:120px clamp(20px,5vw,64px) 80px}
+.hero-bg{position:absolute;inset:0;z-index:0;background-color:var(--green);background-image:url('images/irrigation-1.jpg');background-size:cover;background-position:center;transform:scale(1.08);animation:heroZoom 14s ease-out forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero-veil{position:absolute;inset:0;z-index:1;background:radial-gradient(120% 90% at 50% 35%,rgba(7,38,15,.25) 0%,rgba(7,38,15,.55) 70%,rgba(7,38,15,.88) 100%),linear-gradient(180deg,rgba(7,38,15,.4) 0%,rgba(7,38,15,.1) 40%,rgba(7,38,15,.80) 100%)}
+.hero-grain{position:absolute;inset:0;z-index:2;opacity:.04;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-content{position:relative;z-index:3;max-width:900px}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;background:rgba(201,162,39,.12);border:1px solid rgba(201,162,39,.45);border-radius:100px;padding:7px 18px;margin-bottom:28px;font-size:12px;color:var(--gold-soft);letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:0;animation:fadeUp .9s .2s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(40px,7vw,88px);line-height:1.04;color:#fff;letter-spacing:-.02em;margin-bottom:22px}
+.hero h1 .line{display:block;opacity:0;animation:fadeUp 1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .line:nth-child(1){animation-delay:.35s}
+.hero h1 .line:nth-child(2){animation-delay:.5s}
+.hero h1 .accent{color:var(--gold);font-style:italic}
+.hero-sub{font-size:clamp(11px,1.4vw,14px);color:rgba(255,255,255,.5);letter-spacing:.28em;text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fadeUp 1s .65s cubic-bezier(.2,.8,.2,1) forwards}
+.hero-desc{font-size:clamp(16px,2vw,19px);color:rgba(255,255,255,.75);max-width:600px;margin:0 auto 42px;line-height:1.7;font-weight:300;opacity:0;animation:fadeUp 1s .8s cubic-bezier(.2,.8,.2,1) forwards}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp 1s .95s cubic-bezier(.2,.8,.2,1) forwards}
+.btn-gold{background:var(--gold);color:var(--green-deep);padding:15px 34px;border-radius:100px;text-decoration:none;font-weight:600;font-size:15px;display:inline-flex;align-items:center;gap:8px;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,background .3s}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 12px 30px rgba(201,162,39,.35)}
+.btn-gold .arr{transition:transform .3s}
+.btn-gold:hover .arr{transform:translateX(4px)}
+.btn-ghost{border:1.5px solid rgba(255,255,255,.35);color:#fff;padding:15px 34px;border-radius:100px;text-decoration:none;font-weight:500;font-size:15px;transition:border-color .3s,background .3s,transform .3s}
+.btn-ghost:hover{border-color:var(--gold);background:rgba(201,162,39,.1);transform:translateY(-2px)}
+.hero-scroll{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:10px;color:rgba(255,255,255,.4);font-size:10px;letter-spacing:.2em;text-transform:uppercase;opacity:0;animation:fadeIn 1s 1.4s forwards}
+.hero-scroll .mouse{width:22px;height:34px;border:1.5px solid rgba(255,255,255,.4);border-radius:12px;position:relative}
+.hero-scroll .mouse::after{content:'';position:absolute;left:50%;top:7px;width:3px;height:6px;background:var(--gold);border-radius:2px;transform:translateX(-50%);animation:scrollDot 1.8s ease-in-out infinite}
+@keyframes scrollDot{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}80%{opacity:0;transform:translate(-50%,10px)}100%{opacity:0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
-::selection { background: var(--gold); color: var(--green-deep); }
+/* ── STATS ── */
+.stats{background:var(--green-deep);border-top:1px solid rgba(201,162,39,.25);border-bottom:1px solid rgba(201,162,39,.25);padding:28px clamp(20px,5vw,64px)}
+.stats-inner{max-width:1060px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:20px}
+.stat{text-align:center;flex:1 1 120px}
+.stat-num{font-family:'Fraunces',serif;font-size:clamp(24px,3vw,34px);font-weight:600;color:var(--gold);display:block;line-height:1}
+.stat-label{font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.12em;margin-top:7px}
 
-/* ── Reduced motion ── */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
-}
+/* ── SECTION BASE ── */
+section{padding:clamp(64px,9vw,110px) clamp(20px,5vw,64px)}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.2em;color:var(--gold);font-weight:700;margin-bottom:14px;display:inline-flex;align-items:center;gap:10px}
+.eyebrow::before{content:'';width:26px;height:1.5px;background:var(--gold);display:inline-block}
+.s-title{font-family:'Fraunces',serif;font-size:clamp(28px,4.2vw,48px);font-weight:600;color:var(--green);line-height:1.12;letter-spacing:-.015em;margin-bottom:18px}
+.s-title .em{font-style:italic;color:var(--green-light)}
+.s-sub{font-size:17px;color:var(--muted);line-height:1.7;max-width:560px}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal[data-delay="1"]{transition-delay:.08s}
+.reveal[data-delay="2"]{transition-delay:.16s}
+.reveal[data-delay="3"]{transition-delay:.24s}
+.reveal[data-delay="4"]{transition-delay:.32s}
 
-/* ============================================================
-   NAVIGATION
-   ============================================================ */
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  padding: 0 clamp(20px, 4vw, 56px); height: 76px;
-  display: flex; align-items: center; justify-content: space-between;
-  transition: background 0.4s ease, height 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-  border-bottom: 1px solid transparent;
-}
-nav.scrolled {
-  height: 64px;
-  background: rgba(7, 38, 15, 0.82);
-  backdrop-filter: blur(14px) saturate(140%);
-  -webkit-backdrop-filter: blur(14px) saturate(140%);
-  border-bottom: 1px solid rgba(201, 162, 39, 0.28);
-  box-shadow: 0 8px 30px rgba(7, 38, 15, 0.18);
-}
-.nav-logo { display: flex; align-items: center; gap: 11px; text-decoration: none; }
-.nav-logo-mark {
-  width: 40px; height: 40px; background: var(--gold);
-  border-radius: 50%; display: grid; place-items: center;
-  font-family: 'Fraunces', serif; font-weight: 700; font-size: 13px;
-  color: var(--green-deep); flex-shrink: 0;
-  transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
-}
-.nav-logo:hover .nav-logo-mark { transform: rotate(-8deg) scale(1.05); }
-.nav-logo-text { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 600; color: var(--white); letter-spacing: 0.01em; }
-.nav-logo-text span { color: var(--gold); }
+/* ── SECTORS ── */
+.sectors{background:var(--cream)}
+.sectors-head{text-align:center;margin-bottom:56px}
+.sectors-head .eyebrow{justify-content:center}
+.sectors-head .s-sub{margin:0 auto}
+.sectors-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;max-width:1200px;margin:0 auto 56px}
+.sector-card{background:#fff;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(20,24,15,.04),0 8px 24px rgba(20,24,15,.05);border:1px solid var(--line);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s}
+.sector-card:hover{transform:translateY(-8px);box-shadow:0 18px 50px rgba(13,59,30,.16)}
+.sector-img{aspect-ratio:16/10;overflow:hidden;position:relative;background:var(--green-mid)}
+.sector-illus{display:flex;align-items:center;justify-content:center}
+.sector-img img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+.sector-card:hover .sector-img img{transform:scale(1.07)}
+.sector-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(7,38,15,.35) 100%)}
+.sector-badge{position:absolute;top:14px;left:14px;z-index:2;background:var(--gold);color:var(--green-deep);font-size:10.5px;font-weight:700;padding:5px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:.07em}
+.sector-badge.soon{background:rgba(7,38,15,.55);color:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.18)}
+.sector-icon{position:absolute;top:14px;right:14px;z-index:2;width:38px;height:38px;background:rgba(255,255,255,.15);backdrop-filter:blur(6px);border-radius:10px;display:grid;place-items:center;font-size:20px}
+.sector-body{padding:24px 24px 28px;display:flex;flex-direction:column;flex:1}
+.sector-name{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:var(--green);margin-bottom:9px}
+.sector-desc{font-size:14px;color:var(--muted);line-height:1.62;margin-bottom:16px;flex:1}
+.sector-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+.sector-tag{background:var(--cream-deep);border:1px solid var(--line);color:var(--green);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px}
+.sector-link{display:inline-flex;align-items:center;gap:7px;color:var(--green-light);font-size:13px;font-weight:600}
+.sector-link .arr{transition:transform .3s}
+.sector-card:hover .sector-link .arr{transform:translateX(5px)}
 
-.nav-links { display: flex; gap: 34px; list-style: none; align-items: center; }
-.nav-links a {
-  color: rgba(255,255,255,0.82); text-decoration: none; font-size: 14px; font-weight: 500;
-  position: relative; padding: 4px 0; transition: color 0.25s;
-}
-.nav-links a:not(.nav-cta)::after {
-  content: ''; position: absolute; left: 0; bottom: -2px; height: 1.5px; width: 0;
-  background: var(--gold); transition: width 0.3s cubic-bezier(.2,.8,.2,1);
-}
-.nav-links a:not(.nav-cta):hover { color: var(--white); }
-.nav-links a:not(.nav-cta):hover::after { width: 100%; }
-.nav-cta {
-  background: var(--gold); color: var(--green-deep) !important;
-  padding: 9px 22px; border-radius: 100px; font-weight: 600 !important;
-  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
-}
-.nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(201,162,39,0.35); }
+/* Products inside sector (animal feed sub-items) */
+.sub-products{background:var(--cream-deep);border-radius:0 0 16px 16px;padding:16px 24px;display:flex;flex-wrap:wrap;gap:8px}
+.sub-products p{font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.08em;width:100%;margin-bottom:4px}
+.sub-tag{background:#fff;border:1px solid var(--line);color:var(--green-mid);font-size:11px;font-weight:600;padding:4px 10px;border-radius:100px}
 
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
-.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.active span:nth-child(2) { opacity: 0; }
-.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* ── ABOUT TEASER ── */
+.about-teaser{background:var(--green)}
+.about-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.about-teaser .s-title{color:#fff}
+.about-teaser .s-title .em{color:var(--gold-light)}
+.about-desc{font-size:16px;color:rgba(255,255,255,.65);line-height:1.78;margin-bottom:32px}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:36px}
+.a-stat{background:rgba(255,255,255,.05);border:1px solid rgba(201,162,39,.18);border-radius:12px;padding:20px 18px;text-align:center;transition:background .3s,border-color .3s}
+.a-stat:hover{background:rgba(201,162,39,.08);border-color:rgba(201,162,39,.4)}
+.a-stat .n{font-family:'Fraunces',serif;font-size:28px;font-weight:600;color:var(--gold);display:block;margin-bottom:4px}
+.a-stat .l{font-size:11px;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.08em}
+.btn-outline-gold{border:1.5px solid var(--gold);color:var(--gold);padding:13px 28px;border-radius:100px;text-decoration:none;font-weight:600;font-size:14px;transition:background .25s,color .25s,transform .25s;display:inline-block}
+.btn-outline-gold:hover{background:var(--gold);color:var(--green-deep);transform:translateY(-2px)}
+.about-cred-panel{display:flex;flex-direction:column;gap:14px}
+.cred-item{display:flex;align-items:flex-start;gap:14px;background:rgba(255,255,255,.05);border:1px solid rgba(201,162,39,.18);border-radius:12px;padding:16px 18px;transition:background .3s,border-color .3s}
+.cred-item:hover{background:rgba(201,162,39,.08);border-color:rgba(201,162,39,.35)}
+.cred-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.cred-item strong{display:block;font-size:14px;color:#fff;margin-bottom:3px;font-family:'Fraunces',serif}
+.cred-item p{font-size:12.5px;color:rgba(255,255,255,.5);line-height:1.5}
+.about-img-grid{display:none}
 
-.mobile-menu {
-  display: flex; flex-direction: column; gap: 4px;
-  position: fixed; top: 64px; left: 0; right: 0; z-index: 99;
-  background: rgba(7, 38, 15, 0.97); backdrop-filter: blur(14px);
-  padding: 16px clamp(20px, 5vw, 64px) 28px;
-  border-top: 1px solid rgba(201,162,39,0.2);
-  transform: translateY(-130%); transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
-}
-.mobile-menu.open { transform: translateY(0); }
-.mobile-menu a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
-.mobile-menu a:last-child { border-bottom: none; color: var(--gold-light); font-weight: 600; }
+/* ── HOW WE EXPORT ── */
+.how{background:var(--cream-deep)}
+.how-inner{max-width:1100px;margin:0 auto}
+.how-head{text-align:center;margin-bottom:56px}
+.how-head .eyebrow{justify-content:center}
+.how-head .s-sub{margin:0 auto}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.steps-grid::before{content:'';position:absolute;top:40px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,162,39,.2));z-index:0}
+.step{text-align:center;padding:0 20px;position:relative;z-index:1}
+.step-num{width:80px;height:80px;background:var(--green);border-radius:50%;display:grid;place-items:center;margin:0 auto 20px;border:3px solid var(--gold);position:relative;transition:transform .3s,background .3s}
+.step:hover .step-num{transform:scale(1.08);background:var(--green-mid)}
+.step-num span{font-family:'Fraunces',serif;font-size:24px;font-weight:600;color:var(--gold)}
+.step-icon{position:absolute;bottom:-4px;right:-4px;width:28px;height:28px;background:var(--gold);border-radius:50%;display:grid;place-items:center;font-size:14px}
+.step h3{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:var(--green);margin-bottom:10px}
+.step p{font-size:13.5px;color:var(--muted);line-height:1.6}
 
-/* ============================================================
-   HERO
-   ============================================================ */
-.hero {
-  min-height: 100svh; position: relative;
-  display: flex; align-items: center; justify-content: center; text-align: center;
-  overflow: hidden; padding: 120px clamp(20px,5vw,64px) 80px;
-}
-.hero-bg {
-  position: absolute; inset: 0; z-index: 0;
-  background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1900&q=80&auto=format&fit=crop');
-  background-size: cover; background-position: center 55%;
-  transform: scale(1.08); animation: heroZoom 14s ease-out forwards;
-}
-@keyframes heroZoom { to { transform: scale(1); } }
-.hero-veil {
-  position: absolute; inset: 0; z-index: 1;
-  background:
-    radial-gradient(120% 90% at 50% 35%, rgba(7,38,15,0.35) 0%, rgba(7,38,15,0.78) 70%, rgba(7,38,15,0.92) 100%),
-    linear-gradient(180deg, rgba(7,38,15,0.55) 0%, rgba(7,38,15,0.25) 40%, rgba(7,38,15,0.85) 100%);
-}
-/* faint grain texture overlay */
-.hero-grain {
-  position: absolute; inset: 0; z-index: 2; opacity: 0.05; pointer-events: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-.hero-content { position: relative; z-index: 3; max-width: 880px; }
+/* ── WHY US ── */
+.why{background:var(--green);position:relative;overflow:hidden}
+.why::before{content:'';position:absolute;top:-30%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(201,162,39,.1) 0%,transparent 65%);pointer-events:none}
+.why-inner{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center;position:relative}
+.why .s-title{color:#fff}
+.why .s-title .em{color:var(--gold-light)}
+.why-desc{font-size:16px;color:rgba(255,255,255,.62);line-height:1.78;margin-bottom:38px}
+.why-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.why-item{display:flex;gap:16px;align-items:flex-start;padding:18px 0;border-top:1px solid rgba(255,255,255,.09)}
+.why-item:first-child{border-top:none}
+.why-ic{width:44px;height:44px;flex-shrink:0;border-radius:11px;background:rgba(201,162,39,.14);border:1px solid rgba(201,162,39,.3);display:grid;place-items:center;font-size:19px;transition:background .3s,transform .3s}
+.why-item:hover .why-ic{background:rgba(201,162,39,.24);transform:scale(1.06)}
+.why-h{font-weight:600;font-size:15.5px;color:#fff;margin-bottom:4px}
+.why-p{font-size:13.5px;color:rgba(255,255,255,.58);line-height:1.6}
+.why-panel{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.why-box{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.16);border-radius:14px;padding:26px 20px;text-align:center;transition:background .35s,border-color .35s,transform .35s}
+.why-box:hover{background:rgba(201,162,39,.08);border-color:rgba(201,162,39,.4);transform:translateY(-3px)}
+.why-box .n{font-family:'Fraunces',serif;font-size:32px;font-weight:600;color:var(--gold);display:block}
+.why-box .l{font-size:11.5px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.09em;margin-top:5px}
+.why-cert{grid-column:span 2;background:rgba(201,162,39,.08);border:1px solid rgba(201,162,39,.3);border-radius:14px;padding:22px}
+.why-cert strong{display:block;font-family:'Fraunces',serif;font-size:16px;color:var(--gold);margin-bottom:7px}
+.why-cert p{font-size:13px;color:var(--gold-soft);line-height:1.6}
 
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 9px;
-  background: rgba(201,162,39,0.12); border: 1px solid rgba(201,162,39,0.45);
-  border-radius: 100px; padding: 7px 18px; margin-bottom: 30px;
-  font-size: 12px; color: var(--gold-soft); letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600;
-  opacity: 0; animation: fadeUp 0.9s 0.2s cubic-bezier(.2,.8,.2,1) forwards;
-}
-.hero h1 {
-  font-family: 'Fraunces', serif; font-weight: 600;
-  font-size: clamp(42px, 7vw, 86px); line-height: 1.04; color: var(--white);
-  letter-spacing: -0.02em; margin-bottom: 22px;
-}
-.hero h1 .line { display: block; opacity: 0; animation: fadeUp 1s cubic-bezier(.2,.8,.2,1) forwards; }
-.hero h1 .line:nth-child(1) { animation-delay: 0.35s; }
-.hero h1 .line:nth-child(2) { animation-delay: 0.5s; }
-.hero h1 .accent { color: var(--gold); font-style: italic; }
-.hero-sub {
-  font-size: clamp(12px, 1.5vw, 14px); color: rgba(255,255,255,0.5);
-  letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 22px;
-  opacity: 0; animation: fadeUp 1s 0.65s cubic-bezier(.2,.8,.2,1) forwards;
-}
-.hero-desc {
-  font-size: clamp(16px, 2vw, 19px); color: rgba(255,255,255,0.78);
-  max-width: 580px; margin: 0 auto 42px; line-height: 1.7; font-weight: 300;
-  opacity: 0; animation: fadeUp 1s 0.8s cubic-bezier(.2,.8,.2,1) forwards;
-}
-.hero-actions {
-  display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;
-  opacity: 0; animation: fadeUp 1s 0.95s cubic-bezier(.2,.8,.2,1) forwards;
-}
-.btn-gold {
-  background: var(--gold); color: var(--green-deep); padding: 15px 34px;
-  border-radius: 100px; text-decoration: none; font-weight: 600; font-size: 15px;
-  display: inline-flex; align-items: center; gap: 8px;
-  transition: transform 0.3s cubic-bezier(.2,.8,.2,1), box-shadow 0.3s, background 0.3s;
-}
-.btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 30px rgba(201,162,39,0.35); }
-.btn-gold .arr { transition: transform 0.3s; }
-.btn-gold:hover .arr { transform: translateX(4px); }
-.btn-ghost {
-  border: 1.5px solid rgba(255,255,255,0.35); color: var(--white);
-  padding: 15px 34px; border-radius: 100px; text-decoration: none; font-weight: 500; font-size: 15px;
-  transition: border-color 0.3s, background 0.3s, transform 0.3s;
-}
-.btn-ghost:hover { border-color: var(--gold); background: rgba(201,162,39,0.1); transform: translateY(-2px); }
+/* ── MARKETS ── */
+.markets{background:#fff}
+.markets-inner{max-width:1140px;margin:0 auto}
+.markets-head{margin-bottom:50px}
+.markets-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:14px}
+.m-card{background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:26px 14px;text-align:center;transition:border-color .3s,transform .3s,box-shadow .3s}
+.m-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 10px 26px rgba(13,59,30,.08)}
+.m-flag{font-size:32px;margin-bottom:10px}
+.m-name{font-weight:600;font-size:13.5px;color:var(--green)}
+.m-card.ww{border-style:dashed;border-color:rgba(201,162,39,.4)}
+.m-card.ww .m-name{color:var(--muted)}
 
-.hero-scroll {
-  position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); z-index: 3;
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
-  color: rgba(255,255,255,0.45); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-  opacity: 0; animation: fadeIn 1s 1.4s forwards;
+/* ── ENQUIRY ── */
+.enquiry{background:var(--green-deep);color:#fff;position:relative;overflow:hidden}
+.enquiry::before{content:'';position:absolute;bottom:-25%;left:-8%;width:560px;height:560px;background:radial-gradient(circle,rgba(201,162,39,.09) 0%,transparent 65%);pointer-events:none}
+.enquiry-inner{max-width:760px;margin:0 auto;text-align:center;position:relative}
+.enquiry .eyebrow{justify-content:center}
+.enquiry .s-title{color:#fff}
+.enquiry .s-title .em{color:var(--gold-light)}
+.enquiry-sub{font-size:17px;color:rgba(255,255,255,.6);margin:0 auto 46px;max-width:500px;line-height:1.7}
+.form{background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.2);border-radius:18px;padding:clamp(24px,4vw,42px);text-align:left}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px}
+.fg{display:flex;flex-direction:column;gap:8px}
+.fg.full{grid-column:span 2}
+.fg label{font-size:12px;font-weight:600;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.05em}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:9px;padding:13px 15px;color:#fff;font-family:'Inter',sans-serif;font-size:14px;outline:none;width:100%;transition:border-color .25s,background .25s,box-shadow .25s}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(255,255,255,.28)}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);background:rgba(255,255,255,.09);box-shadow:0 0 0 3px rgba(201,162,39,.12)}
+.fg select option{background:var(--green);color:#fff}
+.fg textarea{resize:vertical;min-height:104px}
+.form-foot{margin-top:28px;text-align:center}
+.btn-submit{background:var(--gold);color:var(--green-deep);border:none;padding:15px 50px;border-radius:100px;font-family:'Inter',sans-serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:.02em;transition:background .25s,transform .25s,box-shadow .25s}
+.btn-submit:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 12px 28px rgba(201,162,39,.3)}
+.btn-submit:disabled{opacity:.7;cursor:default;transform:none;box-shadow:none}
+.form-note{font-size:12px;color:rgba(255,255,255,.35);margin-top:12px}
+.success{display:none;background:rgba(46,125,79,.18);border:1px solid var(--gold);border-radius:10px;padding:18px;color:var(--gold-soft);text-align:center;font-size:14px;margin-top:18px}
+.success.show{display:block;animation:fadeUp .5s ease forwards}
+
+/* ── CONTACT + FOOTER ── */
+.contact-bar{background:#061F0C;border-top:1px solid rgba(201,162,39,.15);border-bottom:1px solid rgba(201,162,39,.15);padding:20px clamp(20px,5vw,64px)}
+.contact-inner{max-width:900px;margin:0 auto;display:flex;justify-content:center;gap:clamp(18px,4vw,52px);flex-wrap:wrap}
+.contact-inner a,.contact-inner span{color:rgba(255,255,255,.66);text-decoration:none;font-size:13.5px;display:flex;align-items:center;gap:8px;transition:color .25s}
+.contact-inner a:hover{color:var(--gold-light)}
+.contact-inner .ci{color:var(--gold)}
+footer{background:#061F0C;padding:46px clamp(20px,5vw,64px) 38px;text-align:center}
+.f-logo{font-family:'Fraunces',serif;font-size:21px;font-weight:600;color:#fff}
+.f-logo span{color:var(--gold)}
+.f-tag{font-size:12px;color:rgba(255,255,255,.32);letter-spacing:.12em;text-transform:uppercase;margin-top:7px;margin-bottom:22px}
+.f-links{display:flex;justify-content:center;gap:26px;flex-wrap:wrap;margin-bottom:22px;list-style:none}
+.f-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:13px;transition:color .25s}
+.f-links a:hover{color:var(--gold-light)}
+.f-copy{font-size:11.5px;color:rgba(255,255,255,.24);line-height:1.6}
+
+/* ── WHATSAPP BUTTON ── */
+.wa-btn{
+  position:fixed;bottom:28px;right:28px;z-index:999;
+  width:58px;height:58px;border-radius:50%;
+  background:#25D366;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  text-decoration:none;font-size:28px;
+  box-shadow:0 6px 24px rgba(37,211,102,.4);
+  transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s;
+  animation:waPulse 2.5s ease-in-out infinite 3s;
 }
-.hero-scroll .mouse {
-  width: 22px; height: 34px; border: 1.5px solid rgba(255,255,255,0.4); border-radius: 12px;
-  position: relative;
+.wa-btn:hover{transform:scale(1.12);box-shadow:0 10px 32px rgba(37,211,102,.55);animation:none}
+@keyframes waPulse{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,.4)}50%{box-shadow:0 6px 32px rgba(37,211,102,.7),0 0 0 8px rgba(37,211,102,.15)}}
+.wa-tooltip{
+  position:absolute;right:68px;top:50%;transform:translateY(-50%);
+  background:var(--green-deep);color:#fff;font-size:12px;font-weight:600;
+  padding:7px 13px;border-radius:8px;white-space:nowrap;pointer-events:none;
+  opacity:0;transition:opacity .2s;
 }
-.hero-scroll .mouse::after {
-  content: ''; position: absolute; left: 50%; top: 7px; width: 3px; height: 6px;
-  background: var(--gold); border-radius: 2px; transform: translateX(-50%);
-  animation: scrollDot 1.8s ease-in-out infinite;
-}
-@keyframes scrollDot { 0%{opacity:0;transform:translate(-50%,0)} 40%{opacity:1} 80%{opacity:0;transform:translate(-50%,10px)} 100%{opacity:0} }
+.wa-tooltip::after{content:'';position:absolute;right:-6px;top:50%;transform:translateY(-50%);border:6px solid transparent;border-left-color:var(--green-deep);border-right:none}
+.wa-btn:hover .wa-tooltip{opacity:1}
 
-@keyframes fadeUp { from { opacity:0; transform: translateY(22px); } to { opacity:1; transform: translateY(0); } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+/* ── RESPONSIVE ── */
+@media(max-width:860px){.why-inner{grid-template-columns:1fr;gap:48px}.why-panel{display:none}.about-inner{grid-template-columns:1fr;gap:40px}.steps-grid{grid-template-columns:1fr 1fr;gap:32px}.steps-grid::before{display:none}}
+@media(max-width:760px){.nav-links{display:none}.hamburger{display:flex}.row{grid-template-columns:1fr}.fg.full{grid-column:span 1}.sectors-grid{grid-template-columns:1fr}.steps-grid{grid-template-columns:1fr}}
+@media(max-width:480px){.markets-grid{grid-template-columns:repeat(2,1fr)}.stats-inner{gap:18px}.stat{flex-basis:40%}}
 
-/* ============================================================
-   STATS MARQUEE BAR
-   ============================================================ */
-.stats {
-  background: var(--green-deep); color: var(--white);
-  border-top: 1px solid rgba(201,162,39,0.25); border-bottom: 1px solid rgba(201,162,39,0.25);
-  padding: 30px clamp(20px,5vw,64px);
-}
-.stats-inner { max-width: 1080px; margin: 0 auto; display: flex; justify-content: space-around; flex-wrap: wrap; gap: 22px; }
-.stat { text-align: center; flex: 1 1 130px; }
-.stat-num { font-family: 'Fraunces', serif; font-size: clamp(26px, 3.4vw, 36px); font-weight: 600; color: var(--gold); display: block; line-height: 1; }
-.stat-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.12em; margin-top: 8px; }
-
-/* ============================================================
-   SECTION SHELL
-   ============================================================ */
-section { padding: clamp(64px, 9vw, 110px) clamp(20px,5vw,64px); }
-.eyebrow {
-  font-size: 11px; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold);
-  font-weight: 700; margin-bottom: 14px; display: inline-flex; align-items: center; gap: 10px;
-}
-.eyebrow::before { content: ''; width: 26px; height: 1.5px; background: var(--gold); display: inline-block; }
-.s-title {
-  font-family: 'Fraunces', serif; font-size: clamp(28px, 4.2vw, 48px); font-weight: 600;
-  color: var(--green); line-height: 1.12; letter-spacing: -0.015em; margin-bottom: 18px;
-}
-.s-title .em { font-style: italic; color: var(--green-light); }
-.s-sub { font-size: 17px; color: var(--muted); line-height: 1.7; max-width: 560px; }
-
-/* Scroll reveal */
-.reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(.2,.8,.2,1), transform 0.8s cubic-bezier(.2,.8,.2,1); }
-.reveal.in { opacity: 1; transform: translateY(0); }
-.reveal[data-delay="1"] { transition-delay: 0.08s; }
-.reveal[data-delay="2"] { transition-delay: 0.16s; }
-.reveal[data-delay="3"] { transition-delay: 0.24s; }
-.reveal[data-delay="4"] { transition-delay: 0.32s; }
-
-/* ============================================================
-   PRODUCTS
-   ============================================================ */
-.products { background: var(--cream); position: relative; }
-.products-head { text-align: center; margin-bottom: 60px; }
-.products-head .eyebrow { justify-content: center; }
-.products-head .s-sub { margin: 0 auto; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 26px; max-width: 1180px; margin: 0 auto; }
-
-.card {
-  background: var(--white); border-radius: 16px; overflow: hidden; text-decoration: none; color: inherit;
-  display: flex; flex-direction: column;
-  box-shadow: 0 1px 2px rgba(20,24,15,0.04), 0 8px 24px rgba(20,24,15,0.05);
-  border: 1px solid var(--line);
-  transition: transform 0.45s cubic-bezier(.2,.8,.2,1), box-shadow 0.45s;
-}
-.card:hover { transform: translateY(-8px); box-shadow: 0 18px 50px rgba(13,59,30,0.16); }
-.card-img { aspect-ratio: 16 / 10; overflow: hidden; position: relative; background: var(--green-mid); }
-.card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(.2,.8,.2,1); }
-.card:hover .card-img img { transform: scale(1.07); }
-.card-img::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 55%, rgba(7,38,15,0.35) 100%);
-}
-.badge {
-  position: absolute; top: 14px; right: 14px; z-index: 2;
-  font-size: 10.5px; font-weight: 700; padding: 5px 12px; border-radius: 100px;
-  text-transform: uppercase; letter-spacing: 0.07em;
-  backdrop-filter: blur(6px);
-}
-.badge.now { background: var(--gold); color: var(--green-deep); }
-.badge.soon { background: rgba(7,38,15,0.55); color: rgba(255,255,255,0.9); border: 1px solid rgba(255,255,255,0.18); }
-.card-body { padding: 24px 24px 26px; display: flex; flex-direction: column; flex: 1; }
-.card-name { font-family: 'Fraunces', serif; font-size: 23px; font-weight: 600; color: var(--green); margin-bottom: 9px; }
-.card-desc { font-size: 14px; color: var(--muted); line-height: 1.62; margin-bottom: 18px; flex: 1; }
-.pills { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
-.pill {
-  background: var(--cream-deep); border: 1px solid var(--line); color: var(--green);
-  font-size: 11px; font-weight: 600; padding: 5px 11px; border-radius: 100px;
-}
-.card-link { display: inline-flex; align-items: center; gap: 7px; color: var(--green-light); font-size: 13px; font-weight: 600; }
-.card-link .arr { transition: transform 0.3s; }
-.card:hover .card-link .arr { transform: translateX(5px); }
-
-/* ============================================================
-   WHY US
-   ============================================================ */
-.why { background: var(--green); color: var(--white); position: relative; overflow: hidden; }
-.why::before {
-  content: ''; position: absolute; top: -30%; right: -10%; width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(201,162,39,0.10) 0%, transparent 65%); pointer-events: none;
-}
-.why-inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 72px; align-items: center; position: relative; }
-.why .s-title { color: var(--white); }
-.why .s-title .em { color: var(--gold-light); }
-.why-desc { font-size: 16px; color: rgba(255,255,255,0.62); line-height: 1.78; margin-bottom: 38px; }
-.why-list { list-style: none; display: flex; flex-direction: column; gap: 4px; }
-.why-item { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-top: 1px solid rgba(255,255,255,0.09); }
-.why-item:first-child { border-top: none; }
-.why-ic {
-  width: 44px; height: 44px; flex-shrink: 0; border-radius: 11px;
-  background: rgba(201,162,39,0.14); border: 1px solid rgba(201,162,39,0.3);
-  display: grid; place-items: center; font-size: 19px;
-  transition: background 0.3s, transform 0.3s;
-}
-.why-item:hover .why-ic { background: rgba(201,162,39,0.24); transform: scale(1.06); }
-.why-h { font-weight: 600; font-size: 15.5px; color: var(--white); margin-bottom: 4px; }
-.why-p { font-size: 13.5px; color: rgba(255,255,255,0.58); line-height: 1.6; }
-
-.why-panel {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
-}
-.why-box {
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(201,162,39,0.16);
-  border-radius: 14px; padding: 26px 20px; text-align: center;
-  transition: background 0.35s, border-color 0.35s, transform 0.35s;
-}
-.why-box:hover { background: rgba(201,162,39,0.08); border-color: rgba(201,162,39,0.4); transform: translateY(-3px); }
-.why-box .n { font-family: 'Fraunces', serif; font-size: 32px; font-weight: 600; color: var(--gold); display: block; }
-.why-box .l { font-size: 11.5px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.09em; margin-top: 5px; }
-.why-cert { grid-column: span 2; background: rgba(201,162,39,0.08); border: 1px solid rgba(201,162,39,0.3); border-radius: 14px; padding: 22px; }
-.why-cert strong { display: block; font-family: 'Fraunces', serif; font-size: 16px; color: var(--gold); margin-bottom: 7px; }
-.why-cert p { font-size: 13px; color: var(--gold-soft); line-height: 1.6; }
-
-/* ============================================================
-   MARKETS
-   ============================================================ */
-.markets { background: var(--cream); }
-.markets-inner { max-width: 1140px; margin: 0 auto; }
-.markets-head { margin-bottom: 50px; max-width: 560px; }
-.markets-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(148px, 1fr)); gap: 14px; }
-.m-card {
-  background: var(--white); border: 1px solid var(--line); border-radius: 14px;
-  padding: 26px 14px; text-align: center;
-  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-}
-.m-card:hover { border-color: var(--gold); transform: translateY(-3px); box-shadow: 0 10px 26px rgba(13,59,30,0.08); }
-.m-flag { font-size: 32px; margin-bottom: 10px; filter: saturate(1.1); }
-.m-name { font-weight: 600; font-size: 13.5px; color: var(--green); }
-.m-card.ww { border-style: dashed; border-color: rgba(201,162,39,0.4); }
-.m-card.ww .m-name { color: var(--muted); }
-
-/* ============================================================
-   ENQUIRY
-   ============================================================ */
-.enquiry { background: var(--green-deep); color: var(--white); position: relative; overflow: hidden; }
-.enquiry::before {
-  content: ''; position: absolute; bottom: -25%; left: -8%; width: 560px; height: 560px;
-  background: radial-gradient(circle, rgba(201,162,39,0.09) 0%, transparent 65%); pointer-events: none;
-}
-.enquiry-inner { max-width: 760px; margin: 0 auto; text-align: center; position: relative; }
-.enquiry .eyebrow { justify-content: center; }
-.enquiry .s-title { color: var(--white); }
-.enquiry .s-title .em { color: var(--gold-light); }
-.enquiry-sub { font-size: 17px; color: rgba(255,255,255,0.6); margin: 0 auto 46px; max-width: 500px; line-height: 1.7; }
-.form {
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(201,162,39,0.2);
-  border-radius: 18px; padding: clamp(24px, 4vw, 42px); text-align: left;
-}
-.row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
-.fg { display: flex; flex-direction: column; gap: 8px; }
-.fg.full { grid-column: span 2; }
-.fg label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.05em; }
-.fg input, .fg select, .fg textarea {
-  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 9px; padding: 13px 15px; color: var(--white);
-  font-family: 'Inter', sans-serif; font-size: 14px; outline: none; width: 100%;
-  transition: border-color 0.25s, background 0.25s, box-shadow 0.25s;
-}
-.fg input::placeholder, .fg textarea::placeholder { color: rgba(255,255,255,0.28); }
-.fg input:focus, .fg select:focus, .fg textarea:focus {
-  border-color: var(--gold); background: rgba(255,255,255,0.09);
-  box-shadow: 0 0 0 3px rgba(201,162,39,0.12);
-}
-.fg select option { background: var(--green); color: var(--white); }
-.fg textarea { resize: vertical; min-height: 104px; }
-.form-foot { margin-top: 28px; text-align: center; }
-.btn-submit {
-  background: var(--gold); color: var(--green-deep); border: none;
-  padding: 15px 50px; border-radius: 100px; font-family: 'Inter', sans-serif;
-  font-size: 16px; font-weight: 700; cursor: pointer; letter-spacing: 0.02em;
-  transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
-}
-.btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(201,162,39,0.3); }
-.btn-submit:disabled { opacity: 0.7; cursor: default; transform: none; box-shadow: none; }
-.form-note { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 12px; }
-.success {
-  display: none; background: rgba(46,125,79,0.18); border: 1px solid var(--gold);
-  border-radius: 10px; padding: 18px; color: var(--gold-soft); text-align: center;
-  font-size: 14px; margin-top: 18px;
-}
-.success.show { display: block; animation: fadeUp 0.5s ease forwards; }
-
-/* ============================================================
-   CONTACT + FOOTER
-   ============================================================ */
-.contact-bar {
-  background: #061F0C; border-top: 1px solid rgba(201,162,39,0.15); border-bottom: 1px solid rgba(201,162,39,0.15);
-  padding: 20px clamp(20px,5vw,64px);
-}
-.contact-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: center; gap: clamp(18px,4vw,52px); flex-wrap: wrap; }
-.contact-inner a, .contact-inner span { color: rgba(255,255,255,0.66); text-decoration: none; font-size: 13.5px; display: flex; align-items: center; gap: 8px; transition: color 0.25s; }
-.contact-inner a:hover { color: var(--gold-light); }
-.contact-inner .ci { color: var(--gold); }
-
-footer { background: #061F0C; padding: 46px clamp(20px,5vw,64px) 38px; text-align: center; }
-.f-logo { font-family: 'Fraunces', serif; font-size: 21px; font-weight: 600; color: var(--white); }
-.f-logo span { color: var(--gold); }
-.f-tag { font-size: 12px; color: rgba(255,255,255,0.32); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 7px; margin-bottom: 22px; }
-.f-links { display: flex; justify-content: center; gap: 26px; flex-wrap: wrap; margin-bottom: 22px; list-style: none; }
-.f-links a { color: rgba(255,255,255,0.45); text-decoration: none; font-size: 13px; transition: color 0.25s; }
-.f-links a:hover { color: var(--gold-light); }
-.f-copy { font-size: 11.5px; color: rgba(255,255,255,0.24); line-height: 1.6; }
-
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
-@media (max-width: 860px) {
-  .why-inner { grid-template-columns: 1fr; gap: 48px; }
-  .why-panel { max-width: 440px; }
-}
-@media (max-width: 760px) {
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .row { grid-template-columns: 1fr; }
-  .fg.full { grid-column: span 1; }
-}
-@media (max-width: 480px) {
-  .grid { grid-template-columns: 1fr; }
-  .markets-grid { grid-template-columns: repeat(2, 1fr); }
-  .stats-inner { gap: 18px; }
-  .stat { flex-basis: 40%; }
-}
-
-/* ============================================================
-   ARABIC / RTL SUPPORT
-   ============================================================ */
-[dir="rtl"] body { font-family: 'Cairo', 'Inter', sans-serif; }
-[dir="rtl"] .s-title,
-[dir="rtl"] .hero h1,
-[dir="rtl"] .f-logo,
-[dir="rtl"] .card-name,
-[dir="rtl"] .stat-num,
-[dir="rtl"] .why-box .n { font-family: 'Cairo', serif; }
-
-/* Flip eyebrow line */
-[dir="rtl"] .eyebrow { flex-direction: row-reverse; }
-[dir="rtl"] .eyebrow::before { display: none; }
-[dir="rtl"] .eyebrow::after { content: ''; width: 26px; height: 1.5px; background: var(--gold); display: inline-block; }
-
-/* Nav RTL */
-[dir="rtl"] nav { flex-direction: row-reverse; }
-[dir="rtl"] .nav-links { flex-direction: row-reverse; }
-[dir="rtl"] .nav-logo { flex-direction: row-reverse; }
-
-/* Lang toggle button */
-.lang-toggle {
-  background: transparent; border: 1.5px solid rgba(255,255,255,0.35);
-  color: rgba(255,255,255,0.85); padding: 7px 16px; border-radius: 100px;
-  font-family: 'Cairo', 'Inter', sans-serif; font-size: 13px; font-weight: 600;
-  cursor: pointer; transition: border-color 0.25s, color 0.25s, background 0.25s;
-  letter-spacing: 0.03em; white-space: nowrap; list-style: none;
-}
-.lang-toggle:hover { border-color: var(--gold); color: var(--gold-light); background: rgba(201,162,39,0.08); }
-
-/* Why list RTL */
-[dir="rtl"] .why-item { flex-direction: row-reverse; text-align: right; }
-[dir="rtl"] .why-list { text-align: right; }
-
-/* Cards RTL */
-[dir="rtl"] .card-body { text-align: right; }
-[dir="rtl"] .pills { justify-content: flex-end; }
-[dir="rtl"] .card-link { flex-direction: row-reverse; }
-[dir="rtl"] .card-link .arr { transform: scaleX(-1); }
-[dir="rtl"] .card:hover .card-link .arr { transform: scaleX(-1) translateX(-5px); }
-
-/* Form RTL */
-[dir="rtl"] .fg label { text-align: right; }
-[dir="rtl"] .fg input,
-[dir="rtl"] .fg select,
-[dir="rtl"] .fg textarea { text-align: right; direction: rtl; }
-
-/* Footer / contact RTL */
-[dir="rtl"] .contact-inner { flex-direction: row-reverse; }
-[dir="rtl"] .f-links { flex-direction: row-reverse; }
-
-/* Mobile menu RTL */
-[dir="rtl"] .mobile-menu { text-align: right; }
-[dir="rtl"] .mobile-menu a { text-align: right; }
-
-/* Markets RTL */
-[dir="rtl"] .markets-head { text-align: right; }
-[dir="rtl"] .s-sub { text-align: right; }
-
-/* Hero RTL */
-[dir="rtl"] .hero-content { text-align: center; }
-[dir="rtl"] .hero-actions { flex-direction: row-reverse; }
-[dir="rtl"] .btn-gold .arr { transform: scaleX(-1); }
-[dir="rtl"] .btn-gold:hover .arr { transform: scaleX(-1) translateX(-4px); }
-
-/* Stats RTL */
-[dir="rtl"] .stats-inner { flex-direction: row-reverse; }
-
-/* Smooth transition on language switch */
-body { transition: font-family 0.2s; }
-
+/* ── ARABIC RTL ── */
+[dir="rtl"] body{font-family:'Cairo','Inter',sans-serif}
+[dir="rtl"] .s-title,[dir="rtl"] .hero h1,[dir="rtl"] .f-logo,[dir="rtl"] .sector-name,[dir="rtl"] .step h3{font-family:'Cairo',serif}
+[dir="rtl"] nav{flex-direction:row-reverse}
+[dir="rtl"] .nav-links{flex-direction:row-reverse}
+[dir="rtl"] .nav-logo{flex-direction:row}
+[dir="rtl"] .eyebrow{flex-direction:row-reverse}
+[dir="rtl"] .eyebrow::before{display:none}
+[dir="rtl"] .eyebrow::after{content:'';width:26px;height:1.5px;background:var(--gold);display:inline-block}
+[dir="rtl"] .why-item{flex-direction:row-reverse;text-align:right}
+[dir="rtl"] .why-list{text-align:right}
+[dir="rtl"] .sector-body{text-align:right}
+[dir="rtl"] .sector-tags{justify-content:flex-end}
+[dir="rtl"] .sector-link{flex-direction:row-reverse}
+[dir="rtl"] .fg label{text-align:right}
+[dir="rtl"] .fg input,[dir="rtl"] .fg select,[dir="rtl"] .fg textarea{text-align:right;direction:rtl}
+[dir="rtl"] .contact-inner{flex-direction:row-reverse}
+[dir="rtl"] .f-links{flex-direction:row-reverse}
+[dir="rtl"] .mobile-menu a{text-align:right}
+[dir="rtl"] .step{text-align:center}
+[dir="rtl"] .wa-btn{right:auto;left:28px}
+[dir="rtl"] .wa-tooltip{right:auto;left:68px}
+[dir="rtl"] .wa-tooltip::after{right:auto;left:-6px;border-left:none;border-right-color:var(--green-deep);border-right-width:6px;border-right-style:solid}
 </style>
 </head>
 <body>
 
-<!-- ============ NAV ============ -->
+<!-- NAV -->
 <nav id="nav">
   <a href="index.html" class="nav-logo">
-    <span class="nav-logo-mark">AMS</span>
-    <span class="nav-logo-text">AMS <span>PRIME EGYPT</span></span>
+    <img src="images/ams-logo.png" alt="AMS Prime Egypt" class="nav-logo-img">
   </a>
   <ul class="nav-links">
-    <li><a href="#products" data-i18n="nav_products">Products</a></li>
-    <li><a href="#why" data-i18n="nav_why">Why Us</a></li>
+    <li><a href="#sectors" data-i18n="nav_sectors">Sectors</a></li>
+    <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+    <li><a href="#how" data-i18n="nav_how">How We Export</a></li>
     <li><a href="#markets" data-i18n="nav_markets">Markets</a></li>
     <li><a href="#enquiry" class="nav-cta" data-i18n="nav_cta">Get a Quote</a></li>
     <li><button class="lang-toggle" id="langBtn" onclick="toggleLang()">عربي</button></li>
@@ -527,176 +318,307 @@ body { transition: font-family 0.2s; }
   <div class="hamburger" id="burger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#products" onclick="toggleMenu()">Products</a>
-  <a href="#why" onclick="toggleMenu()">Why Us</a>
-  <a href="#markets" onclick="toggleMenu()">Markets</a>
-  <a href="#enquiry" onclick="toggleMenu()">Get a Quote</a>
+  <a href="#sectors" onclick="toggleMenu()" data-i18n="nav_sectors">Sectors</a>
+  <a href="about.html" onclick="toggleMenu()" data-i18n="nav_about">About Us</a>
+  <a href="#how" onclick="toggleMenu()" data-i18n="nav_how">How We Export</a>
+  <a href="#markets" onclick="toggleMenu()" data-i18n="nav_markets">Markets</a>
+  <a href="#enquiry" onclick="toggleMenu()" data-i18n="nav_cta">Get a Quote</a>
 </div>
 
-<!-- ============ HERO ============ -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-veil"></div>
   <div class="hero-grain"></div>
   <div class="hero-content">
-    <span class="hero-badge" data-i18n="hero_badge">🇪🇬 &nbsp;From the Land of Egypt&nbsp; 🌍</span>
+    <span class="hero-badge" data-i18n="hero_badge">🇪🇬 &nbsp;Egypt's Premier Export Company&nbsp; 🌍</span>
     <h1>
-      <span class="line" data-i18n="hero_line1">Premium Egyptian</span>
-      <span class="line"><span class="accent" data-i18n="hero_agro">Agro</span> <span data-i18n="hero_exports">Exports</span></span>
+      <span class="line" data-i18n="hero_line1">Exporting Egypt's</span>
+      <span class="line"><span class="accent" data-i18n="hero_accent">Finest</span> <span data-i18n="hero_line2">to the World</span></span>
     </h1>
     <p class="hero-sub" data-i18n="hero_sub">AMS Prime Egypt &nbsp;·&nbsp; For Trading and Export</p>
-    <p class="hero-desc"><span data-i18n="hero_desc">We source certified, lab-tested agricultural products from Egyptian farms and deliver them to buyers across the Gulf and beyond. Quality you can verify. Supply you can rely on.</span></p>
+    <p class="hero-desc" data-i18n="hero_desc">From premium agricultural products to confectionery, beverages and more. We source the best of Egypt and deliver it to buyers across the Gulf and beyond.</p>
     <div class="hero-actions">
-      <a href="#products" class="btn-gold"><span data-i18n="btn_products">View Products</span> <span class="arr">→</span></a>
+      <a href="#sectors" class="btn-gold"><span data-i18n="btn_sectors">View Our Sectors</span> <span class="arr">→</span></a>
       <a href="#enquiry" class="btn-ghost" data-i18n="btn_quote">Request a Quote</a>
     </div>
   </div>
-  <div class="hero-scroll">
-    <div class="mouse"></div>
-    Scroll
-  </div>
+  <div class="hero-scroll"><div class="mouse"></div>Scroll</div>
 </section>
 
-<!-- ============ STATS ============ -->
+<!-- STATS -->
 <div class="stats">
   <div class="stats-inner">
-    <div class="stat"><span class="stat-num" data-count="100" data-suffix="%">100%</span><span class="stat-label" data-i18n="stat_lab">Lab-Certified Quality</span></div>
+    <div class="stat"><span class="stat-num">4</span><span class="stat-label" data-i18n="stat_sectors">Export Sectors</span></div>
     <div class="stat"><span class="stat-num">EGAC</span><span class="stat-label" data-i18n="stat_testing">Accredited Testing</span></div>
     <div class="stat"><span class="stat-num">GCC</span><span class="stat-label" data-i18n="stat_market">Primary Market</span></div>
-    <div class="stat"><span class="stat-num" data-count="0" data-suffix="%">0%</span><span class="stat-label" data-i18n="stat_impurities">Impurities</span></div>
-    <div class="stat"><span class="stat-num">ISO</span><span class="stat-label" data-i18n="stat_methods">Certified Methods</span></div>
+    <div class="stat"><span class="stat-num">100%</span><span class="stat-label" data-i18n="stat_certified">Certified Quality</span></div>
+    <div class="stat"><span class="stat-num">ISO</span><span class="stat-label" data-i18n="stat_methods">Test Methods</span></div>
   </div>
 </div>
 
-<!-- ============ PRODUCTS ============ -->
-<section class="products" id="products">
-  <div class="products-head">
-    <p class="eyebrow reveal" data-i18n="products_eyebrow">What We Supply</p>
-    <h2 class="s-title reveal" data-delay="1"><span data-i18n="products_title_1">Our</span> <span class="em" data-i18n="products_title_2">Product</span> <span data-i18n="products_title_3">Range</span></h2>
-    <p class="s-sub reveal" data-delay="2"><span data-i18n="products_sub">Sourced directly from Egyptian producers, tested to international standards, and exported with full documentation.</span></p>
+<!-- SECTORS -->
+<section class="sectors" id="sectors">
+  <div class="sectors-head">
+    <p class="eyebrow reveal" data-i18n="sectors_eyebrow">What We Export</p>
+    <h2 class="s-title reveal" data-delay="1"><span data-i18n="sectors_title1">Our Export</span> <span class="em" data-i18n="sectors_title2">Sectors</span></h2>
+    <p class="s-sub reveal" data-delay="2" data-i18n="sectors_sub">Premium Egyptian products across multiple sectors, all lab-certified, fully documented, and ready for GCC distribution.</p>
   </div>
-  <div class="grid">
+  <div class="sectors-grid">
 
-    <!-- ALFALFA — image keyword: alfalfa hay field -->
-    <a class="card reveal" href="alfalfa.html">
-      <div class="card-img">
-        <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=640&q=78&auto=format&fit=crop" alt="Alfalfa hay field at sunrise" loading="lazy">
-        <span class="badge now" data-i18n="badge_now">Available Now</span>
+    <!-- ANIMAL FEED -->
+    <a class="sector-card reveal" href="animal-feed.html">
+      <div class="sector-img sector-illus" style="background:linear-gradient(135deg,#0a3018 0%,#1a5c32 100%)">
+        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0">
+          <!-- Ground -->
+          <rect x="0" y="140" width="320" height="60" fill="rgba(0,0,0,0.25)" rx="0"/>
+          <!-- Hay bale 1 -->
+          <rect x="30" y="90" width="80" height="58" rx="10" fill="#C9A227" opacity="0.9"/>
+          <rect x="36" y="90" width="68" height="58" rx="8" fill="none" stroke="#E8C76A" stroke-width="2.5" opacity="0.7"/>
+          <line x1="70" y1="90" x2="70" y2="148" stroke="#E8C76A" stroke-width="2" opacity="0.5"/>
+          <!-- Hay bale 2 -->
+          <rect x="125" y="82" width="80" height="66" rx="10" fill="#B8911F" opacity="0.95"/>
+          <rect x="131" y="82" width="68" height="66" rx="8" fill="none" stroke="#E8C76A" stroke-width="2.5" opacity="0.7"/>
+          <line x1="165" y1="82" x2="165" y2="148" stroke="#E8C76A" stroke-width="2" opacity="0.5"/>
+          <!-- Hay bale 3 -->
+          <rect x="220" y="95" width="74" height="53" rx="10" fill="#C9A227" opacity="0.85"/>
+          <rect x="226" y="95" width="62" height="53" rx="8" fill="none" stroke="#E8C76A" stroke-width="2.5" opacity="0.6"/>
+          <!-- Wheat stalks background -->
+          <g opacity="0.35" stroke="#90C060" stroke-width="2" fill="none">
+            <line x1="260" y1="140" x2="255" y2="50"/><ellipse cx="255" cy="48" rx="7" ry="14" fill="#90C060" stroke="none"/>
+            <line x1="280" y1="140" x2="278" y2="45"/><ellipse cx="278" cy="43" rx="7" ry="14" fill="#90C060" stroke="none"/>
+            <line x1="295" y1="140" x2="298" y2="55"/><ellipse cx="298" cy="53" rx="7" ry="14" fill="#90C060" stroke="none"/>
+          </g>
+          <!-- Stars/sparkles -->
+          <circle cx="200" cy="40" r="2" fill="#E8C76A" opacity="0.6"/>
+          <circle cx="90" cy="60" r="1.5" fill="#E8C76A" opacity="0.5"/>
+          <circle cx="140" cy="30" r="2" fill="#E8C76A" opacity="0.4"/>
+        </svg>
+        <span class="sector-badge" data-i18n="badge_active">Active</span>
+        <span class="sector-icon">🌾</span>
       </div>
-      <div class="card-body">
-        <h3 class="card-name" data-i18n="p1_name">Alfalfa Hay</h3>
-        <p class="card-desc" data-i18n="p1_desc">Premium Egyptian alfalfa in single and double press. Lab-certified protein, zero impurities, pesticide-free. Bale sizes from 18 kg to 750 kg.</p>
-        <div class="pills">
-          <span class="pill">Protein 22.3%</span>
-          <span class="pill">Moisture 6%</span>
-          <span class="pill">0% Impurities</span>
+      <div class="sector-body">
+        <h3 class="sector-name" data-i18n="s1_name">Animal Feed &amp; Agriculture</h3>
+        <p class="sector-desc" data-i18n="s1_desc">Premium Egyptian alfalfa hay, wheat hay, barley, cotton seed and horse feed. Lab-certified protein at 22.3%, zero impurities, EGAC-accredited COA per shipment.</p>
+        <div class="sector-tags">
+          <span class="sector-tag" data-i18n="tag_alfalfa">Alfalfa Hay</span>
+          <span class="sector-tag" data-i18n="tag_barley">Barley / Malt</span>
+          <span class="sector-tag" data-i18n="tag_wheat">Wheat Hay</span>
+          <span class="sector-tag" data-i18n="tag_cotton">Cotton Seed</span>
+          <span class="sector-tag" data-i18n="tag_horse">Horse Feed</span>
         </div>
-        <span class="card-link"><span data-i18n="link_specs">View Specifications</span> <span class="arr">→</span></span>
+        <span class="sector-link"><span data-i18n="link_explore">Explore Products</span> <span class="arr">→</span></span>
       </div>
     </a>
 
-    <!-- WHEAT HAY — wheat field landscape (dried plant / hay look) -->
-    <a class="card reveal" data-delay="1" href="wheat.html">
-      <div class="card-img">
-        <img src="https://images.unsplash.com/photo-1619277418608-a8e7a0d4fa35?w=640&q=78&auto=format&fit=crop" alt="Wheat hay straw bales in a field" loading="lazy"
-             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1606154358545-f9919f595a3a?w=640&q=78&auto=format&fit=crop';">
-        <span class="badge soon" data-i18n="badge_soon">Coming Soon</span>
+    <!-- CONFECTIONERY -->
+    <a class="sector-card reveal" data-delay="1" href="confectionery.html">
+      <div class="sector-img sector-illus" style="background:linear-gradient(135deg,#1a1040 0%,#2d1a6e 100%)">
+        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0">
+          <!-- Chocolate bar base -->
+          <rect x="80" y="55" width="160" height="110" rx="14" fill="#4a2800" opacity="0.9"/>
+          <rect x="80" y="55" width="160" height="110" rx="14" fill="none" stroke="#C9A227" stroke-width="2.5" opacity="0.7"/>
+          <!-- Chocolate segments -->
+          <line x1="133" y1="55" x2="133" y2="165" stroke="#C9A227" stroke-width="2" opacity="0.4"/>
+          <line x1="187" y1="55" x2="187" y2="165" stroke="#C9A227" stroke-width="2" opacity="0.4"/>
+          <line x1="80" y1="110" x2="240" y2="110" stroke="#C9A227" stroke-width="2" opacity="0.4"/>
+          <!-- Kunafa swirl on top center segment -->
+          <g transform="translate(107,72)">
+            <path d="M13,18 Q5,10 13,2 Q21,10 13,18" fill="#C9A227" opacity="0.8"/>
+            <path d="M13,20 Q2,12 7,2 Q15,5 13,20" fill="#E8C76A" opacity="0.5"/>
+            <circle cx="13" cy="11" r="4" fill="#E8C76A" opacity="0.6"/>
+          </g>
+          <!-- Gold stars -->
+          <g fill="#E8C76A" opacity="0.7">
+            <polygon points="50,45 53,55 63,55 55,61 58,71 50,65 42,71 45,61 37,55 47,55" transform="scale(0.5) translate(40,30)"/>
+            <polygon points="270,30 272,37 279,37 273,41 276,48 270,44 264,48 267,41 261,37 268,37" transform="scale(0.5) translate(260,10)"/>
+          </g>
+          <!-- Mountain logo hint top -->
+          <g opacity="0.25" transform="translate(110,15)">
+            <polyline points="0,30 25,5 50,20 75,0 100,25 100,30 0,30" fill="#C9A227" stroke="none"/>
+          </g>
+          <text x="160" y="190" text-anchor="middle" font-family="serif" font-size="11" fill="#C9A227" opacity="0.6" letter-spacing="3">SWISSFRU</text>
+        </svg>
+        <span class="sector-badge soon" data-i18n="badge_launching">Launching</span>
+        <span class="sector-icon">🍫</span>
       </div>
-      <div class="card-body">
-        <h3 class="card-name" data-i18n="wheat_title">Wheat Hay</h3>
-        <p class="card-desc" data-i18n="p2_desc">Egyptian wheat hay for livestock feed across the GCC. Whole dried plant, baled and ready for export. Grades, volumes and pricing confirmed on request.</p>
-        <div class="pills">
-          <span class="pill">Feed Grade</span>
-          <span class="pill">Egypt Origin</span>
-          <span class="pill">Bulk Supply</span>
+      <div class="sector-body">
+        <h3 class="sector-name" data-i18n="s2_name">Confectionery</h3>
+        <p class="sector-desc" data-i18n="s2_desc">SwissFru — premium Egyptian kunafa pastry embedded in high-quality chocolate. Halal-certified. A first-of-its-kind product bridging Egyptian heritage with modern gifting.</p>
+        <div class="sector-tags">
+          <span class="sector-tag" data-i18n="tag_swissfru">SwissFru Chocolate</span>
+          <span class="sector-tag" data-i18n="tag_halal">Halal Certified</span>
+          <span class="sector-tag" data-i18n="tag_gifting">Premium Gifting</span>
         </div>
-        <span class="card-link"><span data-i18n="link_register">Register Interest</span> <span class="arr">→</span></span>
+        <span class="sector-link"><span data-i18n="link_register">Register Interest</span> <span class="arr">→</span></span>
       </div>
     </a>
 
-    <!-- BARLEY — grain close-up (barley grain / malt) -->
-    <a class="card reveal" data-delay="2" href="barley.html">
-      <div class="card-img">
-        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=640&q=78&auto=format&fit=crop" alt="Barley grain" loading="lazy"
-             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1536657464919-892534f60d6e?w=640&q=78&auto=format&fit=crop';">
-        <span class="badge soon">Coming Soon</span>
+    <!-- BEVERAGES -->
+    <a class="sector-card reveal" data-delay="2" href="beverages.html">
+      <div class="sector-img sector-illus" style="background:linear-gradient(135deg,#1a0a0a 0%,#3d1515 100%)">
+        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0">
+          <!-- Red Bull can -->
+          <rect x="80" y="40" width="52" height="120" rx="10" fill="#c0392b" opacity="0.9"/>
+          <rect x="80" y="40" width="52" height="120" rx="10" fill="none" stroke="#e74c3c" stroke-width="1.5" opacity="0.5"/>
+          <rect x="83" y="55" width="46" height="40" rx="3" fill="#fff" opacity="0.12"/>
+          <text x="106" y="78" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#fff" font-weight="bold" opacity="0.9">RED BULL</text>
+          <ellipse cx="106" cy="42" rx="26" ry="5" fill="#888" opacity="0.5"/>
+          <ellipse cx="106" cy="158" rx="26" ry="5" fill="#555" opacity="0.4"/>
+          <!-- Coffee cup -->
+          <g transform="translate(165,55)">
+            <path d="M0,20 L10,90 L70,90 L80,20 Z" fill="#6F4E37" rx="4" opacity="0.9"/>
+            <path d="M0,20 L10,90 L70,90 L80,20 Z" fill="none" stroke="#C9A227" stroke-width="2" opacity="0.6"/>
+            <rect x="-5" y="18" width="90" height="10" rx="5" fill="#5a3e2b" opacity="0.9"/>
+            <!-- Coffee steam -->
+            <path d="M25,10 Q30,0 25,-10" fill="none" stroke="#fff" stroke-width="2" opacity="0.3" stroke-linecap="round"/>
+            <path d="M40,8 Q45,-2 40,-12" fill="none" stroke="#fff" stroke-width="2" opacity="0.25" stroke-linecap="round"/>
+            <path d="M55,10 Q60,0 55,-10" fill="none" stroke="#fff" stroke-width="2" opacity="0.2" stroke-linecap="round"/>
+            <!-- Nescafe label hint -->
+            <text x="40" y="58" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#E8C76A" opacity="0.7" font-weight="bold">CAFÉ</text>
+          </g>
+          <!-- Sparkle dots -->
+          <circle cx="50" cy="50" r="2" fill="#E8C76A" opacity="0.5"/>
+          <circle cx="285" cy="80" r="1.5" fill="#E8C76A" opacity="0.4"/>
+          <circle cx="270" cy="140" r="2" fill="#E8C76A" opacity="0.35"/>
+        </svg>
+        <span class="sector-badge soon" data-i18n="badge_launching">Launching</span>
+        <span class="sector-icon">☕</span>
       </div>
-      <div class="card-body">
-        <h3 class="card-name" data-i18n="p3_name">Barley / Malt</h3>
-        <p class="card-desc" data-i18n="p3_desc">Feed-grade Egyptian barley grain for livestock and poultry. Consistent quality and reliable volumes. Test container available for new buyers.</p>
-        <div class="pills">
-          <span class="pill">Feed Grade</span>
-          <span class="pill">Bulk Supply</span>
-          <span class="pill">GCC Ready</span>
+      <div class="sector-body">
+        <h3 class="sector-name" data-i18n="s3_name">Beverages &amp; Coffee</h3>
+        <p class="sector-desc" data-i18n="s3_desc">Egyptian café-grade coffee and energy drinks including Red Bull manufactured in Egypt. Premium beverages for GCC distribution, retail and hospitality channels.</p>
+        <div class="sector-tags">
+          <span class="sector-tag" data-i18n="tag_coffee">Egyptian Coffee</span>
+          <span class="sector-tag" data-i18n="tag_redbull">Red Bull Egypt</span>
+          <span class="sector-tag" data-i18n="tag_beverages">Beverages</span>
         </div>
-        <span class="card-link"><span data-i18n="link_register">Register Interest</span> <span class="arr">→</span></span>
+        <span class="sector-link"><span data-i18n="link_register">Register Interest</span> <span class="arr">→</span></span>
       </div>
     </a>
 
-    <!-- COTTON SEED — cotton field / bolls -->
-    <a class="card reveal" data-delay="3" href="cottonseed.html">
-      <div class="card-img">
-        <img src="https://images.unsplash.com/photo-1502395809857-fd80069897d0?w=640&q=78&auto=format&fit=crop" alt="Cotton field" loading="lazy"
-             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?w=640&q=78&auto=format&fit=crop';">
-        <span class="badge soon">Coming Soon</span>
+    <!-- CLEANING SUPPLIES -->
+    <a class="sector-card reveal" data-delay="3" href="cleaning.html">
+      <div class="sector-img sector-illus" style="background:linear-gradient(135deg,#0a2030 0%,#0d3d5c 100%)">
+        <svg viewBox="0 0 320 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0">
+          <!-- Spray bottle -->
+          <g transform="translate(90,25)">
+            <rect x="30" y="40" width="46" height="110" rx="10" fill="#1a6ea8" opacity="0.9"/>
+            <rect x="30" y="40" width="46" height="110" rx="10" fill="none" stroke="#4db8ff" stroke-width="1.5" opacity="0.5"/>
+            <!-- Pump head -->
+            <rect x="20" y="20" width="30" height="28" rx="6" fill="#0d4f7a" opacity="0.9"/>
+            <rect x="0" y="28" width="32" height="10" rx="5" fill="#0d4f7a" opacity="0.9"/>
+            <!-- Label -->
+            <rect x="34" y="60" width="38" height="50" rx="4" fill="#fff" opacity="0.12"/>
+            <!-- Spray particles -->
+            <circle cx="-15" cy="30" r="3" fill="#4db8ff" opacity="0.6"/>
+            <circle cx="-25" cy="22" r="2" fill="#4db8ff" opacity="0.5"/>
+            <circle cx="-8" cy="18" r="2.5" fill="#4db8ff" opacity="0.45"/>
+            <circle cx="-30" cy="35" r="1.5" fill="#4db8ff" opacity="0.4"/>
+            <circle cx="-18" cy="12" r="2" fill="#4db8ff" opacity="0.35"/>
+          </g>
+          <!-- Bottle 2 -->
+          <g transform="translate(175,45)">
+            <rect x="0" y="0" width="40" height="100" rx="12" fill="#0d7a5e" opacity="0.85"/>
+            <rect x="12" y="-8" width="16" height="15" rx="4" fill="#0a5e49" opacity="0.9"/>
+            <rect x="3" y="20" width="34" height="40" rx="4" fill="#fff" opacity="0.1"/>
+          </g>
+          <!-- Bubbles -->
+          <circle cx="240" cy="80" r="8" fill="none" stroke="#4db8ff" stroke-width="1.5" opacity="0.4"/>
+          <circle cx="260" cy="55" r="5" fill="none" stroke="#4db8ff" stroke-width="1.5" opacity="0.35"/>
+          <circle cx="250" cy="110" r="6" fill="none" stroke="#4db8ff" stroke-width="1.5" opacity="0.3"/>
+          <circle cx="270" cy="130" r="4" fill="none" stroke="#4db8ff" stroke-width="1.5" opacity="0.25"/>
+          <!-- Sparkle -->
+          <circle cx="60" cy="60" r="2" fill="#C9A227" opacity="0.5"/>
+          <circle cx="280" cy="50" r="1.5" fill="#C9A227" opacity="0.4"/>
+        </svg>
+        <span class="sector-badge soon" data-i18n="badge_launching">Launching</span>
+        <span class="sector-icon">🧴</span>
       </div>
-      <div class="card-body">
-        <h3 class="card-name" data-i18n="p4_name">Cotton Seed</h3>
-        <p class="card-desc" data-i18n="p4_desc">Egyptian cotton seed for export, with initial volumes from 100 metric tons. Specifications and pricing being finalised with our supply partners.</p>
-        <div class="pills">
-          <span class="pill">100 MT Available</span>
-          <span class="pill">Egypt Origin</span>
-          <span class="pill">GCC Ready</span>
+      <div class="sector-body">
+        <h3 class="sector-name" data-i18n="s4_name">Cleaning Supplies</h3>
+        <p class="sector-desc" data-i18n="s4_desc">Egyptian-manufactured cleaning and hygiene products for commercial and household distribution across the GCC. Details and product range coming soon.</p>
+        <div class="sector-tags">
+          <span class="sector-tag" data-i18n="tag_hygiene">Hygiene Products</span>
+          <span class="sector-tag" data-i18n="tag_commercial">Commercial Grade</span>
+          <span class="sector-tag" data-i18n="tag_egypt_made">Made in Egypt</span>
         </div>
-        <span class="card-link"><span data-i18n="link_register">Register Interest</span> <span class="arr">→</span></span>
-      </div>
-    </a>
-
-    <!-- HORSE FEED — image keyword: horse -->
-    <a class="card reveal" data-delay="4" href="horsefeed.html">
-      <div class="card-img">
-        <img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=640&q=78&auto=format&fit=crop" alt="Horse in a green pasture" loading="lazy">
-        <span class="badge soon">Coming Soon</span>
-      </div>
-      <div class="card-body">
-        <h3 class="card-name" data-i18n="p5_name">Horse Feed</h3>
-        <p class="card-desc" data-i18n="p5_desc">Premium hay and feed blends suited for equestrian operations across the GCC. Specifications being confirmed with our Egyptian supply partners.</p>
-        <div class="pills">
-          <span class="pill">Equestrian Grade</span>
-          <span class="pill">GCC Stables</span>
-          <span class="pill">Egypt Origin</span>
-        </div>
-        <span class="card-link"><span data-i18n="link_register">Register Interest</span> <span class="arr">→</span></span>
+        <span class="sector-link"><span data-i18n="link_register">Register Interest</span> <span class="arr">→</span></span>
       </div>
     </a>
 
   </div>
 </section>
 
-<!-- ============ WHY US ============ -->
+<!-- ABOUT TEASER -->
+<section class="about-teaser">
+  <div class="about-inner">
+    <div class="reveal">
+      <p class="eyebrow" data-i18n="about_eyebrow">Who We Are</p>
+      <h2 class="s-title"><span data-i18n="about_title1">Egypt's</span> <span class="em" data-i18n="about_title2">Multi-Sector</span> <br><span data-i18n="about_title3">Export Partner</span></h2>
+      <p class="about-desc" data-i18n="about_desc">AMS Prime Egypt For Trading and Export is a registered Egyptian company connecting the GCC with the highest quality Egyptian products across agriculture, food, beverages and consumer goods. We handle everything from sourcing and laboratory certification to export documentation and logistics.</p>
+      <div class="about-stats">
+        <div class="a-stat"><span class="n">EGAC</span><span class="l" data-i18n="about_stat1">Accredited Lab</span></div>
+        <div class="a-stat"><span class="n">GCC</span><span class="l" data-i18n="about_stat2">Primary Market</span></div>
+        <div class="a-stat"><span class="n">4+</span><span class="l" data-i18n="about_stat3">Export Sectors</span></div>
+        <div class="a-stat"><span class="n">ISO</span><span class="l" data-i18n="about_stat4">Test Methods</span></div>
+      </div>
+      <a href="about.html" class="btn-outline-gold" data-i18n="about_btn">Learn More About Us →</a>
+    </div>
+    <div class="about-cred-panel reveal" data-delay="2">
+      <div class="cred-item"><div class="cred-icon">🌿</div><div><strong>Animal Feed</strong><p>Alfalfa, wheat hay, barley, cotton seed and horse feed</p></div></div>
+      <div class="cred-item"><div class="cred-icon">🍫</div><div><strong>Confectionery</strong><p>SwissFru kunafa chocolate — Halal certified</p></div></div>
+      <div class="cred-item"><div class="cred-icon">☕</div><div><strong>Beverages</strong><p>Egyptian coffee and Red Bull for GCC distribution</p></div></div>
+      <div class="cred-item"><div class="cred-icon">🧴</div><div><strong>Cleaning Supplies</strong><p>Egyptian-manufactured hygiene products</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW WE EXPORT -->
+<section class="how" id="how">
+  <div class="how-inner">
+    <div class="how-head">
+      <p class="eyebrow reveal" data-i18n="how_eyebrow">Simple &amp; Transparent</p>
+      <h2 class="s-title reveal" data-delay="1"><span data-i18n="how_title1">How We</span> <span class="em" data-i18n="how_title2">Export</span></h2>
+      <p class="s-sub reveal" data-delay="2" data-i18n="how_sub">A clear four-step process from sourcing to delivery, fully documented at every stage.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal">
+        <div class="step-num"><span>1</span><span class="step-icon">🔍</span></div>
+        <h3 data-i18n="step1_title">Source &amp; Verify</h3>
+        <p data-i18n="step1_desc">We source directly from Egyptian producers and manufacturers, verifying quality standards before any commitment.</p>
+      </div>
+      <div class="step reveal" data-delay="1">
+        <div class="step-num"><span>2</span><span class="step-icon">🔬</span></div>
+        <h3 data-i18n="step2_title">Certify &amp; Test</h3>
+        <p data-i18n="step2_desc">Every product is tested by EGAC-accredited laboratories. Full COA, phytosanitary and origin certificates prepared.</p>
+      </div>
+      <div class="step reveal" data-delay="2">
+        <div class="step-num"><span>3</span><span class="step-icon">📦</span></div>
+        <h3 data-i18n="step3_title">Document &amp; Clear</h3>
+        <p data-i18n="step3_desc">We handle all export documentation, customs clearance and compliance with Egyptian export regulations.</p>
+      </div>
+      <div class="step reveal" data-delay="3">
+        <div class="step-num"><span>4</span><span class="step-icon">🚢</span></div>
+        <h3 data-i18n="step4_title">Ship &amp; Deliver</h3>
+        <p data-i18n="step4_desc">Land freight via Saudi Arabia or sea freight to your nearest GCC port, with full cargo insurance on every shipment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
 <section class="why" id="why">
   <div class="why-inner">
     <div class="reveal">
       <p class="eyebrow" data-i18n="why_eyebrow">Why Work With Us</p>
-      <h2 class="s-title"><span data-i18n="why_title_1">A Trusted</span> <span class="em" data-i18n="why_title_2">Egyptian</span> <span data-i18n="why_title_3">Source</span></h2>
+      <h2 class="s-title"><span data-i18n="why_title1">A Trusted</span> <span class="em" data-i18n="why_title2">Egyptian</span> <span data-i18n="why_title3">Source</span></h2>
       <p class="why-desc" data-i18n="why_desc">We operate on the ground in Egypt, working directly with producers and cutting out unnecessary intermediaries. Every shipment ships with full documentation and independently verified lab results.</p>
       <ul class="why-list">
-        <li class="why-item">
-          <div class="why-ic">🔬</div>
-          <div><p class="why-h" data-i18n="why_h1">Lab-Tested Every Shipment</p><p class="why-p" data-i18n="why_p1">Full COA from EGAC-accredited ACERTA Middle East covering aflatoxin, protein, moisture, pesticide residues and microbiology.</p></div>
-        </li>
-        <li class="why-item">
-          <div class="why-ic">⚡</div>
-          <div><p class="why-h" data-i18n="why_h2">Direct from Egypt</p><p class="why-p" data-i18n="why_p2">Sourced straight from producers for faster turnaround, competitive pricing and full supply-chain transparency.</p></div>
-        </li>
-        <li class="why-item">
-          <div class="why-ic">📋</div>
-          <div><p class="why-h" data-i18n="why_h3">Complete Export Documentation</p><p class="why-p" data-i18n="why_p3">COA, phytosanitary certificates, certificate of origin and all customs paperwork coordinated from our end.</p></div>
-        </li>
-        <li class="why-item">
-          <div class="why-ic">🤝</div>
-          <div><p class="why-h" data-i18n="why_h4">Long-Term Partnership Focus</p><p class="why-p" data-i18n="why_p4">We build ongoing relationships, not one-off deals. Consistent quality and honest communication is how we work.</p></div>
-        </li>
+        <li class="why-item"><div class="why-ic">🔬</div><div><p class="why-h" data-i18n="why_h1">Lab-Tested Every Shipment</p><p class="why-p" data-i18n="why_p1">Full COA from EGAC-accredited ACERTA Middle East covering aflatoxin, protein, moisture, pesticide residues and microbiology.</p></div></li>
+        <li class="why-item"><div class="why-ic">⚡</div><div><p class="why-h" data-i18n="why_h2">Direct from Egypt</p><p class="why-p" data-i18n="why_p2">Sourced straight from producers for faster turnaround, competitive pricing and full supply-chain transparency.</p></div></li>
+        <li class="why-item"><div class="why-ic">📋</div><div><p class="why-h" data-i18n="why_h3">Complete Export Documentation</p><p class="why-p" data-i18n="why_p3">COA, phytosanitary certificates, certificate of origin and all customs paperwork coordinated from our end.</p></div></li>
+        <li class="why-item"><div class="why-ic">🤝</div><div><p class="why-h" data-i18n="why_h4">Long-Term Partnership Focus</p><p class="why-p" data-i18n="why_p4">We build ongoing relationships, not one-off deals. Consistent quality and honest communication is how we work.</p></div></li>
       </ul>
     </div>
     <div class="why-panel reveal" data-delay="2">
@@ -704,15 +626,12 @@ body { transition: font-family 0.2s; }
       <div class="why-box"><span class="n">GCC</span><span class="l" data-i18n="why_box2">Primary Market</span></div>
       <div class="why-box"><span class="n">100%</span><span class="l" data-i18n="why_box3">Natural</span></div>
       <div class="why-box"><span class="n">ISO</span><span class="l" data-i18n="why_box4">Test Methods</span></div>
-      <div class="why-cert">
-        <strong data-i18n="why_cert_title">Registered Egyptian Export Company</strong>
-        <p data-i18n="why_cert_body">AMS Prime Egypt For Trading and Export is a registered Egyptian company (Trade Name Reg. No. 8272768, Cairo Investment Office), with full legal accountability for every shipment.</p>
-      </div>
+      <div class="why-cert"><strong data-i18n="why_cert_title">Registered Egyptian Export Company</strong><p data-i18n="why_cert_body">AMS Prime Egypt For Trading and Export is a registered Egyptian company (Trade Name Reg. No. 8272768, Cairo Investment Office) with full legal accountability for every shipment.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ============ MARKETS ============ -->
+<!-- MARKETS -->
 <section class="markets" id="markets">
   <div class="markets-inner">
     <div class="markets-head">
@@ -732,12 +651,12 @@ body { transition: font-family 0.2s; }
   </div>
 </section>
 
-<!-- ============ ENQUIRY ============ -->
+<!-- ENQUIRY -->
 <section class="enquiry" id="enquiry">
   <div class="enquiry-inner">
     <p class="eyebrow reveal" data-i18n="enquiry_eyebrow">Get in Touch</p>
     <h2 class="s-title reveal" data-delay="1"><span data-i18n="enquiry_title1">Request a</span> <span class="em" data-i18n="enquiry_title2">Quote</span></h2>
-    <p class="enquiry-sub reveal" data-delay="2"><span data-i18n="enquiry_sub">Tell us what you need and where you're shipping to. We respond within 24 hours.</span></p>
+    <p class="enquiry-sub reveal" data-delay="2" data-i18n="enquiry_sub">Tell us what you need and where you're shipping to. We respond within 24 hours.</p>
     <div class="form reveal" data-delay="2">
       <div class="row">
         <div class="fg"><label data-i18n="form_name">Full Name</label><input type="text" id="fname" placeholder="Your name"></div>
@@ -749,17 +668,29 @@ body { transition: font-family 0.2s; }
       </div>
       <div class="row">
         <div class="fg">
-          <label data-i18n="form_product">Product Required</label>
+          <label data-i18n="form_sector">Sector / Product</label>
           <select id="fproduct">
-            <option value="" disabled selected>Select a product</option>
-            <option>Alfalfa — Single Press</option>
-            <option>Alfalfa — Double Press</option>
-            <option>Wheat Hay</option>
-            <option>Barley / Malt</option>
-            <option>Cotton Seed</option>
-            <option>Horse Feed</option>
-            <option>Multiple Products</option>
-            <option>Other</option>
+            <option value="" disabled selected>Select sector or product</option>
+            <optgroup label="Animal Feed &amp; Agriculture">
+              <option>Alfalfa — Single Press</option>
+              <option>Alfalfa — Double Press</option>
+              <option>Wheat Hay</option>
+              <option>Barley / Malt</option>
+              <option>Cotton Seed</option>
+              <option>Horse Feed</option>
+            </optgroup>
+            <optgroup label="Confectionery">
+              <option>SwissFru Chocolate (Kunafa)</option>
+            </optgroup>
+            <optgroup label="Beverages">
+              <option>Egyptian Coffee</option>
+              <option>Red Bull (Egypt)</option>
+              <option>Other Beverages</option>
+            </optgroup>
+            <optgroup label="Cleaning Supplies">
+              <option>Cleaning &amp; Hygiene Products</option>
+            </optgroup>
+            <option>Multiple Products / Other</option>
           </select>
         </div>
         <div class="fg">
@@ -780,19 +711,19 @@ body { transition: font-family 0.2s; }
       <div class="form-foot">
         <div style="display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;text-align:left">
           <input type="checkbox" id="fConsent" style="width:16px;height:16px;margin-top:3px;accent-color:var(--gold);flex-shrink:0;cursor:pointer">
-          <label for="fConsent" style="font-size:12.5px;color:rgba(255,255,255,0.65);line-height:1.55;cursor:pointer">
-            I consent to AMS Prime Egypt collecting and storing the information above to respond to my enquiry, in accordance with the <a href="privacy.html" target="_blank" style="color:var(--gold-light);text-decoration:underline">Privacy Policy</a>. I understand my data will not be sold or used for marketing.
+          <label for="fConsent" style="font-size:12.5px;color:rgba(255,255,255,.65);line-height:1.55;cursor:pointer">
+            I consent to AMS Prime Egypt collecting the information above to respond to my enquiry, per the <a href="privacy.html" target="_blank" style="color:var(--gold-light);text-decoration:underline">Privacy Policy</a>.
           </label>
         </div>
         <button class="btn-submit" id="submitBtn" onclick="submitForm()"><span data-i18n="form_submit">Send Enquiry</span></button>
-        <p class="form-note">We respond within 24 hours &nbsp;·&nbsp; info@amsprimeegypt.com &nbsp;·&nbsp; <a href="privacy.html" target="_blank" style="color:rgba(255,255,255,0.45)">Privacy Policy</a></p>
+        <p class="form-note">We respond within 24 hours &nbsp;·&nbsp; <a href="privacy.html" target="_blank" style="color:rgba(255,255,255,.45)">Privacy Policy</a></p>
       </div>
-      <div class="success" id="success">Thank you — your enquiry has been noted. We'll be in touch within 24 hours.</div>
+      <div class="success" id="success">Thank you — your enquiry has been received. We'll be in touch within 24 hours.</div>
     </div>
   </div>
 </section>
 
-<!-- ============ CONTACT BAR ============ -->
+<!-- CONTACT BAR -->
 <div class="contact-bar">
   <div class="contact-inner">
     <a href="mailto:info@amsprimeegypt.com"><span class="ci">✉</span> info@amsprimeegypt.com</a>
@@ -801,342 +732,160 @@ body { transition: font-family 0.2s; }
   </div>
 </div>
 
-<!-- ============ FOOTER ============ -->
+<!-- FOOTER -->
 <footer>
   <p class="f-logo">AMS <span>PRIME EGYPT</span></p>
   <p class="f-tag">For Trading and Export &nbsp;·&nbsp; From Egypt to the World</p>
   <ul class="f-links">
-    <li><a href="#products" data-i18n="nav_products">Products</a></li>
-    <li><a href="#why" data-i18n="nav_why">Why Us</a></li>
+    <li><a href="#sectors" data-i18n="nav_sectors">Sectors</a></li>
+    <li><a href="about.html" data-i18n="nav_about">About Us</a></li>
+    <li><a href="#how" data-i18n="nav_how">How We Export</a></li>
     <li><a href="#markets" data-i18n="nav_markets">Markets</a></li>
     <li><a href="#enquiry">Contact</a></li>
     <li><a href="privacy.html">Privacy Policy</a></li>
   </ul>
-  <p class="f-copy">© 2026 AMS Prime Egypt For Trading and Export &nbsp;·&nbsp; Trade Name Reg. No. 8272768 — Cairo Investment Office</p>
+  <p class="f-copy">© 2026 AMS Prime Egypt For Trading and Export &nbsp;·&nbsp; Trade Name Reg. No. 8272768, Cairo Investment Office</p>
 </footer>
 
+<!-- WHATSAPP BUTTON — Replace XXXXXXXXXXX with actual number when registered -->
+<a class="wa-btn" href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <span class="wa-tooltip">Chat on WhatsApp</span>
+  <svg viewBox="0 0 24 24" fill="white" width="30" height="30"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
 <script>
-/* ---- Nav scroll state ---- */
-const nav = document.getElementById('nav');
-const onScroll = () => {
-  if (window.scrollY > 30) nav.classList.add('scrolled');
-  else nav.classList.remove('scrolled');
-};
-window.addEventListener('scroll', onScroll, { passive: true });
-onScroll();
+/* ── Nav ── */
+const nav=document.getElementById('nav');
+const onScroll=()=>{if(window.scrollY>30)nav.classList.add('scrolled');else nav.classList.remove('scrolled')};
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');document.getElementById('burger').classList.toggle('active')}
+window.addEventListener('scroll',()=>{document.getElementById('mobileMenu').classList.remove('open');document.getElementById('burger').classList.remove('active')},{passive:true});
 
-/* ---- Mobile menu ---- */
-function toggleMenu() {
-  document.getElementById('mobileMenu').classList.toggle('open');
-  document.getElementById('burger').classList.toggle('active');
-}
-window.addEventListener('scroll', () => {
-  document.getElementById('mobileMenu').classList.remove('open');
-  document.getElementById('burger').classList.remove('active');
-}, { passive: true });
+/* ── Scroll reveal ── */
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-/* ---- Scroll reveal ---- */
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-/* ---- Count-up stats ---- */
-const countEls = document.querySelectorAll('[data-count]');
-const cio = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    const el = e.target;
-    const target = parseInt(el.dataset.count, 10);
-    const suffix = el.dataset.suffix || '';
-    let cur = 0;
-    const step = Math.max(1, Math.round(target / 30));
-    const tick = () => {
-      cur += step;
-      if (cur >= target) { el.textContent = target + suffix; }
-      else { el.textContent = cur + suffix; requestAnimationFrame(tick); }
-    };
-    if (target > 0) tick(); else el.textContent = '0' + suffix;
-    cio.unobserve(el);
-  });
-}, { threshold: 0.6 });
-countEls.forEach(el => cio.observe(el));
-
-/* ---- Enquiry form ---- */
-function submitForm() {
-  const name = document.getElementById('fname').value.trim();
-  const email = document.getElementById('femail').value.trim();
-  const product = document.getElementById('fproduct').value;
-  const consent = document.getElementById('fConsent')?.checked;
-  if (!name || !email || !product) {
-    alert('Please add your name, email, and the product you need so we can respond properly.');
-    return;
-  }
-  if (!consent) {
-    alert('Please tick the consent checkbox before submitting.');
-    return;
-  }
+/* ── Form ── */
+function submitForm(){
+  const name=document.getElementById('fname').value.trim();
+  const email=document.getElementById('femail').value.trim();
+  const product=document.getElementById('fproduct').value;
+  const consent=document.getElementById('fConsent')?.checked;
+  if(!name||!email||!product){alert('Please fill in your name, email, and product/sector.');return}
+  if(!consent){alert('Please tick the consent checkbox before submitting.');return}
   document.getElementById('success').classList.add('show');
-  const btn = document.getElementById('submitBtn');
-  btn.disabled = true; btn.textContent = 'Enquiry Sent ✓';
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true;btn.innerHTML='<span>Sent ✓</span>';
 }
-</script>
 
-<script>
-/* ============================================================
-   LANGUAGE TOGGLE — English / Arabic
-   ============================================================ */
-const TRANSLATIONS = {
-  en: {
-    // Nav
-    nav_products: 'Products',
-    nav_why: 'Why Us',
-    nav_markets: 'Markets',
-    nav_cta: 'Get a Quote',
-    lang_btn: 'عربي',
-    // Hero
-    hero_badge: '🇪🇬  From the Land of Egypt  🌍',
-    hero_line1: 'Premium Egyptian',
-    hero_agro: 'Agro',
-    hero_exports: 'Exports',
-    hero_sub: 'AMS Prime Egypt  ·  For Trading and Export',
-    hero_desc: "We source certified, lab-tested agricultural products from Egyptian farms and deliver them to buyers across the Gulf and beyond. Quality you can verify. Supply you can rely on.",
-    btn_products: 'View Products',
-    btn_quote: 'Request a Quote',
-    // Stats
-    stat_lab: 'Lab-Certified Quality',
-    stat_testing: 'Accredited Testing',
-    stat_market: 'Primary Market',
-    stat_impurities: 'Impurities',
-    stat_methods: 'Certified Methods',
-    // Products
-    products_eyebrow: 'What We Supply',
-    products_title_1: 'Our',
-    products_title_2: 'Product',
-    products_title_3: 'Range',
-    products_sub: 'Sourced directly from Egyptian producers, tested to international standards, and exported with full documentation.',
-    badge_soon: 'Coming Soon',
-    wheat_title: 'Wheat Hay',
-    // Why
-    why_eyebrow: 'Why Work With Us',
-    why_title_1: 'A Trusted',
-    why_title_2: 'Egyptian',
-    why_title_3: 'Source',
-    // Markets
-    markets_eyebrow: 'Where We Serve',
-    markets_title: 'Global',
-    markets_title2: 'Reach',
-    // Enquiry
-    enquiry_eyebrow: 'Get in Touch',
-    enquiry_title1: 'Request a',
-    enquiry_title2: 'Quote',
-    enquiry_sub: "Tell us what you need and where you're shipping to. We respond within 24 hours.",
-    // Form
-    form_name: 'Full Name',
-    form_company: 'Company Name',
-    form_email: 'Email Address',
-    form_phone: 'WhatsApp / Phone',
-    form_product: 'Product Required',
-    form_dest: 'Destination Country',
-    form_qty: 'Estimated Quantity',
-    form_notes: 'Additional Notes',
-    why_desc: 'We operate on the ground in Egypt, working directly with producers and cutting out unnecessary intermediaries. Every shipment ships with full documentation and independently verified lab results.',
-    why_h1: 'Lab-Tested Every Shipment',
-    why_p1: 'Full COA from EGAC-accredited ACERTA Middle East covering aflatoxin, protein, moisture, pesticide residues and microbiology.',
-    why_h2: 'Direct from Egypt',
-    why_p2: 'Sourced straight from producers for faster turnaround, competitive pricing and full supply-chain transparency.',
-    why_h3: 'Complete Export Documentation',
-    why_p3: 'COA, phytosanitary certificates, certificate of origin and all customs paperwork coordinated from our end.',
-    why_h4: 'Long-Term Partnership Focus',
-    why_p4: 'We build ongoing relationships, not one-off deals. Consistent quality and honest communication is how we work.',
-    why_box1: 'Accredited Lab', why_box2: 'Primary Market', why_box3: 'Natural', why_box4: 'Test Methods',
-    why_cert_title: 'Registered Egyptian Export Company',
-    why_cert_body: 'AMS Prime Egypt For Trading and Export is a registered Egyptian company (Trade Name Reg. No. 8272768, Cairo Investment Office), with full legal accountability for every shipment.',
-    markets_sub: 'Our focus is the Gulf Cooperation Council, with export capability to markets worldwide.',
-    m_kuwait: 'Kuwait', m_saudi: 'Saudi Arabia', m_uae: 'UAE', m_qatar: 'Qatar',
-    m_bahrain: 'Bahrain', m_oman: 'Oman', m_world: 'Worldwide',
-    form_submit: 'Send Enquiry',
-    p1_name: 'Alfalfa Hay',
-    p1_desc: 'Premium Egyptian alfalfa in single and double press. Lab-certified protein, zero impurities, pesticide-free. Bale sizes from 18 kg to 750 kg.',
-    badge_now: 'Available Now',
-    p2_desc: 'Egyptian wheat hay for livestock feed across the GCC. Whole dried plant, baled and ready for export. Grades, volumes and pricing confirmed on request.',
-    p3_name: 'Barley / Malt',
-    p3_desc: 'Feed-grade Egyptian barley grain for livestock and poultry. Consistent quality and reliable volumes. Test container available for new buyers.',
-    p4_name: 'Cotton Seed',
-    p4_desc: 'Egyptian cotton seed for export, with initial volumes from 100 metric tons. Specifications and pricing being finalised with our supply partners.',
-    p5_name: 'Horse Feed',
-    p5_desc: 'Premium hay and feed blends suited for equestrian operations across the GCC. Specifications being confirmed with our Egyptian supply partners.',
-    link_specs: 'View Specifications',
-    link_register: 'Register Interest',
+/* ── Arabic ── */
+const T={
+  en:{
+    nav_sectors:'Sectors',nav_about:'About Us',nav_how:'How We Export',nav_markets:'Markets',nav_cta:'Get a Quote',lang_btn:'عربي',
+    hero_badge:'🇪🇬 \u00a0Egypt\'s Premier Export Company\u00a0 🌍',
+    hero_line1:'Exporting Egypt\'s',hero_accent:'Finest',hero_line2:'to the World',
+    hero_sub:'AMS Prime Egypt \u00a0·\u00a0 For Trading and Export',
+    hero_desc:'From premium agricultural products to confectionery, beverages and more. We source the best of Egypt and deliver it to buyers across the Gulf and beyond.',
+    btn_sectors:'View Our Sectors',btn_quote:'Request a Quote',
+    stat_sectors:'Export Sectors',stat_testing:'Accredited Testing',stat_market:'Primary Market',stat_certified:'Certified Quality',stat_methods:'Test Methods',
+    sectors_eyebrow:'What We Export',sectors_title1:'Our Export',sectors_title2:'Sectors',
+    sectors_sub:'Premium Egyptian products across multiple sectors, all lab-certified, fully documented, and ready for GCC distribution.',
+    badge_active:'Active',badge_launching:'Launching',
+    s1_name:'Animal Feed & Agriculture',s1_desc:'Premium Egyptian alfalfa hay, wheat hay, barley, cotton seed and horse feed. Lab-certified protein at 22.3%, zero impurities, EGAC-accredited COA per shipment.',
+    tag_alfalfa:'Alfalfa Hay',tag_barley:'Barley / Malt',tag_wheat:'Wheat Hay',tag_cotton:'Cotton Seed',tag_horse:'Horse Feed',
+    s2_name:'Confectionery',s2_desc:'SwissFru — premium Egyptian kunafa pastry embedded in high-quality chocolate. Halal-certified. A first-of-its-kind product bridging Egyptian heritage with modern gifting.',
+    tag_swissfru:'SwissFru Chocolate',tag_halal:'Halal Certified',tag_gifting:'Premium Gifting',
+    s3_name:'Beverages & Coffee',s3_desc:'Egyptian café-grade coffee and energy drinks including Red Bull manufactured in Egypt. Premium beverages for GCC distribution, retail and hospitality channels.',
+    tag_coffee:'Egyptian Coffee',tag_redbull:'Red Bull Egypt',tag_beverages:'Beverages',
+    s4_name:'Cleaning Supplies',s4_desc:'Egyptian-manufactured cleaning and hygiene products for commercial and household distribution across the GCC. Details and product range coming soon.',
+    tag_hygiene:'Hygiene Products',tag_commercial:'Commercial Grade',tag_egypt_made:'Made in Egypt',
+    link_explore:'Explore Products',link_register:'Register Interest',
+    about_eyebrow:'Who We Are',about_title1:"Egypt's",about_title2:'Multi-Sector',about_title3:'Export Partner',
+    about_desc:"AMS Prime Egypt For Trading and Export is a registered Egyptian company connecting the GCC with the highest quality Egyptian products across agriculture, food, beverages and consumer goods.",
+    about_stat1:'Accredited Lab',about_stat2:'Primary Market',about_stat3:'Export Sectors',about_stat4:'Test Methods',about_btn:'Learn More About Us →',
+    how_eyebrow:'Simple & Transparent',how_title1:'How We',how_title2:'Export',
+    how_sub:'A clear four-step process from sourcing to delivery, fully documented at every stage.',
+    step1_title:'Source & Verify',step1_desc:'We source directly from Egyptian producers and manufacturers, verifying quality standards before any commitment.',
+    step2_title:'Certify & Test',step2_desc:'Every product is tested by EGAC-accredited laboratories. Full COA, phytosanitary and origin certificates prepared.',
+    step3_title:'Document & Clear',step3_desc:'We handle all export documentation, customs clearance and compliance with Egyptian export regulations.',
+    step4_title:'Ship & Deliver',step4_desc:'Land freight via Saudi Arabia or sea freight to your nearest GCC port, with full cargo insurance on every shipment.',
+    why_eyebrow:'Why Work With Us',why_title1:'A Trusted',why_title2:'Egyptian',why_title3:'Source',
+    why_desc:'We operate on the ground in Egypt, working directly with producers and cutting out unnecessary intermediaries.',
+    why_h1:'Lab-Tested Every Shipment',why_p1:'Full COA from EGAC-accredited ACERTA Middle East covering aflatoxin, protein, moisture, pesticide residues and microbiology.',
+    why_h2:'Direct from Egypt',why_p2:'Sourced straight from producers for faster turnaround, competitive pricing and full supply-chain transparency.',
+    why_h3:'Complete Export Documentation',why_p3:'COA, phytosanitary certificates, certificate of origin and all customs paperwork coordinated from our end.',
+    why_h4:'Long-Term Partnership Focus',why_p4:'We build ongoing relationships, not one-off deals. Consistent quality and honest communication is how we work.',
+    why_box1:'Accredited Lab',why_box2:'Primary Market',why_box3:'Natural',why_box4:'Test Methods',
+    why_cert_title:'Registered Egyptian Export Company',
+    why_cert_body:'AMS Prime Egypt For Trading and Export is a registered Egyptian company (Trade Name Reg. No. 8272768, Cairo Investment Office) with full legal accountability for every shipment.',
+    markets_eyebrow:'Where We Serve',markets_title:'Global',markets_title2:'Reach',
+    markets_sub:'Our focus is the Gulf Cooperation Council, with export capability to markets worldwide.',
+    m_kuwait:'Kuwait',m_saudi:'Saudi Arabia',m_uae:'UAE',m_qatar:'Qatar',m_bahrain:'Bahrain',m_oman:'Oman',m_world:'Worldwide',
+    enquiry_eyebrow:'Get in Touch',enquiry_title1:'Request a',enquiry_title2:'Quote',
+    enquiry_sub:"Tell us what you need and where you're shipping to. We respond within 24 hours.",
+    form_name:'Full Name',form_company:'Company Name',form_email:'Email Address',form_phone:'WhatsApp / Phone',
+    form_sector:'Sector / Product',form_dest:'Destination Country',form_qty:'Estimated Quantity',
+    form_notes:'Additional Notes',form_submit:'Send Enquiry',
   },
-  ar: {
-    // Nav
-    nav_products: 'المنتجات',
-    nav_why: 'لماذا نحن',
-    nav_markets: 'الأسواق',
-    nav_cta: 'طلب عرض سعر',
-    lang_btn: 'English',
-    // Hero
-    hero_badge: '🇪🇬  من أرض مصر  🌍',
-    hero_line1: 'منتجات مصرية فاخرة',
-    hero_agro: 'زراعية',
-    hero_exports: 'للتصدير',
-    hero_sub: 'AMS برايم إيجيبت  ·  للتجارة والتصدير',
-    hero_desc: 'نوفر منتجات زراعية معتمدة ومختبرة من المزارع المصرية ونوصلها إلى المشترين في الخليج وما وراءه. جودة يمكنك التحقق منها. إمداد يمكنك الاعتماد عليه.',
-    btn_products: 'عرض المنتجات',
-    btn_quote: 'طلب عرض سعر',
-    // Stats
-    stat_lab: 'جودة معتمدة بالمختبر',
-    stat_testing: 'اختبار معتمد',
-    stat_market: 'السوق الرئيسي',
-    stat_impurities: 'شوائب',
-    stat_methods: 'طرق معتمدة',
-    // Products
-    products_eyebrow: 'ما نوفره',
-    products_title_1: 'مجموعة',
-    products_title_2: 'منتجاتنا',
-    products_title_3: '',
-    products_sub: 'مصدرها مباشرة من المنتجين المصريين، مختبرة وفق المعايير الدولية، ومُصدَّرة بتوثيق كامل.',
-    badge_soon: 'قريباً',
-    wheat_title: 'قش القمح',
-    // Why
-    why_eyebrow: 'لماذا تعمل معنا',
-    why_title_1: 'مصدر مصري',
-    why_title_2: 'موثوق',
-    why_title_3: '',
-    // Markets
-    markets_eyebrow: 'أين نخدم',
-    markets_title: 'انتشار',
-    markets_title2: 'عالمي',
-    // Enquiry
-    enquiry_eyebrow: 'تواصل معنا',
-    enquiry_title1: 'طلب',
-    enquiry_title2: 'عرض سعر',
-    enquiry_sub: 'أخبرنا بما تحتاجه ووجهة الشحن. نرد خلال 24 ساعة.',
-    // Form
-    form_name: 'الاسم الكامل',
-    form_company: 'اسم الشركة',
-    form_email: 'البريد الإلكتروني',
-    form_phone: 'واتساب / الهاتف',
-    form_product: 'المنتج المطلوب',
-    form_dest: 'دولة الوجهة',
-    form_qty: 'الكمية التقريبية',
-    form_notes: 'ملاحظات إضافية',
-    why_desc: 'نعمل على أرض مصر، ونتعامل مباشرة مع المنتجين بعيداً عن الوسطاء غير الضروريين. كل شحنة تأتي مع توثيق كامل ونتائج مختبرية مستقلة.',
-    why_h1: 'اختبار معتمد لكل شحنة',
-    why_p1: 'شهادة تحليل كاملة من ACERTA Middle East المعتمدة EGAC تشمل الأفلاتوكسين والبروتين والرطوبة وبقايا المبيدات.',
-    why_h2: 'مباشرة من مصر',
-    why_p2: 'مصدرها مباشرة من المنتجين لتسريع الأمور وتقديم أسعار تنافسية مع شفافية كاملة في سلسلة التوريد.',
-    why_h3: 'توثيق تصدير كامل',
-    why_p3: 'شهادة التحليل، الشهادة الصحية النباتية، شهادة المنشأ، وجميع أوراق الجمارك تُنسَّق من طرفنا.',
-    why_h4: 'تركيز على الشراكة طويلة المدى',
-    why_p4: 'نبني علاقات مستمرة، لا صفقات معزولة. الجودة الثابتة والتواصل الصادق هو أسلوبنا في العمل.',
-    why_box1: 'معتمد EGAC', why_box2: 'السوق الرئيسي', why_box3: 'طبيعي 100%', why_box4: 'طرق ISO',
-    why_cert_title: 'شركة تصدير مصرية مسجلة',
-    why_cert_body: 'AMS Prime Egypt For Trading and Export شركة مصرية مسجلة (رقم تسجيل الاسم التجاري 8272768، مكتب القاهرة للاستثمار)، مع مسؤولية قانونية كاملة عن كل شحنة.',
-    markets_sub: 'تركيزنا على دول مجلس التعاون الخليجي مع قدرة تصديرية للأسواق العالمية.',
-    m_kuwait: 'الكويت', m_saudi: 'المملكة العربية السعودية', m_uae: 'الإمارات', m_qatar: 'قطر',
-    m_bahrain: 'البحرين', m_oman: 'عُمان', m_world: 'دول أخرى',
-    form_submit: 'إرسال الاستفسار',
-    p1_name: 'برسيم (علف البرسيم)',
-    p1_desc: 'برسيم مصري فاخر بضغط فردي ومزدوج. بروتين 22.3% معتمد بالمختبر، خالٍ من الشوائب والمبيدات. أحجام من 18 كجم حتى 750 كجم.',
-    badge_now: 'متوفر الآن',
-    p2_desc: 'قش قمح مصري لتغذية الماشية في الخليج. النبتة الكاملة المجففة مكبوسة وجاهزة للتصدير. الدرجات والأحجام والأسعار تُؤكَّد عند الطلب.',
-    p3_name: 'شعير / مالت',
-    p3_desc: 'حبوب شعير مصرية لتغذية الماشية والدواجن. جودة ثابتة وإمداد موثوق. حاوية اختبار متاحة للمشترين الجدد.',
-    p4_name: 'بذرة القطن',
-    p4_desc: 'بذور قطن مصرية للتصدير بكميات أولية 100 طن متري. المواصفات والأسعار قيد التأكيد مع الموردين.',
-    p5_name: 'علف الخيل',
-    p5_desc: 'مزيج قش وأعلاف فاخر لعمليات الخيول في الخليج. المواصفات قيد التأكيد مع الموردين المصريين.',
-    link_specs: 'عرض المواصفات',
-    link_register: 'سجّل اهتمامك',
+  ar:{
+    nav_sectors:'القطاعات',nav_about:'من نحن',nav_how:'كيف نُصدِّر',nav_markets:'الأسواق',nav_cta:'طلب عرض سعر',lang_btn:'English',
+    hero_badge:'🇪🇬 \u00a0شركة التصدير الأولى في مصر\u00a0 🌍',
+    hero_line1:'نُصدِّر أرقى',hero_accent:'منتجات مصر',hero_line2:'إلى العالم',
+    hero_sub:'AMS برايم إيجيبت \u00a0·\u00a0 للتجارة والتصدير',
+    hero_desc:'من المنتجات الزراعية الفاخرة إلى الحلويات والمشروبات والمزيد — نختار أجود ما تنتجه مصر ونوصله إلى المشترين في الخليج وما وراءه.',
+    btn_sectors:'عرض قطاعاتنا',btn_quote:'طلب عرض سعر',
+    stat_sectors:'قطاعات تصديرية',stat_testing:'اختبار معتمد',stat_market:'السوق الرئيسي',stat_certified:'جودة معتمدة',stat_methods:'طرق ISO',
+    sectors_eyebrow:'ما نُصدِّره',sectors_title1:'قطاعاتنا',sectors_title2:'التصديرية',
+    sectors_sub:'منتجات مصرية متميزة في قطاعات متعددة — معتمدة بالمختبر، موثقة بالكامل، وجاهزة للتوزيع في الخليج.',
+    badge_active:'متاح الآن',badge_launching:'قريباً',
+    s1_name:'الأعلاف والزراعة',s1_desc:'برسيم مصري فاخر، قش القمح، الشعير، بذرة القطن وعلف الخيل. بروتين 22.3% معتمد بالمختبر، خالٍ من الشوائب، شهادة EGAC لكل شحنة.',
+    tag_alfalfa:'برسيم',tag_barley:'شعير / مالت',tag_wheat:'قش القمح',tag_cotton:'بذرة القطن',tag_horse:'علف الخيل',
+    s2_name:'الحلويات',s2_desc:'SwissFru — كنافة مصرية فاخرة مدمجة في شوكولاتة عالية الجودة. حلال. منتج استثنائي يجمع التراث المصري بالهدايا العصرية.',
+    tag_swissfru:'شوكولاتة SwissFru',tag_halal:'حلال معتمد',tag_gifting:'هدايا فاخرة',
+    s3_name:'المشروبات والقهوة',s3_desc:'قهوة مصرية فاخرة ومشروبات طاقة تشمل Red Bull المصنوع في مصر. مشروبات متميزة للتوزيع في قطاع التجزئة والضيافة بالخليج.',
+    tag_coffee:'قهوة مصرية',tag_redbull:'Red Bull مصر',tag_beverages:'مشروبات',
+    s4_name:'مستلزمات التنظيف',s4_desc:'منتجات تنظيف وصحة مصنوعة في مصر للتوزيع التجاري والمنزلي في دول الخليج. تفاصيل المنتجات قريباً.',
+    tag_hygiene:'منتجات صحية',tag_commercial:'درجة تجارية',tag_egypt_made:'صُنع في مصر',
+    link_explore:'استعرض المنتجات',link_register:'سجّل اهتمامك',
+    about_eyebrow:'من نحن',about_title1:'شريككم',about_title2:'المتعدد القطاعات',about_title3:'للتصدير من مصر',
+    about_desc:'AMS Prime Egypt للتجارة والتصدير شركة مصرية مسجلة تربط دول الخليج بأجود المنتجات المصرية عبر قطاعات الزراعة والغذاء والمشروبات والسلع الاستهلاكية.',
+    about_stat1:'معتمد EGAC',about_stat2:'السوق الرئيسي',about_stat3:'قطاعات تصديرية',about_stat4:'طرق ISO',about_btn:'اعرف المزيد عنا ←',
+    how_eyebrow:'بسيط وشفاف',how_title1:'كيف',how_title2:'نُصدِّر',
+    how_sub:'أربع خطوات واضحة من التوريد إلى التسليم — موثقة بالكامل في كل مرحلة.',
+    step1_title:'التوريد والتحقق',step1_desc:'نوفر مباشرة من المنتجين والمصنعين المصريين مع التحقق من معايير الجودة قبل أي التزام.',
+    step2_title:'الاعتماد والاختبار',step2_desc:'كل منتج يُختبر في مختبرات معتمدة من EGAC. يُحضَّر شهادة التحليل والشهادة النباتية وشهادة المنشأ.',
+    step3_title:'التوثيق والتخليص',step3_desc:'نتولى كافة وثائق التصدير والتخليص الجمركي والامتثال للوائح التصدير المصرية.',
+    step4_title:'الشحن والتسليم',step4_desc:'شحن بري عبر السعودية أو شحن بحري إلى أقرب ميناء خليجي — مع تأمين شامل على البضاعة في كل شحنة.',
+    why_eyebrow:'لماذا تعمل معنا',why_title1:'مصدر مصري',why_title2:'موثوق',why_title3:'',
+    why_desc:'نعمل على أرض مصر، نتعامل مباشرة مع المنتجين بعيداً عن الوسطاء غير الضروريين. كل شحنة بتوثيق كامل ونتائج مختبرية مستقلة.',
+    why_h1:'اختبار معتمد لكل شحنة',why_p1:'شهادة تحليل كاملة من ACERTA Middle East المعتمدة EGAC تشمل الأفلاتوكسين والبروتين والرطوبة وبقايا المبيدات.',
+    why_h2:'مباشرة من مصر',why_p2:'مصدرها مباشرة من المنتجين لتسريع التسليم وأسعار تنافسية مع شفافية كاملة.',
+    why_h3:'توثيق تصدير كامل',why_p3:'شهادة التحليل والشهادة الصحية النباتية وشهادة المنشأ وجميع أوراق الجمارك من طرفنا.',
+    why_h4:'شراكة طويلة المدى',why_p4:'نبني علاقات مستمرة لا صفقات معزولة. الجودة الثابتة والتواصل الصادق أسلوبنا.',
+    why_box1:'معتمد EGAC',why_box2:'السوق الرئيسي',why_box3:'طبيعي 100%',why_box4:'طرق ISO',
+    why_cert_title:'شركة تصدير مصرية مسجلة',
+    why_cert_body:'AMS Prime Egypt للتجارة والتصدير شركة مصرية مسجلة (رقم تسجيل 8272768، مكتب القاهرة للاستثمار) مع مسؤولية قانونية كاملة عن كل شحنة.',
+    markets_eyebrow:'أين نخدم',markets_title:'انتشار',markets_title2:'عالمي',
+    markets_sub:'تركيزنا على دول مجلس التعاون الخليجي مع قدرة تصدير للأسواق العالمية.',
+    m_kuwait:'الكويت',m_saudi:'المملكة العربية السعودية',m_uae:'الإمارات',m_qatar:'قطر',m_bahrain:'البحرين',m_oman:'عُمان',m_world:'دول أخرى',
+    enquiry_eyebrow:'تواصل معنا',enquiry_title1:'طلب',enquiry_title2:'عرض سعر',
+    enquiry_sub:'أخبرنا بما تحتاجه ووجهة الشحن. نرد خلال 24 ساعة.',
+    form_name:'الاسم الكامل',form_company:'اسم الشركة',form_email:'البريد الإلكتروني',form_phone:'واتساب / الهاتف',
+    form_sector:'القطاع / المنتج',form_dest:'دولة الوجهة',form_qty:'الكمية التقريبية',
+    form_notes:'ملاحظات إضافية',form_submit:'إرسال الاستفسار',
   }
 };
-
-let currentLang = localStorage.getItem('ams_lang') || 'en';
-
-function applyLang(lang) {
-  const t = TRANSLATIONS[lang];
-  const html = document.documentElement;
-  // Set direction and lang attribute
-  html.dir = lang === 'ar' ? 'rtl' : 'ltr';
-  html.lang = lang;
-  // Update lang button
-  const btn = document.getElementById('langBtn');
-  if (btn) btn.textContent = t.lang_btn;
-  // Apply all translations
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
-  // Update form placeholders
-  if (lang === 'ar') {
-    const ph = {
-      fname: 'اسمك',
-      fcompany: 'اسم شركتك',
-      femail: 'بريدك@شركتك.com',
-      fphone: '+965 …',
-      fqty: 'مثال: حاوية واحدة 40 قدم، 25 طن شهرياً…',
-      fnotes: 'متطلبات خاصة، شهادات مطلوبة، أو أسئلة…'
-    };
-    Object.entries(ph).forEach(([id, p]) => {
-      const el = document.getElementById(id);
-      if (el) el.placeholder = p;
-    });
-    // Update selects
-    const prodSel = document.getElementById('fproduct');
-    if (prodSel) {
-      prodSel.options[0].text = 'اختر منتجاً';
-      const prods = ['برسيم (ضغط فردي)','برسيم (ضغط مزدوج)','قش القمح','شعير / مالت','بذرة القطن','علف الخيل','منتجات متعددة','أخرى'];
-      for (let i=1; i<prodSel.options.length; i++) prodSel.options[i].text = prods[i-1] || prodSel.options[i].text;
-    }
-    const destSel = document.getElementById('fdest');
-    if (destSel) {
-      destSel.options[0].text = 'اختر الوجهة';
-      const dests = ['الكويت','المملكة العربية السعودية','الإمارات','قطر','البحرين','عُمان','أخرى'];
-      for (let i=1; i<destSel.options.length; i++) destSel.options[i].text = dests[i-1] || destSel.options[i].text;
-    }
-  } else {
-    const ph = {
-      fname: 'Your name',
-      fcompany: 'Your company',
-      femail: 'you@company.com',
-      fphone: '+965 …',
-      fqty: 'e.g. 1 × 40ft container, 25 tons per month…',
-      fnotes: 'Specific requirements, certifications needed, or questions…'
-    };
-    Object.entries(ph).forEach(([id, p]) => {
-      const el = document.getElementById(id);
-      if (el) el.placeholder = p;
-    });
-    const prodSel = document.getElementById('fproduct');
-    if (prodSel) {
-      prodSel.options[0].text = 'Select a product';
-      const prods = ['Alfalfa — Single Press','Alfalfa — Double Press','Wheat Hay','Barley / Malt','Cotton Seed','Horse Feed','Multiple Products','Other'];
-      for (let i=1; i<prodSel.options.length; i++) prodSel.options[i].text = prods[i-1] || prodSel.options[i].text;
-    }
-    const destSel = document.getElementById('fdest');
-    if (destSel) {
-      destSel.options[0].text = 'Select destination';
-      const dests = ['Kuwait','Saudi Arabia','UAE','Qatar','Bahrain','Oman','Other'];
-      for (let i=1; i<destSel.options.length; i++) destSel.options[i].text = dests[i-1] || destSel.options[i].text;
-    }
-  }
-  currentLang = lang;
-  localStorage.setItem('ams_lang', lang);
+let lang=localStorage.getItem('ams_lang')||'en';
+function applyLang(l){
+  const t=T[l];
+  document.documentElement.dir=l==='ar'?'rtl':'ltr';
+  document.documentElement.lang=l;
+  document.getElementById('langBtn').textContent=t.lang_btn;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(t[k]!==undefined)el.innerHTML=t[k]});
+  lang=l;localStorage.setItem('ams_lang',l);
 }
-
-function toggleLang() {
-  applyLang(currentLang === 'en' ? 'ar' : 'en');
-}
-
-// Apply saved language on page load
-document.addEventListener('DOMContentLoaded', () => {
-  if (currentLang === 'ar') applyLang('ar');
-});
+function toggleLang(){applyLang(lang==='en'?'ar':'en')}
+document.addEventListener('DOMContentLoaded',()=>{if(lang==='ar')applyLang('ar')});
 </script>
-
 </body>
 </html>

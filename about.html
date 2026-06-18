@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — AMS Prime Egypt</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--green:#0D3B1E;--green-deep:#07260F;--green-light:#2E7D4F;--gold:#C9A227;--gold-light:#E8C76A;--cream:#FAF7EF;--white:#fff;--ink:#14180F;--muted:#5C6B59;--line:#E4E0D2}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{font-family:'Inter',sans-serif;color:var(--ink);background:var(--cream);overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;background:rgba(7,38,15,.97);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,162,39,.25);padding:0 clamp(20px,5vw,64px);height:64px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-img{height:40px;width:auto;object-fit:contain;filter:drop-shadow(0 1px 3px rgba(0,0,0,.3));transition:transform .3s}
+.nav-logo:hover .nav-logo-img{transform:scale(1.04)}
+.nav-logo-mark{width:36px;height:36px;background:var(--gold);border-radius:50%;display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:700;font-size:12px;color:var(--green-deep)}
+.nav-logo-text{font-family:'Fraunces',serif;font-size:17px;font-weight:600;color:#fff}
+.nav-logo-text span{color:var(--gold)}
+.nav-back{color:rgba(255,255,255,.75);text-decoration:none;font-size:13px;font-weight:500;transition:color .2s;display:flex;align-items:center;gap:6px}
+.nav-back:hover{color:var(--gold-light)}
+.nav-cta{background:var(--gold);color:var(--green-deep);padding:9px 20px;border-radius:100px;text-decoration:none;font-size:13px;font-weight:600;transition:background .25s}
+.nav-cta:hover{background:var(--gold-light)}
+.wa-btn{position:fixed;bottom:28px;right:28px;z-index:999;width:54px;height:54px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:26px;box-shadow:0 6px 24px rgba(37,211,102,.4);transition:transform .3s}
+.wa-btn:hover{transform:scale(1.12)}
+footer{background:#061F0C;padding:38px clamp(20px,5vw,64px);text-align:center;border-top:1px solid rgba(201,162,39,.15)}
+.f-logo{font-family:'Fraunces',serif;font-size:19px;font-weight:600;color:#fff}
+.f-logo span{color:var(--gold)}
+.f-copy{font-size:11px;color:rgba(255,255,255,.24);margin-top:7px;line-height:1.6}
+.f-links{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;margin:14px 0;list-style:none}
+.f-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:13px;transition:color .2s}
+.f-links a:hover{color:var(--gold-light)}
+
+.hero{min-height:52vh;position:relative;display:flex;align-items:flex-end;padding:0 clamp(20px,5vw,64px) 60px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('images/irrigation-4.jpg');background-size:cover;background-position:center;animation:zoom 14s ease-out forwards}
+@keyframes zoom{to{transform:scale(1)}}
+.hero-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(7,38,15,.95) 0%,rgba(7,38,15,.6) 55%,rgba(7,38,15,.45) 100%)}
+.hero-content{position:relative;z-index:1;max-width:700px;padding-top:100px;opacity:0;animation:fadeUp .9s .15s cubic-bezier(.2,.8,.2,1) forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.breadcrumb{font-size:12px;color:rgba(255,255,255,.4);margin-bottom:14px}
+.breadcrumb a{color:var(--gold);text-decoration:none}
+h1{font-family:'Fraunces',serif;font-size:clamp(36px,6vw,62px);font-weight:600;color:#fff;line-height:1.08;margin-bottom:14px}
+h1 span{color:var(--gold);font-style:italic}
+.content{max-width:1100px;margin:0 auto;padding:clamp(48px,7vw,80px) clamp(20px,5vw,64px)}
+.intro-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:start;margin-bottom:64px}
+.intro-text p{font-size:16px;color:var(--ink);line-height:1.8;margin-bottom:16px}
+.reg-box{background:var(--green);border-radius:14px;padding:28px;color:#fff;margin-top:24px}
+.reg-box h3{font-family:'Fraunces',serif;font-size:16px;color:var(--gold);margin-bottom:12px}
+.reg-box p{font-size:13px;color:rgba(255,255,255,.7);line-height:1.65;margin-bottom:6px}
+.reg-box strong{color:#fff}
+.team-box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px}
+.team-box h3{font-family:'Fraunces',serif;font-size:18px;color:var(--green);margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--gold)}
+.member{display:flex;align-items:flex-start;gap:14px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.member:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.member-avatar{width:46px;height:46px;border-radius:50%;background:var(--green);display:grid;place-items:center;font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:var(--gold);flex-shrink:0}
+.member-name{font-weight:700;font-size:15px;color:var(--green);margin-bottom:2px}
+.member-role{font-size:12px;color:var(--gold);font-weight:600;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.member-desc{font-size:13px;color:var(--muted);line-height:1.55}
+.sectors-strip{background:var(--green);border-radius:16px;padding:36px;margin-bottom:56px}
+.sectors-strip h2{font-family:'Fraunces',serif;font-size:24px;color:#fff;margin-bottom:24px}
+.sectors-strip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.s-item{background:rgba(255,255,255,.06);border:1px solid rgba(201,162,39,.2);border-radius:12px;padding:20px;transition:background .2s,border-color .2s}
+.s-item:hover{background:rgba(201,162,39,.1);border-color:rgba(201,162,39,.4)}
+.s-item .icon{font-size:24px;margin-bottom:8px}
+.s-item h4{font-family:'Fraunces',serif;font-size:16px;color:var(--gold);margin-bottom:5px}
+.s-item p{font-size:12px;color:rgba(255,255,255,.55);line-height:1.5}
+.cta-bar{background:var(--gold);border-radius:14px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.cta-bar h3{font-family:'Fraunces',serif;font-size:20px;color:var(--green)}
+.cta-bar p{font-size:14px;color:rgba(13,59,30,.7);margin-top:4px}
+.cta-bar a{background:var(--green);color:#fff;text-decoration:none;padding:12px 28px;border-radius:100px;font-weight:600;font-size:14px;transition:background .2s;white-space:nowrap}
+.cta-bar a:hover{background:#1A5C32}
+.lang-toggle{background:transparent;border:1.5px solid rgba(255,255,255,.35);color:rgba(255,255,255,.85);padding:7px 16px;border-radius:100px;font-family:'Cairo','Inter',sans-serif;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .25s,color .25s,background .25s}
+.lang-toggle:hover{border-color:var(--gold);color:var(--gold-light);background:rgba(201,162,39,.08)}
+[dir="rtl"] body{font-family:'Cairo','Inter',sans-serif}
+[dir="rtl"] h1,[dir="rtl"] h2,[dir="rtl"] h3{font-family:'Cairo',serif}
+[dir="rtl"] nav{flex-direction:row-reverse}
+[dir="rtl"] .intro-grid{direction:rtl}
+[dir="rtl"] .member{flex-direction:row-reverse;text-align:right}
+[dir="rtl"] .reg-box p,[dir="rtl"] .intro-text p{text-align:right}
+[dir="rtl"] .sectors-strip-grid{direction:rtl}
+[dir="rtl"] .s-item{text-align:right}
+[dir="rtl"] .cta-bar{flex-direction:row-reverse}
+@media(max-width:768px){.intro-grid{grid-template-columns:1fr;gap:32px}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="images/ams-logo.png" alt="AMS Prime Egypt" class="nav-logo-img">
+  </a>
+  <div style="display:flex;align-items:center;gap:16px">
+    <a href="index.html" class="nav-back" id="navBack">← Back to Home</a>
+    <button class="lang-toggle" id="langBtn" onclick="toggleLang()">عربي</button>
+    <a href="index.html#enquiry" class="nav-cta" id="navCta">Get a Quote</a>
+  </div>
+</nav>
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-veil"></div>
+  <div class="hero-content">
+    <p class="breadcrumb"><a href="index.html">Home</a> / About Us</p>
+    <h1 data-i18n="page_title">Egypt's Premier<br><span data-i18n="page_title_span">Export Company</span></h1>
+  </div>
+</div>
+<div class="content">
+  <div class="intro-grid">
+    <div class="intro-text">
+      <p>AMS Prime Egypt For Trading and Export is a registered Egyptian company built on a simple mission: connecting the Gulf and global markets with Egypt's finest products. From premium agricultural produce to confectionery, beverages and consumer goods, we are Egypt's multi-sector export partner.</p>
+      <p>We operate on the ground in Egypt, sourcing directly from manufacturers and producers, handling laboratory certification, export documentation, logistics coordination, and full compliance with Egyptian and international trade regulations. Our buyers receive a single point of contact for everything.</p>
+      <p>Quality is non-negotiable. Every agricultural product we export is tested by EGAC-accredited laboratories with full COA provided per shipment. For all other products, we work only with certified manufacturers whose quality standards meet GCC market requirements.</p>
+      <div class="reg-box">
+        <h3>Company Registration</h3>
+        <p><strong>Trade Name:</strong> AMS Prime Egypt For Trading and Export</p>
+        <p><strong>Registration No.:</strong> 8272768</p>
+        <p><strong>Registered at:</strong> Cairo Investment Office, Arab Republic of Egypt</p>
+        <p><strong>Email:</strong> info@amsprimeegypt.com</p>
+        <p><strong>Website:</strong> amsprimeegypt.com</p>
+      </div>
+    </div>
+    <div>
+      <div class="team-box">
+        <h3>Our Team</h3>
+        <div class="member">
+          <div class="member-avatar">AH</div>
+          <div>
+            <p class="member-name" data-i18n="member1_name">Ali Al Mohamed Sahir</p>
+            <p class="member-role" data-i18n="member1_role">Owner &amp; CEO</p>
+            <p class="member-desc">Founded AMS Prime Egypt to create a professional, multi-sector Egyptian export operation serving GCC buyers with verified quality at competitive prices.</p>
+          </div>
+        </div>
+        <div class="member">
+          <div class="member-avatar">EB</div>
+          <div>
+            <p class="member-name" data-i18n="member2_name">Esslam Barhoum</p>
+            <p class="member-role" data-i18n="member2_role">International Business Development Manager</p>
+            <p class="member-desc" data-i18n="member2_desc">Leads international market development, buyer relations, product sourcing, and export coordination across all sectors. Based in Cairo, Egypt.</p>
+          </div>
+        </div>
+        <div class="member">
+          <div class="member-avatar">MZ</div>
+          <div>
+            <p class="member-name" data-i18n="member3_name">Muhammad Zuhair</p>
+            <p class="member-role" data-i18n="member3_role">General Manager, Egypt</p>
+            <p class="member-desc" data-i18n="member3_desc">Manages local operations across Cairo, handles domestic supplier relationships and lead generation on the ground. His expertise is rooted in the Egyptian market.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sectors-strip">
+    <h2>What We Export</h2>
+    <div class="sectors-strip-grid">
+      <div class="s-item"><div class="icon">🌾</div><h4>Animal Feed &amp; Agriculture</h4><p>Alfalfa, wheat hay, barley, cotton seed and horse feed. Lab-certified, EGAC-accredited.</p></div>
+      <div class="s-item"><div class="icon">🍫</div><h4>Confectionery</h4><p>SwissFru kunafa chocolate — Egyptian heritage meets premium gifting. Halal certified.</p></div>
+      <div class="s-item"><div class="icon">☕</div><h4>Beverages &amp; Coffee</h4><p>Egyptian café-grade coffee and Red Bull manufactured in Egypt for GCC distribution.</p></div>
+      <div class="s-item"><div class="icon">🧴</div><h4>Cleaning Supplies</h4><p>Egyptian-manufactured cleaning and hygiene products for commercial and retail distribution.</p></div>
+    </div>
+  </div>
+
+  <div class="cta-bar">
+    <div>
+      <h3>Ready to start an order?</h3>
+      <p>Send us your requirements and we'll respond within 24 hours.</p>
+    </div>
+    <a href="index.html#enquiry">Get a Quote →</a>
+  </div>
+</div>
+<footer>
+  <p class="f-logo">AMS <span>PRIME EGYPT</span></p>
+  <ul class="f-links">
+    <li><a href="index.html#sectors">Sectors</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="index.html#enquiry">Contact</a></li>
+    <li><a href="privacy.html">Privacy Policy</a></li>
+  </ul>
+  <p class="f-copy">© 2026 AMS Prime Egypt For Trading and Export · Trade Name Reg. No. 8272768</p>
+</footer>
+<a class="wa-btn" href="https://wa.me/XXXXXXXXXXX" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="white" width="28" height="28"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+const T = {
+  en: {
+    nav_back: '← Back to Home', nav_cta: 'Get a Quote', lang_btn: 'عربي',
+    page_title: "Egypt's Premier", page_title_span: 'Export Company',
+    member1_name: 'Ali Al Mohamed Sahir', member1_role: 'Owner & CEO',
+    member2_name: 'Esslam Barhoum', member2_role: 'International Business Development Manager',
+    member2_desc: 'Leads international market development, buyer relations, product sourcing, and export coordination across all sectors. Based in Cairo, Egypt.',
+    member3_name: 'Muhammad Zuhair', member3_role: 'General Manager, Egypt',
+    member3_desc: 'Manages local operations across Cairo, handles domestic supplier relationships and lead generation on the ground. His expertise is rooted in the Egyptian market.',
+  },
+  ar: {
+    nav_back: 'الرئيسية ←', nav_cta: 'طلب عرض سعر', lang_btn: 'English',
+    page_title: 'شركة التصدير الأولى', page_title_span: 'في مصر',
+    member1_name: 'علي آل محمد ساهر', member1_role: 'المالك والرئيس التنفيذي',
+    member2_name: 'إسلام برهوم', member2_role: 'مدير تطوير الأعمال الدولية',
+    member2_desc: 'يقود تطوير الأسواق الدولية وعلاقات المشترين وتوريد المنتجات وتنسيق التصدير عبر جميع القطاعات. مقيم في القاهرة.',
+    member3_name: 'محمد زهير', member3_role: 'المدير العام، مصر',
+    member3_desc: 'يدير العمليات المحلية في القاهرة ويتولى علاقات الموردين المحليين وتوليد الفرص التجارية على أرض الواقع. خبرته متجذرة في السوق المصري.',
+  }
+};
+let lang = localStorage.getItem('ams_lang') || 'en';
+function applyLang(l) {
+  const t = T[l];
+  document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.lang = l;
+  document.getElementById('langBtn').textContent = t.lang_btn;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if (t[k] !== undefined) el.innerHTML = t[k];
+  });
+  lang = l;
+  localStorage.setItem('ams_lang', l);
+}
+function toggleLang() { applyLang(lang === 'en' ? 'ar' : 'en'); }
+document.addEventListener('DOMContentLoaded', () => { if (lang === 'ar') applyLang('ar'); });
+</script>
+</body>
+</html>
