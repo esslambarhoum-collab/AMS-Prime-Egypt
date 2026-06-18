@@ -251,13 +251,13 @@ footer { background: var(--dark); padding: 28px 5vw; text-align: center; border-
     <h2>From the Farm</h2>
     <p class="gallery-sub">Photos taken during a supplier farm visit, alfalfa fields and bales from our Egyptian supply partner.</p>
     <div class="gallery-grid" id="galleryGrid">
-      <div class="g-img tall" onclick="openLb(0)"><img src="images/irrigation-1.jpg" alt="Alfalfa farm irrigation system Egypt" loading="lazy"></div>
-      <div class="g-img" onclick="openLb(1)"><img src="images/alfalfa-bale-1.jpg" alt="Alfalfa bale on Egyptian farm" loading="lazy"></div>
-      <div class="g-img" onclick="openLb(2)"><img src="images/alfalfa-bale-2.jpg" alt="Green alfalfa bale close-up" loading="lazy"></div>
-      <div class="g-img wide" onclick="openLb(3)"><img src="images/irrigation-2.jpg" alt="Centre pivot irrigation on alfalfa field" loading="lazy"></div>
-      <div class="g-img" onclick="openLb(4)"><img src="images/alfalfa-bale-3.jpg" alt="Alfalfa bale side view" loading="lazy"></div>
-      <div class="g-img" onclick="openLb(5)"><img src="images/irrigation-3.jpg" alt="Irrigation system on green alfalfa field" loading="lazy"></div>
-      <div class="g-img wide" onclick="openLb(6)"><img src="images/irrigation-4.jpg" alt="Centre pivot irrigation wheels close-up" loading="lazy"></div>
+      <div class="g-img tall" onclick="openLb(0)"><img src="Images/irrigation-1.jpeg" alt="Alfalfa farm irrigation system Egypt" loading="lazy"></div>
+      <div class="g-img" onclick="openLb(1)"><img src="Images/alfalfa-bale-1.jpeg" alt="Alfalfa bale on Egyptian farm" loading="lazy"></div>
+      <div class="g-img" onclick="openLb(2)"><img src="Images/alfalfa-bale-2.jpeg" alt="Green alfalfa bale close-up" loading="lazy"></div>
+      <div class="g-img wide" onclick="openLb(3)"><img src="Images/irrigation-2.jpeg" alt="Centre pivot irrigation on alfalfa field" loading="lazy"></div>
+      <div class="g-img" onclick="openLb(4)"><img src="Images/alfalfa-bale-3.jpeg" alt="Alfalfa bale side view" loading="lazy"></div>
+      <div class="g-img" onclick="openLb(5)"><img src="Images/irrigation-3.jpeg" alt="Irrigation system on green alfalfa field" loading="lazy"></div>
+      <div class="g-img wide" onclick="openLb(6)"><img src="Images/irrigation-4.jpeg" alt="Centre pivot irrigation wheels close-up" loading="lazy"></div>
     </div>
   </div>
 
@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => { if (alfLang === 'ar') appl
 
 
 <script>
-const IMGS=['images/irrigation-1.jpg','images/alfalfa-bale-1.jpg','images/alfalfa-bale-2.jpg','images/irrigation-2.jpg','images/alfalfa-bale-3.jpg','images/irrigation-3.jpg','images/irrigation-4.jpg'];
+const IMGS=['images/irrigation-1.jpeg','images/alfalfa-bale-1.jpeg','images/alfalfa-bale-2.jpeg','images/irrigation-2.jpeg','images/alfalfa-bale-3.jpeg','images/irrigation-3.jpeg','images/irrigation-4.jpeg'];
 let lbIdx=0;
 function openLb(i){lbIdx=i;document.getElementById('lbImg').src=IMGS[i];document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden'}
 function closeLb(e){if(!e||e.target===document.getElementById('lightbox')||e.target.classList.contains('lb-close')){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow=''}}
